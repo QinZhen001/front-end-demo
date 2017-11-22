@@ -7,3 +7,9 @@
  
 ###  Bootstrap-customization
   Bootstrap的定制 结合Less
+  
+###   Bootstrap-maizi
+* Bootstrap的练习 
+* 结合Jquery和jq插件jquery.singlePageNav.min.js(导航链接到锚点)   
+* 结合animate.css的插件wow.min.js(页面滚动时的动画)
+  
