@@ -23,3 +23,7 @@
 
 ### shopping-cart
 实现简单购物车 react+redux
+
+
+### test-react-lifecycle
+测试react中component的生命周期
