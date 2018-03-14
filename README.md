@@ -27,3 +27,7 @@
 
 ### test-react-lifecycle
 测试react中component的生命周期
+
+
+### custom-redux
+研究redux和react-redux源码
