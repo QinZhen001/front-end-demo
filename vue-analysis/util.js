@@ -51,8 +51,38 @@ export function defineReactive
                 if (childOb) {
                     // 子对象进行依赖收集，其实就是将同一个watcher观察者实例放进两个depend中
                     // 一个是正在本身闭包中的depend，另一个是子元素的depend
+                    childOb.dep.depend()
+                }
+                if (Array.isArray(value)) {
+                    //是数组则需要对每一个成员都进行依赖收集，如果数组的成员还是数组，则递归
+                    dependAray(value)
                 }
             }
+            return value
+        },
+        set: function reactiveSetter(newVal) {
+            //通过getter方法获取当前值，与新值进行比较，一值则不需要执行下面的操作
+            const value = getter ? getter.call(obj) : val
+            /* eslint-disable no-self-compare */
+            if (newVal === val || (newVal !== newVal && value !== value)) {
+                return
+            }
+            /* eslint-disable no-self-compare */
+            if (process.env.NODE_ENV !== 'production' && customSetter) {
+                customSetter()
+            }
+            if (setter) {
+                //如果原本对象拥有setter方法则执行setter
+                setter.call(obj, newVal)
+            } else {
+                val = newVal
+            }
+
+            //新的值需要重新进行observe，保证数据的响应式
+            childOb = observe(newVal)
+
+            //dep对象通知所有的观察者
+            dep.notify()
         }
     })
 

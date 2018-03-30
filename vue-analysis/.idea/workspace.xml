@@ -27,8 +27,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data-bind.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data-bind.js">
+      <file leaf-file-name="vue-data-bind.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue-data-bind.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="5962">
               <caret line="271" column="0" lean-forward="false" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
@@ -63,18 +63,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="util.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/util.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
-              <caret line="52" column="55" lean-forward="false" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
+            <state relative-caret-position="187">
+              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dependency-collection.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dependency-collection.js">
+      <file leaf-file-name="vue-event-mechanism.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vue-event-mechanism.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="638">
+              <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vue-dependency-collection.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue-dependency-collection.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
               <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
@@ -109,6 +121,7 @@
         <option value="$PROJECT_DIR$/data-bind.js" />
         <option value="$PROJECT_DIR$/Dep.js" />
         <option value="$PROJECT_DIR$/util.js" />
+        <option value="$PROJECT_DIR$/vue-event-mechanism.js" />
       </list>
     </option>
   </component>
@@ -125,8 +138,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="925" />
-    <option name="width" value="1002" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -288,18 +301,18 @@
       <option name="presentableId" value="Default" />
       <updated>1522322665247</updated>
       <workItem from="1522322666438" duration="10486000" />
-      <workItem from="1522384667752" duration="8823000" />
+      <workItem from="1522384667752" duration="11654000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19309000" />
+    <option name="totallyTimeSpent" value="22140000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="925" y="0" width="1002" height="1047" extended-state="0" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1587137" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12820514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -346,7 +359,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dependency-collection.js">
+    <entry file="file://$PROJECT_DIR$/vue-dependency-collection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1100">
           <caret line="51" column="44" lean-forward="true" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
@@ -356,7 +369,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-bind.js">
+    <entry file="file://$PROJECT_DIR$/vue-data-bind.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4818">
           <caret line="221" column="20" lean-forward="true" selection-start-line="221" selection-start-column="20" selection-end-line="221" selection-end-column="20" />
@@ -386,7 +399,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-bind.js">
+    <entry file="file://$PROJECT_DIR$/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-data-bind.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5962">
           <caret line="271" column="0" lean-forward="false" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
@@ -396,7 +417,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dependency-collection.js">
+    <entry file="file://$PROJECT_DIR$/vue-dependency-collection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
@@ -416,11 +437,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util.js">
+    <entry file="file://$PROJECT_DIR$/vue-event-mechanism.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="52" column="55" lean-forward="false" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="638">
+          <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
