@@ -14,8 +14,8 @@
 * 结合animate.css的插件wow.min.js(页面滚动时的动画)
   
 ### three-column-layout
-经典三栏布局
-
+* 经典三栏布局实现
+* 圣杯和双飞翼布局 [http://www.xluos.com/index.php/archives/705/](http://www.xluos.com/index.php/archives/705/)
 
 ### cross-domain
 跨域通信
