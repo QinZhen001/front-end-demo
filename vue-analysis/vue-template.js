@@ -289,19 +289,17 @@ function baseCompile(template: string,
 // ./parser/index.js
 
 
+// optimize
+// optimize的主要作用是标记static静态节点，这是Vue在编译过程中的一处优化，后面当update更新界面时，会有一个patch的过程，
+// diff算法会直接跳过静态节点，从而减少了比较的过程，优化了patch的性能。
 
 
+// generate
+// generate是将AST转化成render funtion字符串的过程，
+// 得到结果是render的字符串以及staticRenderFns字符串。
 
 
-
-
-
-
-
-
-
-
-
+// 至此，我们的template模板已经被转化成了我们所需的AST、render function字符串以及staticRenderFns字符串。
 
 
 
