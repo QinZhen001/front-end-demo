@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>大小不固定的图片的垂直居中</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<!--ul里的直接子元素应该只有li，这里为了演示效果，暂不考虑这些-->
+<ul class="fix">
+  <p>
+    first-method:</br>将要显示的图片与一张透明且高度100%，宽度1像素的图片都设置vertical-align:middle，使之对齐。
+  </p>
+  <li class="first-method">
+    <img class="show-img" src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg"/>
+    <img class="alpha-img" src="./pixel.jpg" alt="">
+  </li>
+  <p>
+    second-method:</br>在图片的父元素上添加display: table-cell vertical-align: middle;</br>
+    <strong>特别注意:table-cell不感知margin，这也是这个li在左边的原因</strong></br>
+    <strong>设置float或某些position(如:absolute)会对table-cell布局造成破坏，导致内部图片无法垂直居中</strong>
+  </p>
+  <li class="second-method">
+    <img src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg"/>
+  </li>
+  <p>third-method:</br>使用flex布局</p>
+  <li class="third-method">
+    <img src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg"/>
+  </li>
+</ul>
+</body>
+</html>

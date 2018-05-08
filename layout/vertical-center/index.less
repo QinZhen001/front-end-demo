@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  text-align: center;
+}
+
+li {
+  margin: 20px auto;
+  padding: 13px 0;
+  height: 128px;
+  width: 150px;
+  text-align: center;
+  border: 1px solid #beceeb;
+  font-size: 0;
+}
+
+.first-method {
+  .alpha-img {
+    height: 100%;
+    width: 1px;
+    vertical-align: middle;
+  }
+
+  .show-img {
+    vertical-align: middle;
+  }
+}
+
+.second-method {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.third-method {
+  display: flex;
+  //align-items记住是侧轴（纵轴）方向上的对齐方式 联想记忆：vertical-align => 垂直方向对齐方式 => align-items
+  align-items: center;
+  justify-content: center;
+}
