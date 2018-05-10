@@ -50,15 +50,15 @@ vue源码分析
 JavaScript 回到顶部
 
 
-#### vertical-center
+#### vertical-center-picture
 大小不固定的图片的垂直居中(3种实现方式)
 
 1. **将要显示的图片与一张透明且高度100%，宽度1像素的图片都设置vertical-align:middle，使之对齐。**
 2. 在图片的父元素上添加display: table-cell vertical-align: middle;
 3. 使用flex布局 (**推荐使用**)
 
-
-
+#### margin-top
+子元素与父元素边重合，子元素margin-top也会作用到父元素
 
 
 
