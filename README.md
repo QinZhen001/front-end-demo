@@ -63,7 +63,9 @@ JavaScript 回到顶部
 
 
 
+#### observer
 
+自己实现一个observer，观测到数据改变派发更新
 
 
 
