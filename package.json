@@ -1,0 +1,48 @@
+{
+  "name": "front-end-demo",
+  "version": "1.0.0",
+  "description": "手写源码",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build/build.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.1",
+    "expose-loader": "^0.7.5",
+    "file-loader": "^4.3.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.2",
+    "node-sass": "^4.13.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.1.2",
+    "url-loader": "^2.3.0",
+    "webpack": "^4.41.5",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-merge": "^4.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QinZhen001/front-end-demo.git"
+  },
+  "author": "qz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QinZhen001/front-end-demo/issues"
+  },
+  "homepage": "https://github.com/QinZhen001/front-end-demo#readme"
+}
