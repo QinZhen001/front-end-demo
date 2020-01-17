@@ -24,12 +24,12 @@ let entries = fs.readdirSync(pagesPath).reduce((entries, dir) => {
 
 
 let plugins = [
-  // new CopyPlugin([
-  //   {
-  //     from: path.resolve(__dirname, "../src/assets"),
-  //     to: path.resolve(__dirname, "../dist/assets"),
-  //   }
-  // ]),
+  new CopyPlugin([
+    {
+      from: path.resolve(__dirname, "../src/static"),
+      to: path.resolve(__dirname, "../dist/static"),
+    }
+  ]),
   new CleanWebpackPlugin(),
   new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output

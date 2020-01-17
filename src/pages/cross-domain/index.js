@@ -1,3 +1,5 @@
+import "./index.html"
+
 /**
  * 功能类库
  */
@@ -155,7 +157,7 @@ util.json = function (options) {
         var res;
         if (opt.success && opt.success instanceof Function) {
           res = xhr.responseText;
-          if (typeof res ===  'string') {
+          if (typeof res === 'string') {
             res = JSON.parse(res);
             opt.success.call(xhr, res);
           }
@@ -192,7 +194,7 @@ util.crc32 = function (url) {
       c = ((c & 1) ? (-306674912 ^ (c >>> 1)) : (c >>> 1));
       table[n] = c;
     }
-    return typeof Int32Array !==  'undefined' ? new Int32Array(table) : table;
+    return typeof Int32Array !== 'undefined' ? new Int32Array(table) : table;
   })();
   var crc32_str = function (str) {
     var C = -1;

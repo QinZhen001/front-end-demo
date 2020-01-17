@@ -1,6 +1,5 @@
-// 首页
-
 import "./index.html"
+import "../../common/less/common.less"
 
 
 // url拼接上.html

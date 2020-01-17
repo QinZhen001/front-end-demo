@@ -1,5 +1,5 @@
 module.exports = {
   entryName: "index.js",
-  icoPath: "common/images/favicon.ico",
+  icoPath: "static/images/favicon.ico",
   bundleAnalyzerReport: false,
 }
