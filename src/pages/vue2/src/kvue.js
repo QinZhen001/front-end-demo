@@ -1,11 +1,12 @@
 import Dep from "./dep"
+import Compile from "./compile"
 
 // 期待用法
 // new KVue({
 //     data:{msg:'hello'}
 // })
 
-class KVue {
+export default class KVue {
   constructor(options) {
     this.$options = options
 
@@ -13,6 +14,17 @@ class KVue {
     this.$data = options.data
     // 响应式
     this.observe(this.$data)
+
+    // new Watcher();
+    // this.$data.test;
+    // new Watcher();
+    // this.$data.foo.bar;
+
+    new Compile(options.el, this)
+
+    if (options.created) {
+      options.created.call(this);
+    }
   }
 
   observe(value) {

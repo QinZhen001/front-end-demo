@@ -6,7 +6,9 @@ import "../../common/less/common.less"
 const contents = [
   {
     title: "cross-domain 跨域通信",
-    url: "cross-domain"
+  },
+  {
+    title: "vue2 简单模拟vue2",
   }
 ]
 

@@ -1,6 +1,6 @@
 import Dep from "./dep"
 
-class Watcher {
+export default  class Watcher {
   constructor(vm, key, cb) {
     this.vm = vm
     this.key = key
