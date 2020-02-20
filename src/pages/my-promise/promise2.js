@@ -122,6 +122,7 @@ class KPromise {
   catch(onRejected) {
     return this.then(null, onRejected)
   }
+  
   then(onfulfilled, onrejected) {
     // onfulfilled then方法中的成功回调
     // onrejected then方法中的失败回调
