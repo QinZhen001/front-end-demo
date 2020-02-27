@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node build/build.js",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "my-webpack": "node inspect ./src/pages/mini-webpack/bundler.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -46,6 +47,10 @@
   },
   "homepage": "https://github.com/QinZhen001/front-end-demo#readme",
   "dependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/parser": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/traverse": "^7.8.4",
     "highlight.js": "^9.17.1",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
