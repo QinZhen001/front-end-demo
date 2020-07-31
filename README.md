@@ -1,6 +1,6 @@
 # front-end-demo
 
-## 前端小案例
+存放一些小的前端demo 和 源码实现原理
 
 
 ###  Bootstrap-customization
