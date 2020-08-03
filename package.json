@@ -57,6 +57,7 @@
     "koa-router": "^8.0.6",
     "koa-session": "^5.12.3",
     "koa-static": "^5.0.0",
-    "koa2-cors": "^2.0.6"
+    "koa2-cors": "^2.0.6",
+    "vue": "^2.6.11"
   }
 }

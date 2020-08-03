@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父页面</title>
+  <style>
+    #toChild {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin: 100px;
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- https://juejin.im/post/6856353219036217357?utm_source=gold_browser_extension#heading-0 -->
+  <div>父页面</div>
+  <iframe id="iframe" src="children.html"></iframe>
+
+</body>
+<script>
+
+
+  const iFrame = document.getElementById('iframe')
+
+  // 鉴权相关 
+  const FR_ALLOW_LIST = ["children"]
+
+  window.IFRAME_APIS = {
+    getUserInfo({ id }) {
+      iFrame.postMessage({
+        api: 'handleGetUserInfoSucc',
+        payload: { name: 'lhyt', age: 23 }
+      })
+    }
+  }
+
+  window.addEventListener("message", (({ data }) => {
+    console.log("parent recive msg", data)
+    debugger
+    if (!data || typeof data != "object") {
+      return
+    }
+
+    // 鉴权
+    if (!FR_ALLOW_LIST.includes(data.fr)) {
+      throw new Error(`Illegal fr: ${data.fr}`)
+    }
+
+    try {
+      window.IFRAME_APIS[data.api](data.payload);
+      debugger
+    } catch (error) {
+      console.error(e);
+    }
+  }))
+
+
+  // const toChild = document.getElementById("toChild")
+  // toChild.addEventListener("click", (e) => {
+  //   window.open("children.html")
+  // })
+
+  iFrame.onload = (e) => {
+    console.log("iFrame load", e)
+  }
+</script>
+
+</html>

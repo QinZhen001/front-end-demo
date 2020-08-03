@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>子页面</title>
+  <style>
+    #msg {
+      width: 100px;
+      height: 100px;
+      margin: 100px;
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div>子页面</div>
+  <div id="msg">发消息到父页面</div>
+</body>
+
+<script>
+  window.IFRAME_APIS = {
+    handleGetUserInfoSucc(data) {
+      console.log("handleGetUserInfoSucc", data)
+    }
+  }
+
+  const msg = document.getElementById("msg")
+
+  msg.addEventListener("click", (e) => {
+    debugger
+    window.parent && window.parent.postMessage({
+      api: 'getUserInfo', 
+      payload: { id: 1 },
+      fr:"children"
+    }, '*');
+  })
+
+
+  window.addEventListener("message", ({ data }) => {
+    console.log("children recive msg", data)
+    try {
+      window.IFRAME_APIS[data.api](data.payload);
+      debugger
+    } catch (error) {
+      console.error(e);
+    }
+  })
+</script>
+
+</html>
