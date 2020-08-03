@@ -16,7 +16,6 @@ xxx.addEventListener("mousedown", (e) => {
 
 // 注意这里是document
 document.addEventListener("mousemove", (e) => {
-  debugger;
   if (!dragging) {
     return null;
   }
@@ -41,48 +40,58 @@ document.addEventListener("mouseup", function (e) {
 
 // --------------------------------------------------
 
-item.addEventListener("mousedown", (e) => {
-  dragging1 = true;
-  position1 = [e.clientX, e.clientY];
-});
+// item.addEventListener("mousedown", (e) => {
+//   dragging1 = true;
+//   position1 = [e.clientX, e.clientY];
+// });
 
-const wrapper = document.getElementsByClassName("wrapper")[0];
-const rect = wrapper.getBoundingClientRect();
+// const wrapper = document.getElementsByClassName("wrapper")[0];
+// const rect = wrapper.getBoundingClientRect();
 
-const { width:itemWidth, height:itemHeight } = item.getBoundingClientRect();
+// const { width: itemWidth, height: itemHeight } = item.getBoundingClientRect();
 
-console.log(itemWidth)
-console.log(itemHeight)
-debugger
+// // 注意这里是wrapper
+// wrapper.addEventListener("mousemove", (e) => {
+//   if (!dragging1) {
+//     return null;
+//   }
+//   const x = e.clientX;
+//   const y = e.clientY;
 
-debugger;
-// 注意这里是wrapper
-wrapper.addEventListener("mousemove", (e) => {
-  if (!dragging1) {
-    return null;
-  }
-  const x = e.clientX;
-  const y = e.clientY;
+//   const deltaX = x - position1[0];
+//   const deltaY = y - position1[1];
 
-  const deltaX = x - position1[0];
-  const deltaY = y - position1[1];
+//   let left = parseInt(item.offsetLeft || 0);
+//   let top = parseInt(item.offsetTop || 0);
 
-  const left = parseInt(item.style.left || 0);
-  const top = parseInt(item.style.top || 0);
 
-  // 限制item在wrapper中
-  // if (left < rect.left) {
-  //   left = rect.left;
-  // }else if(left > rect.right - )
+//   const finalX = left + deltaX;
+//   const finalY = top + deltaY;
+//   console.log(finalX, finalY);
+//   debugger
 
-  if (right > rect.right) {
-    right = rect.right;
-  }
+//   // 限制item在wrapper中
+//   // if (left < rect.left) {
+//   //   left = rect.left;
+//   // } else if (left > rect.right - itemWidth) {
+//   //   left = rect.right - itemWidth;
+//   // }
 
-  xxx.style.left = left + deltaX + "px";
-  xxx.style.top = top + deltaY + "px";
+//   // if (top < rect.top) {
+//   //   top = rect.top;
+//   // } else if (top > rect.top - itemHeight) {
+//   //   top = rect.top - itemHeight;
+//   // }
 
-  // position = [x, y]
+//   item.style.left = finalX + "px";
+//   item.style.top = finalY + "px";
 
-  e.stopPropagation();
-});
+//   position = [x, y];
+
+//   // e.stopPropagation();
+// });
+
+// wrapper.addEventListener("mouseup", (e) => {
+//   dragging1 = false;
+//   debugger
+// });
