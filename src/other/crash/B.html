@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>手动在输入chrome://crash制造崩溃</p>
+  <p>奔溃后手动刷新页面</p>
+  <div>
+    请记住，您的sessionStorage已保存并恢复，因此可以恢复用户在崩溃前所做的所有操作。
+    这意味着您可以存储上次访问的URL，他们访问您的网站的时间，他们在页面上执行的任何操作以及可以存储在sessionStorage中的任何内容。
+  </div>
+</body>
+
+<script>
+  window.addEventListener('load', function () {
+    sessionStorage.setItem('good_exit', 'pending');
+    setInterval(function () {
+      sessionStorage.setItem('time_before_crash', new Date().toString());
+    }, 1000);
+  });
+
+  window.addEventListener('beforeunload', function () {
+    sessionStorage.setItem('good_exit', 'true');
+  });
+
+  if (sessionStorage.getItem('good_exit') &&
+    sessionStorage.getItem('good_exit') !== 'true') {
+    /*
+       insert crash logging code here
+   */
+    alert('Hey, welcome back from your crash, looks like you crashed on: '
+      + sessionStorage.getItem('time_before_crash'));
+  }
+</script>
+
+</html>
