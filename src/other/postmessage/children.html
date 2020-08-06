@@ -24,17 +24,20 @@
   window.IFRAME_APIS = {
     handleGetUserInfoSucc(data) {
       console.log("handleGetUserInfoSucc", data)
+      debugger
     }
   }
 
   const msg = document.getElementById("msg")
 
   msg.addEventListener("click", (e) => {
-    debugger
+    console.log("window.parent", window.parent)
+    console.log("window.top", window.top)
+    console.log("window.top == window.parent", window.top === window.parent)
     window.parent && window.parent.postMessage({
-      api: 'getUserInfo', 
+      api: 'getUserInfo',
       payload: { id: 1 },
-      fr:"children"
+      fr: "children"
     }, '*');
   })
 
