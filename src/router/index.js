@@ -1,5 +1,8 @@
 import Vue from "vue"
 import Router from 'vue-router'
+// TODO:引入自己的vue-router
+// 引入自己vue-router
+// import Router from '../../vue/simple-vue-router/myVueRouter'
 import routes from './routes'
 
 Vue.use(Router)
