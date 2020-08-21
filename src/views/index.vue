@@ -19,6 +19,10 @@ export default {
       {
         path:"test-vuex",
         text:"自己写的简单vuex"
+      },
+        {
+        path:"test-vue-router",
+        text:"自己写的简单vue-router"
       }
     ]
   };

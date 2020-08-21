@@ -6,5 +6,9 @@ export default [
   {
     path: '/test-vuex',
     component: () => import('@/views/testVuex.vue'),
+  },
+  {
+    path: '/test-vue-router',
+    component: () => import('@/views/testVueRouter.vue'),
   }
 ]
