@@ -73,6 +73,7 @@ class KPromise {
       }
     })
   }
+  
   // 第一个
   static race(promises) {
     return new KPromise((resolve, reject) => {

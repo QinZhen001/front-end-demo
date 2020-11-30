@@ -1,96 +1,121 @@
-const PENDING = 1
-const FULFILLED = 2
-const REJECTED = 3
+function myPromise(executor) {
+  let self = this
+  self.status = 'pending'
+  self.success = undefined
+  self.error = undefined
 
-function isFunction(fn) {
-  return typeof fn === "function"
+  self.onSuccessCallbacks = []
+  self.onErrorCallbacks = []
+
+  function resolve(success) {
+    if (self.status == 'pending') {
+      self.status = 'resolved'
+      self.success = success
+      self.onSuccessCallbacks.forEach((element) => {
+        element()
+      })
+    }
+  }
+
+  function reject(error) {
+    if (self.status == 'pending') {
+      self.status = 'rejected'
+      self.error = error
+      self.onErrorCallbacks.forEach((element) => element())
+    }
+  }
+
+  try {
+    console.log('executor')
+    executor(resolve, reject)
+  } catch (err) {
+    reject(err)
+  }
 }
 
-
-class Promise {
-  /**
-   * Promise构造函数里面的逻辑是同步执行的
-   * @param {*} executor 
-   */
-  constructor(executor) {
-    this.state = PENDING
-    // 成功相关
-    this.value = null
-    this.onResolvedCbs = []
-
-    // 失败相关
-    this.reason = null
-    this.onRejectedCbs = []
-
-    /**
-     * resolve 执行太快 onResolvedCbs还是[]
-     * 所以在promise1中resolve加上了setTimeout延时
-     * 
-     * @param {} value 
-     */
-    const resolve = (value) => {
-      console.log(this)
-      debugger
-      if (this.state === PENDING) {
-        this.state = FULFILLED
-        this.value = value
-        this.onResolvedCbs.forEach(cb => cb(value))
-      }
+myPromise.prototype.then = function(onResolved, onRejected) {
+  let self = this
+  let promiseAgain = new myPromise((resolve, reject) => {
+    if (self.status == 'pending') {
+      self.onSuccessCallbacks.push(() => {
+        let x = onResolved(self.success)
+        resolvePromise(promiseAgain, x, resolve, reject)
+      })
+      self.onErrorCallbacks.push(() => {
+        let x = onRejected(self.error)
+        resolvePromise(promiseAgain, x, resolve, reject)
+      })
     }
 
-    const reject = (reason) => {
-      debugger
-      if (this.state === PENDING) {
-        this.state = REJECTED
-        this.reason = reason
-        this.onRejectedCbs.forEach(cb => cb(reason))
-      }
+    if (self.status === 'resolved') {
+      let x = onResolved(self.success)
+      resolvePromise(promiseAgain, x, resolve, reject)
     }
+    if (self.status === 'rejected') {
+      let x = onRejected(self.error)
+      resolvePromise(promiseAgain, x, resolve, reject)
+    }
+  })
+  return promiseAgain
+}
 
-    // 执行器
+// x 是return的东西
+function resolvePromise(promiseAgain, x, resolve, reject) {
+  if (promiseAgain === x) {
+    return reject(new Error('循环调用'))
+  }
+  console.warn('resolvePromise x', typeof x,x)
+  // Promise 是一个 object
+  if (x !== null && (typeof x === 'object' || typeof x === 'function')) {
+    // x 是个promise
     try {
-      executor(resolve, reject)
+      let then = x.then
+      if (typeof then === 'function') {
+        then.call(
+          x,
+          (y) => {
+            resolvePromise(promiseAgain, y, resolve, reject)
+          },
+          (e) => {
+            reject(e)
+          }
+        )
+      } else {
+        resolve(x)
+      }
     } catch (err) {
-      console.log(err)
-      debugger
       reject(err)
     }
-
-  }
-
-
-
-  then(onFulfilled, onRejected) {
-    if (this.state === FULFILLED) {
-      if (isFunction(onFulfilled)) {
-        this.onResolvedCbs.push(onFulfilled)
-      }
-    } else if (this.state === REJECTED) {
-      if (isFunction(onFulfilled)) {
-        this.onRejectedCbs.push(onRejected)
-      }
-    }
+  }else if(x !== null){
+    // return 不是promise
+    resolve(x)
   }
 }
 
+// ---------------------- test ------------------------------
 
-// ---------------------- test -----------------------------
-
-
-
-let p = new Promise((resolve, reject) => {
-  resolve(1)
+let p = new myPromise((resolve, reject) => {
+  setTimeout(function() {
+    resolve('success data')
+  }, 2000)
 })
 
-p.then(data => {
-  debugger
-  console.log(data)
-}) // 1
+console.log('p', p)
 
-
-
-
-
-
-
-
+p.then(
+  (res) => {
+    console.log('res', res)
+    // return "next" + res
+    return Promise.resolve('Promise.resolve')
+  },
+  (rej) => {
+    console.log('rej', rej)
+  }
+).then(
+  (res) => {
+    console.log('res1', res)
+  },
+  (rej) => {
+    console.log('rej1', rej)
+  }
+)
