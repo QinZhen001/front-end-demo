@@ -1,5 +1,3 @@
-# ddd
-
 ## Project setup
 ```
 yarn install
