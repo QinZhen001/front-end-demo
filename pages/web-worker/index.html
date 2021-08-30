@@ -23,15 +23,14 @@
     function startWorker(params) {
       if (typeof Worker !== undefined) {
         if (!w) {
-          w = new Worker("./index.js");
+          w = new Worker(
+            "https://github.com/QinZhen001/front-end-demo/blob/master/pages/web-worker/index.js"
+          );
           console.log("w", w);
         }
-        w.addEventListener("message", (event) => {
+        w.onmessage = function (event) {
           document.getElementById("result").innerHTML = event.data;
-        });
-        // w.onmessage = function (event) {
-        //   document.getElementById("result").innerHTML = event.data;
-        // };
+        };
       } else {
         document.getElementById("result").innerHTML =
           "Sorry, your browser does not support Web Workers...";
