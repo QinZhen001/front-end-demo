@@ -63,6 +63,28 @@ const dayjs = function (date, c) {
   return new Dayjs(cfg);
 };
 
+// 下面的方法都是静态方法，挂在dayjs 函数对象上
+/**
+ * @description: 挂载插件
+ * @param {*} plugin 插件
+ * @param {*} option 插件选项
+ * @return {dayjs function} 返回 dayjs 函数对象
+ */
+dayjs.extend = (plugin, option) => {
+  // 同一个插件只挂载一次
+  if (!plugin.$i) {
+    plugin(option, Dayjs, dayjs);
+    plugin.$i = true;
+  }
+  return dayjs;
+};
+dayjs.locale = parseLocale;
+dayjs.isDayjs = isDayjs;
+dayjs.unix = (timestamp) => dayjs(timestamp * 1e3);
+dayjs.en = Ls[L];
+dayjs.Ls = Ls;
+dayjs.p = {};
+
 /**
  * @description: 封装器，根据Date对象和Dayjs实例封装出一个新实例
  * @param {Date} date Date对象
@@ -99,6 +121,101 @@ const parseDate = (cfg) => {
     return new Date(); // undefined 时返回 new Date()
   }
   if (date instanceof Date) {
-      return  
+    return;
   }
 };
+
+// Dayjs 类
+class Dayjs {
+  constructor(cfg) {
+    this.$L = parseLocale(cfg.locale, null, true);
+    this.parse(cfg);
+  }
+
+  parse(cfg) {
+    this.$d = parseDate(cfg);
+    this.$x = cfg.x || {};
+    this.init();
+  }
+
+  init() {
+    const { $d } = this;
+    this.$y = $d.getFullYear(); // 2020
+    this.$M = $d.getMonth(); // 11
+    this.$D = $d.getDate(); // 8
+    this.$W = $d.getDay(); // 2
+    this.$H = $d.getHours(); // 7
+    this.$m = $d.getMinutes(); // 6
+    this.$s = $d.getSeconds(); // 1
+    this.$ms = $d.getMilliseconds(); // 425
+  }
+
+  $utils() {
+    return Utils;
+  }
+
+  /**
+   * @description: 返回 Date 对象是否合规
+   * @return {Boolean}
+   */
+  isValid() {
+    return !(this.$d.toString() === C.INVALID_DATE_STRING);
+  }
+
+  isSame(that, units) {
+    const other = dayjs(that);
+    return this.startOf(units) <= other && other <= this.endOf(units);
+  }
+
+  isAfter(that, units) {
+    return dayjs(that) < this.startOf(units);
+  }
+
+  isBefore(that, units) {
+    return this.endOf(units) < dayjs(that);
+  }
+
+  $g(input, get, set) {
+    // 无参数就get，有参数就set
+    if (Utils.u(input)) return this[get];
+    return this.set(set, input);
+  }
+
+  unix() {
+    return Math.floor(this.valueOf() / 1000);
+  }
+
+  valueOf() {
+    // timezone(hour) * 60 * 60 * 1000 => ms
+    return this.$d.getTime();
+  }
+
+  startOf(units, startOf) {
+    const isStartOf = !Utils.u(startOf) ? startOf : true;
+    const unit = Utils.p(units);
+  }
+}
+
+
+
+
+// 原型链
+const proto = Dayjs.prototype;
+dayjs.prototype = proto;
+
+// 在prototype上设置各个单位的取值和设值函数
+[
+  ['$ms', C.MS], // Dayjs.prototype.millisecond
+  ['$s', C.S], // Dayjs.prototype.second
+  ['$m', C.MIN], // Dayjs.prototype.minute
+  ['$H', C.H], // Dayjs.prototype.hour
+  ['$W', C.D], // Dayjs.prototype.day
+  ['$M', C.M], // Dayjs.prototype.month
+  ['$y', C.Y], // Dayjs.prototype.year
+  ['$D', C.DATE], // Dayjs.prototype.date
+].forEach((g) => {
+  proto[g[1]] = function (input) {
+    // g[0]是实例上的值，g[1]是字符串（例如date）
+    return this.$g(input, g[0], g[1]);
+  };
+});
