@@ -1,3 +1,4 @@
+// golang 风格处理 Async 函数返回的error
 // https://github.com/scopsy/await-to-js
 // Async await wrapper for easy error handling
 
