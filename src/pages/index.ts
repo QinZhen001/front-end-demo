@@ -1,3 +1,4 @@
+export * from "./other";
 export * from "./vue";
 export * from "./react";
 export * from "./webpack";

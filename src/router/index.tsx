@@ -5,6 +5,7 @@ import {
   WebpackPageComponent,
   ReduxPageComponent,
   NodePageComponent,
+  OtherPageComponent,
 } from "../pages";
 import { HashRouter, Route, Switch } from "react-router-dom";
 
@@ -15,12 +16,6 @@ export type AppRouteComponent = {
 };
 
 export const routes: AppRouteComponent[] = [
-  // default component
-  {
-    path: "/",
-    component: DefaultPageComponent,
-    title: "default",
-  },
   {
     path: "/vue",
     component: VuePageComponent,
@@ -46,13 +41,24 @@ export const routes: AppRouteComponent[] = [
     component: NodePageComponent,
     title: "node 相关",
   },
+  {
+    path: "/other",
+    component: OtherPageComponent,
+    title: "other 相关",
+  },
+  // should be last
+  {
+    path: "/",
+    component: DefaultPageComponent,
+    title: "default",
+  },
 ];
 
 export const RouteContainer = () => (
   <HashRouter>
     <Switch>
       {routes.map((item) => (
-        <Route key={item.path} exact path={item.path} component={item.component} />
+        <Route key={item.path} path={item.path} component={item.component} />
       ))}
     </Switch>
   </HashRouter>
