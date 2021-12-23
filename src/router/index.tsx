@@ -7,59 +7,74 @@ import {
   NodePageComponent,
   OtherPageComponent,
 } from "../pages";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { AsyncAwaitRetry } from "../pages/other/async-await-retry";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
-export type AppRouteComponent = {
+export type PageRoute = {
   path: string;
-  component: React.FC<any>;
+  element: React.ReactNode;
   title: string;
+  children?: PageRoute[];
 };
 
-export const routes: AppRouteComponent[] = [
+export const routes: PageRoute[] = [
   {
     path: "/vue",
-    component: VuePageComponent,
+    element: <VuePageComponent></VuePageComponent>,
     title: "vue 相关",
   },
   {
     path: "/react",
-    component: ReactPageComponent,
+    element: <ReactPageComponent></ReactPageComponent>,
     title: "react 相关",
   },
   {
     path: "/redux",
-    component: ReduxPageComponent,
+    element: <ReduxPageComponent></ReduxPageComponent>,
     title: "redux 相关",
   },
   {
     path: "/webpack",
-    component: WebpackPageComponent,
+    element: <WebpackPageComponent></WebpackPageComponent>,
     title: "webpack 相关",
   },
   {
     path: "/node",
-    component: NodePageComponent,
+    element: <NodePageComponent></NodePageComponent>,
     title: "node 相关",
   },
   {
     path: "/other",
-    component: OtherPageComponent,
+    element: <OtherPageComponent></OtherPageComponent>,
     title: "other 相关",
+    children: [
+      {
+        path: "retry",
+        element: <AsyncAwaitRetry></AsyncAwaitRetry>,
+        title: "多次重试promise",
+      },
+    ],
   },
   // should be last
   {
     path: "/",
-    component: DefaultPageComponent,
+    element: <DefaultPageComponent></DefaultPageComponent>,
     title: "default",
   },
 ];
 
 export const RouteContainer = () => (
   <HashRouter>
-    <Switch>
+    <Routes>
       {routes.map((item) => (
-        <Route key={item.path} path={item.path} component={item.component} />
+        <Route key={item.path} path={item.path} element={item.element}>
+          {item.children
+            ? item.children.map(({ path, element }) => (
+                <Route key={path} path={path} element={element}></Route>
+              ))
+            : null}
+        </Route>
       ))}
-    </Switch>
+    </Routes>
   </HashRouter>
 );
