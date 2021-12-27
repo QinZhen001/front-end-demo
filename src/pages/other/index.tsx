@@ -1,6 +1,8 @@
-import { Route, Routes, Link, Outlet } from "react-router-dom";
-import { AsyncAwaitRetry } from "./async-await-retry";
-import { PageRoute, routes } from "../../router";
+import { Link, Outlet } from "react-router-dom";
+import { routes } from "../../router";
+
+export { AsyncAwaitRetry } from "./async-await-retry";
+export { WebRtc } from "./web-rtc";
 
 export const OtherPageComponent = () => {
   const curCoutes = routes.find((item) => item.path == "/other")?.children || [];

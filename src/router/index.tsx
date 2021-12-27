@@ -7,7 +7,8 @@ import {
   NodePageComponent,
   OtherPageComponent,
 } from "../pages";
-import { AsyncAwaitRetry } from "../pages/other/async-await-retry";
+import { WebRtc, AsyncAwaitRetry } from "../pages/other";
+import { Scheduler } from "../pages/react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
 export type PageRoute = {
@@ -27,6 +28,13 @@ export const routes: PageRoute[] = [
     path: "/react",
     element: <ReactPageComponent></ReactPageComponent>,
     title: "react 相关",
+    children:[
+      {
+        path: "scheduler",
+        element: <Scheduler></Scheduler>,
+        title: "react 调度",
+      },
+    ]
   },
   {
     path: "/redux",
@@ -52,6 +60,11 @@ export const routes: PageRoute[] = [
         path: "retry",
         element: <AsyncAwaitRetry></AsyncAwaitRetry>,
         title: "多次重试promise",
+      },
+      {
+        path: "webrtc",
+        element: <WebRtc></WebRtc>,
+        title: "快速入门 WebRTC",
       },
     ],
   },
