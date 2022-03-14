@@ -7,7 +7,7 @@ import {
   NodePageComponent,
   OtherPageComponent,
 } from "../pages";
-import { WebRtc, AsyncAwaitRetry } from "../pages/other";
+import { WebRtc, AsyncAwaitRetry,RxJS } from "../pages/other";
 import { Scheduler } from "../pages/react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
@@ -16,6 +16,29 @@ export type PageRoute = {
   element: React.ReactNode;
   title: string;
   children?: PageRoute[];
+};
+
+const otherRoutes: PageRoute = {
+  path: "/other",
+  element: <OtherPageComponent></OtherPageComponent>,
+  title: "other 相关",
+  children: [
+    {
+      path: "retry",
+      element: <AsyncAwaitRetry></AsyncAwaitRetry>,
+      title: "多次重试promise",
+    },
+    {
+      path: "webrtc",
+      element: <WebRtc></WebRtc>,
+      title: "快速入门 WebRTC",
+    },
+    {
+      path: "RxJS",
+      element: <RxJS></RxJS>,
+      title: "实现简易 RxJS",
+    },
+  ],
 };
 
 export const routes: PageRoute[] = [
@@ -28,13 +51,13 @@ export const routes: PageRoute[] = [
     path: "/react",
     element: <ReactPageComponent></ReactPageComponent>,
     title: "react 相关",
-    children:[
+    children: [
       {
         path: "scheduler",
         element: <Scheduler></Scheduler>,
         title: "react 调度",
       },
-    ]
+    ],
   },
   {
     path: "/redux",
@@ -51,23 +74,7 @@ export const routes: PageRoute[] = [
     element: <NodePageComponent></NodePageComponent>,
     title: "node 相关",
   },
-  {
-    path: "/other",
-    element: <OtherPageComponent></OtherPageComponent>,
-    title: "other 相关",
-    children: [
-      {
-        path: "retry",
-        element: <AsyncAwaitRetry></AsyncAwaitRetry>,
-        title: "多次重试promise",
-      },
-      {
-        path: "webrtc",
-        element: <WebRtc></WebRtc>,
-        title: "快速入门 WebRTC",
-      },
-    ],
-  },
+  otherRoutes,
   // should be last
   {
     path: "/",

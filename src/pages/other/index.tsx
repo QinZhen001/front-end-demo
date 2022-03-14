@@ -3,6 +3,7 @@ import { routes } from "../../router";
 
 export { AsyncAwaitRetry } from "./async-await-retry";
 export { WebRtc } from "./web-rtc";
+export { RxJS } from "./rx-js";
 
 export const OtherPageComponent = () => {
   const curCoutes = routes.find((item) => item.path == "/other")?.children || [];
