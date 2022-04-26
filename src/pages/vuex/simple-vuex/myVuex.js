@@ -36,22 +36,17 @@ class Store {
         // 注意这里的箭头函数 是为了保证执行环境
         // 注意第一个参数是this
         console.log("action this", this);
-        debugger
         actions[actionName](this, args);
       };
     });
   }
 
   dispatch(method, arg) {
-    debugger
     this.actions[method](arg);
   }
 
   commit = (method, arg) => {
     console.log("commit this", this);
-    console.log(method);
-    console.log(this.mutations);
-    debugger;
     this.mutations[method](arg);
   };
 
@@ -60,7 +55,7 @@ class Store {
   }
 }
 
-const install = function(vue) {
+const install = function (vue) {
   Vue = vue;
   Vue.mixin({
     beforeCreate() {

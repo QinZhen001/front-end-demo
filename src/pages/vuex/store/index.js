@@ -1,7 +1,7 @@
 // https://github.com/Sunny-lucking/howToBuildMyVuex/blob/master/src/store/index.js
 
 import Vue from "vue";
-import Vuex from "../myVuex";
+import Vuex from "../simple-vuex/myVuex";
 
 Vue.use(Vuex);
 
@@ -11,7 +11,7 @@ export default new Vuex.Store({
   },
   getters: {
     getNum(state) {
-      return state.num;
+      return state.num + 1;
     },
   },
   mutations: {

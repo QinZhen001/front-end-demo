@@ -24,6 +24,7 @@
     "@types/video.js": "^7.3.28",
     "@vitejs/plugin-react": "^1.0.7",
     "typescript": "^4.4.4",
-    "vite": "^2.7.0"
+    "vite": "^2.7.0",
+    "vue": "2.6.9"
   }
 }
