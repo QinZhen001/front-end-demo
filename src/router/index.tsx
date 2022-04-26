@@ -6,8 +6,9 @@ import {
   ReduxPageComponent,
   NodePageComponent,
   OtherPageComponent,
+  VuexPageComponent,
 } from "../pages";
-import { WebRtc, AsyncAwaitRetry,RxJS } from "../pages/other";
+import { WebRtc, AsyncAwaitRetry, RxJS } from "../pages/other";
 import { Scheduler } from "../pages/react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
@@ -46,6 +47,11 @@ export const routes: PageRoute[] = [
     path: "/vue",
     element: <VuePageComponent></VuePageComponent>,
     title: "vue 相关",
+  },
+  {
+    path: "/vuex",
+    element: <VuexPageComponent></VuexPageComponent>,
+    title: "vuex 相关",
   },
   {
     path: "/react",

@@ -5,3 +5,4 @@ export * from "./webpack";
 export * from "./redux";
 export * from "./node";
 export * from "./default";
+export * from "./vuex"
