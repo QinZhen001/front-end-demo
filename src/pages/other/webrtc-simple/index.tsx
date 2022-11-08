@@ -5,9 +5,15 @@ import { useRef } from "react";
 
 type RecordType = "screen" | "camera";
 
+const width = 300
+const height = 150
+const frameRate = 20
+
 export const WebRtc = () => {
   const playerRef = useRef<HTMLVideoElement>(null);
   const recordPlayerRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
   let mediaRecorder: MediaRecorder = null as unknown as MediaRecorder;
   let blobs: BlobPart[] = [];
 
@@ -16,9 +22,9 @@ export const WebRtc = () => {
     // @ts-ignore
     const stream = await navigator.mediaDevices[getMediaMethod]({
       video: {
-        width: 500,
-        height: 300,
-        frameRate: 20,
+        width: width,
+        height: height,
+        frameRate: frameRate,
       },
     });
     if (playerRef.current) {
@@ -65,6 +71,16 @@ export const WebRtc = () => {
     a.click();
   };
 
+  const takePicture = () => {
+    if (canvasRef.current) {
+      var context = canvasRef.current.getContext('2d')!;
+      canvasRef.current.width = width;
+      canvasRef.current.height = height;
+      context.drawImage(playerRef.current!, 0, 0, width, height);
+      // var data = canvasRef.current.toDataURL('image/png');
+    }
+  }
+
   return (
     <div>
       <div>
@@ -78,16 +94,23 @@ export const WebRtc = () => {
         <button id="startCamera" onClick={startCamera}>
           开启摄像头
         </button>
+        <button onClick={takePicture}>
+          截图
+        </button>
         <button id="stop" onClick={stop}>
           结束
         </button>
         <button id="reply" onClick={reply}>
           回放
         </button>
+
         <button id="download" onClick={download}>
           下载
         </button>
       </section>
+      <div>
+        <canvas id="canvas" ref={canvasRef} />
+      </div>
     </div>
   );
 };

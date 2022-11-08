@@ -8,7 +8,7 @@ import {
   OtherPageComponent,
   VuexPageComponent,
 } from "../pages";
-import { WebRtc, AsyncAwaitRetry, RxJS } from "../pages/other";
+import { WebRtc, AsyncAwaitRetry, RxJS, WebsocketChat,WebRtcDataChannel } from "../pages/other";
 import { Scheduler } from "../pages/react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
@@ -30,14 +30,24 @@ const otherRoutes: PageRoute = {
       title: "多次重试promise",
     },
     {
-      path: "webrtc",
+      path: "webrtc-simple",
       element: <WebRtc></WebRtc>,
       title: "快速入门 WebRTC",
     },
     {
-      path: "RxJS",
+      path: "webrtc-data-channel",
+      element: <WebRtcDataChannel></WebRtcDataChannel>,
+      title: "WebRTC DataChannel",
+    },
+    {
+      path: "rxjs",
       element: <RxJS></RxJS>,
       title: "实现简易 RxJS",
+    },
+    {
+      path: "websocket-chat",
+      element: <WebsocketChat></WebsocketChat>,
+      title: "Websocket 聊天",
     },
   ],
 };
@@ -96,8 +106,8 @@ export const RouteContainer = () => (
         <Route key={item.path} path={item.path} element={item.element}>
           {item.children
             ? item.children.map(({ path, element }) => (
-                <Route key={path} path={path} element={element}></Route>
-              ))
+              <Route key={path} path={path} element={element}></Route>
+            ))
             : null}
         </Route>
       ))}
