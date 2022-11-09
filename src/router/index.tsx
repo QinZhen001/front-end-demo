@@ -8,7 +8,7 @@ import {
   OtherPageComponent,
   VuexPageComponent,
 } from "../pages";
-import { WebRtc, AsyncAwaitRetry, RxJS, WebsocketChat,WebRtcDataChannel } from "../pages/other";
+import { WebRtc, AsyncAwaitRetry, RxJS, WebsocketChat,WebRtcDataChannel,CodeMirror } from "../pages/other";
 import { Scheduler } from "../pages/react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
@@ -48,6 +48,11 @@ const otherRoutes: PageRoute = {
       path: "websocket-chat",
       element: <WebsocketChat></WebsocketChat>,
       title: "Websocket 聊天",
+    },
+    {
+      path: "codemirror",
+      element: <CodeMirror></CodeMirror>,
+      title: "代码高亮 CodeMirror",
     },
   ],
 };
