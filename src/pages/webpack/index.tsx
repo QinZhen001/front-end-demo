@@ -1,3 +1,3 @@
-export const WebpackPageComponent = () => {
-  return <div>WebpackPageComponent</div>;
+export const WebpackPage = () => {
+  return <div>WebpackPage</div>;
 };

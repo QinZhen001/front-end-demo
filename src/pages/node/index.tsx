@@ -1,3 +1,3 @@
-export const NodePageComponent = () => {
-  return <div>NodePageComponent</div>;
+export const NodePage = () => {
+  return <div>NodePage</div>;
 };

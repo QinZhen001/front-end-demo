@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { routes } from "../../router";
 import "./index.css";
 
-export const DefaultPageComponent = () => {
+export const DefaultPage = () => {
   const finalRoutes = routes.filter((item) => item.path !== "/");
 
   return (

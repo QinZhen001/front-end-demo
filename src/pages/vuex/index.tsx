@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 // @ts-ignore
 window.store = store;
 
-export const VuexPageComponent = () => {
+export const VuexPage = () => {
   const [updater, setUpdater] = useState(0);
 
   const syncIncre = () => {

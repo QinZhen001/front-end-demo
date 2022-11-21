@@ -3,7 +3,7 @@ import { routes } from "../../router";
 
 export { Scheduler } from "./scheduler";
 
-export const ReactPageComponent = () => {
+export const ReactPage = () => {
   const curCoutes = routes.find((item) => item.path == "/react")?.children || [];
 
   return (

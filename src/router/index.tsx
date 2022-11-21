@@ -1,76 +1,42 @@
 import {
-  VuePageComponent,
-  ReactPageComponent,
-  DefaultPageComponent,
-  WebpackPageComponent,
-  ReduxPageComponent,
-  NodePageComponent,
-  OtherPageComponent,
-  VuexPageComponent,
+  VuePage,
+  ReactPage,
+  DefaultPage,
+  WebpackPage,
+  ReduxPage,
+  NodePage,
+  VuexPage,
+  VitePage,
+  WebRtcPage
 } from "../pages";
-import { WebRtc, AsyncAwaitRetry, RxJS, WebsocketChat,WebRtcDataChannel,CodeMirror } from "../pages/other";
+import { otherRoutes } from "../pages/other";
+import { webRtcRoutes } from "../pages/web-rtc";
 import { Scheduler } from "../pages/react";
 import { HashRouter, Route, Routes } from "react-router-dom";
+import {
+  PageRoute
+} from "../types";
 
-export type PageRoute = {
-  path: string;
-  element: React.ReactNode;
-  title: string;
-  children?: PageRoute[];
-};
-
-const otherRoutes: PageRoute = {
-  path: "/other",
-  element: <OtherPageComponent></OtherPageComponent>,
-  title: "other 相关",
-  children: [
-    {
-      path: "retry",
-      element: <AsyncAwaitRetry></AsyncAwaitRetry>,
-      title: "多次重试promise",
-    },
-    {
-      path: "webrtc-simple",
-      element: <WebRtc></WebRtc>,
-      title: "快速入门 WebRTC",
-    },
-    {
-      path: "webrtc-data-channel",
-      element: <WebRtcDataChannel></WebRtcDataChannel>,
-      title: "WebRTC DataChannel",
-    },
-    {
-      path: "rxjs",
-      element: <RxJS></RxJS>,
-      title: "实现简易 RxJS",
-    },
-    {
-      path: "websocket-chat",
-      element: <WebsocketChat></WebsocketChat>,
-      title: "Websocket 聊天",
-    },
-    {
-      path: "codemirror",
-      element: <CodeMirror></CodeMirror>,
-      title: "代码高亮 CodeMirror",
-    },
-  ],
-};
 
 export const routes: PageRoute[] = [
   {
     path: "/vue",
-    element: <VuePageComponent></VuePageComponent>,
+    element: <VuePage></VuePage>,
     title: "vue 相关",
   },
   {
     path: "/vuex",
-    element: <VuexPageComponent></VuexPageComponent>,
+    element: <VuexPage></VuexPage>,
     title: "vuex 相关",
   },
   {
+    path: "/vite",
+    element: <VitePage></VitePage>,
+    title: "vite 相关",
+  },
+  {
     path: "/react",
-    element: <ReactPageComponent></ReactPageComponent>,
+    element: <ReactPage></ReactPage>,
     title: "react 相关",
     children: [
       {
@@ -82,24 +48,25 @@ export const routes: PageRoute[] = [
   },
   {
     path: "/redux",
-    element: <ReduxPageComponent></ReduxPageComponent>,
+    element: <ReduxPage></ReduxPage>,
     title: "redux 相关",
   },
   {
     path: "/webpack",
-    element: <WebpackPageComponent></WebpackPageComponent>,
+    element: <WebpackPage></WebpackPage>,
     title: "webpack 相关",
   },
   {
     path: "/node",
-    element: <NodePageComponent></NodePageComponent>,
+    element: <NodePage></NodePage>,
     title: "node 相关",
   },
+  webRtcRoutes,
   otherRoutes,
   // should be last
   {
     path: "/",
-    element: <DefaultPageComponent></DefaultPageComponent>,
+    element: <DefaultPage></DefaultPage>,
     title: "default",
   },
 ];

@@ -1,23 +1,41 @@
 import { Link, Outlet } from "react-router-dom";
-import { routes } from "../../router";
-import "./index.css";
+import { AsyncAwaitRetry } from "./async-await-retry";
+import { RxJS } from "./rx-js";
+import { WebsocketChat } from "./WebsocketChat";
+import { CodeMirror } from "./codemirror"
+import { PageRoute } from "../../types";
+import "../../styles/index.css"
 
-export { AsyncAwaitRetry } from "./async-await-retry";
-export { WebRtc } from "./webrtc-simple";
-export { RxJS } from "./rx-js";
-export { WebsocketChat } from "./WebsocketChat";
-export { WebRtcDataChannel } from "./webrtc-datachannel";
-export { CodeMirror } from "./codemirror"
+const path = '/other'
+const children = [
+  {
+    path: "retry",
+    element: <AsyncAwaitRetry></AsyncAwaitRetry>,
+    title: "多次重试promise",
+  },
+  {
+    path: "rxjs",
+    element: <RxJS></RxJS>,
+    title: "实现简易 RxJS",
+  },
+  {
+    path: "websocket-chat",
+    element: <WebsocketChat></WebsocketChat>,
+    title: "Websocket 聊天",
+  },
+  {
+    path: "codemirror",
+    element: <CodeMirror></CodeMirror>,
+    title: "代码高亮 CodeMirror",
+  },
+]
 
-
-export const OtherPageComponent = () => {
-  const curCoutes = routes.find((item) => item.path == "/other")?.children || [];
-
+export const OtherPage = () => {
   return (
     <div className="page">
       <section className="left">
         <ul>
-          {curCoutes.map(({ title, path, element }) => (
+          {children.map(({ title, path, element }) => (
             <li key={path}>
               <Link to={path}>{title}</Link>
             </li>
@@ -30,3 +48,11 @@ export const OtherPageComponent = () => {
     </div>
   );
 };
+
+export const otherRoutes: PageRoute = {
+  path,
+  element: <OtherPage></OtherPage>,
+  title: "other 相关",
+  children: children
+};
+
