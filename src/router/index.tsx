@@ -7,7 +7,6 @@ import {
   NodePage,
   VuexPage,
   VitePage,
-  WebRtcPage
 } from "../pages";
 import { otherRoutes } from "../pages/other";
 import { webRtcRoutes } from "../pages/web-rtc";
