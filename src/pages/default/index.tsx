@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { routes } from "../../router";
+import { Link, Outlet } from "react-router-dom";
+import { routes,PageRoute } from "../../router";
 import "./index.css";
 
 export const DefaultPage = () => {
@@ -17,3 +17,25 @@ export const DefaultPage = () => {
     </div>
   );
 };
+
+export const CommonPageRouter = ({routes}:{routes:PageRoute[]}) => {
+  return (
+    <div className="page">
+      <section className="left">
+        <ul>
+          {routes.map(({ title, path, element }) => (
+            <li key={path}>
+              <Link to={path}>{title}</Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="right">
+        <Outlet />
+      </section>
+    </div>
+  );
+}
+
+
+export default DefaultPage

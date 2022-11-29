@@ -1,22 +1,33 @@
-import { Link, Outlet } from "react-router-dom";
-import { routes } from "../../router";
+import { CommonPageRouter } from "../default"
+import { Suspense, lazy } from "react"
 
-export { Scheduler } from "./scheduler";
 
-export const ReactPage = () => {
-  const curCoutes = routes.find((item) => item.path == "/react")?.children || [];
+const Scheduler = lazy(() => import('./scheduler'));
+const UseTransition = lazy(() => import('./useTransition'));
+const TestSuspense = lazy(() => import('./suspense'));
 
-  return (
-    <div>
-      <ul>
-        {curCoutes.map(({ title, path, element }) => (
-          <li key={path}>
-            <Link to={path}>{title}</Link>
-          </li>
-        ))}
-      </ul>
+export const children = [
+  {
+    path: "scheduler",
+    element: <Scheduler></Scheduler>,
+    title: "react 调度",
+  },
+  {
+    path: "useTransition",
+    element: <UseTransition></UseTransition>,
+    title: "useTransition",
+  },
+  {
+    path: "suspense",
+    element: <TestSuspense></TestSuspense>,
+    title: "suspense",
+  }
+]
 
-      <Outlet />
-    </div>
-  );
+const ReactPage = () => {
+  return <CommonPageRouter routes={children}></CommonPageRouter>
 };
+
+export default ReactPage
+
+

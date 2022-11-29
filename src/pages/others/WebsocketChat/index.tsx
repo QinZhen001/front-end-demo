@@ -46,3 +46,6 @@ export const WebsocketChat = () => {
     </div>
   );
 };
+
+
+export default WebsocketChat

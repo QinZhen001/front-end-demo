@@ -31,3 +31,6 @@ export const VuexPage = () => {
     </div>
   );
 };
+
+
+export default VuexPage

@@ -18,3 +18,6 @@ export const Scheduler = () => {
     </div>
   );
 };
+
+
+export default Scheduler

@@ -86,3 +86,6 @@ export const AsyncAwaitRetry = () => {
     </div>
   );
 };
+
+
+export default AsyncAwaitRetry

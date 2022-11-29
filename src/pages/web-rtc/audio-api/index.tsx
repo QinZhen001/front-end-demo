@@ -82,3 +82,6 @@ export const AudioApi = () => {
     <canvas ref={canvasRef} width="500" height="300"></canvas>
   </div>
 }
+
+
+export default AudioApi

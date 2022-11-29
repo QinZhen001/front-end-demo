@@ -68,3 +68,6 @@ export const RxJS = () => {
     </div>
   );
 };
+
+
+export default RxJS

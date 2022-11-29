@@ -147,3 +147,6 @@ export const WebRtcDataChannel = () => {
     </div>
   );
 };
+
+
+export default WebRtcDataChannel

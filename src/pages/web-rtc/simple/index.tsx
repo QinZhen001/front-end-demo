@@ -114,3 +114,6 @@ export const WebRtcSimple = () => {
     </div>
   );
 };
+
+
+export default WebRtcSimple

@@ -1,12 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
-import { WebRtcSimple } from "./simple"
-import { WebRtcDataChannel } from "./data-channel"
-import {AudioApi} from "./audio-api"
-import { PageRoute } from "../../types"
-import "../../styles/index.css"
+import { lazy } from "react"
+import { CommonPageRouter } from "../default"
 
-const path = '/web-rtc'
-const children = [
+const WebRtcSimple = lazy(() => import('./simple'));
+const WebRtcDataChannel = lazy(() => import('./data-channel'));
+const AudioApi = lazy(() => import('./audio-api'));
+
+export const children = [
   {
     path: "webrtc-simple",
     element: <WebRtcSimple></WebRtcSimple>,
@@ -26,29 +25,8 @@ const children = [
 
 
 export const WebRtcPage = () => {
-  return (
-    <div className="page">
-      <section className="left">
-        <ul>
-          {children.map(({ title, path, element }) => (
-            <li key={path}>
-              <Link to={path}>{title}</Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section className="right">
-        <Outlet />
-      </section>
-    </div>
-  );
+  return <CommonPageRouter routes={children}></CommonPageRouter>
 };
 
 
-
-export const webRtcRoutes: PageRoute = {
-  path,
-  element: <WebRtcPage></WebRtcPage>,
-  title: "web-rtc 相关",
-  children
-}
+export default WebRtcPage

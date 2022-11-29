@@ -8,3 +8,6 @@ export const CodeMirror = () => {
     <textarea ref="toEl" v-text="to" />
   </div>
 } 
+
+
+export default CodeMirror

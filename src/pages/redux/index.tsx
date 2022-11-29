@@ -17,3 +17,6 @@ export const ReduxPage = () => {
     </div>
   );
 };
+
+
+export default ReduxPage
