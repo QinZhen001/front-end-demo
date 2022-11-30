@@ -17,5 +17,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["./src"]
+  "include": ["./src", "public/other/compose", "public/other/delegate", "public/other/cross-domain"]
 }

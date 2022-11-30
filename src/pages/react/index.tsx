@@ -5,6 +5,7 @@ import { Suspense, lazy } from "react"
 const Scheduler = lazy(() => import('./scheduler'));
 const UseTransition = lazy(() => import('./useTransition'));
 const TestSuspense = lazy(() => import('./suspense'));
+const TestSwr = lazy(() => import('./swr'));
 
 export const children = [
   {
@@ -21,6 +22,11 @@ export const children = [
     path: "suspense",
     element: <TestSuspense></TestSuspense>,
     title: "suspense",
+  },
+  {
+    path: "swr",
+    element: <TestSwr></TestSwr>,
+    title: "swr",
   }
 ]
 

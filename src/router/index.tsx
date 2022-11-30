@@ -22,6 +22,8 @@ const VitePage = lazy(() => import('../pages/vite'));
 const DefaultPage = lazy(() => import('../pages/default'));
 const WebRtcPage = lazy(() => import('../pages/web-rtc'));
 const OtherPage = lazy(() => import('../pages/others'));
+const PublicPage = lazy(() => import('../pages/public'));
+
 
 
 export const routes: PageRoute[] = [
@@ -77,8 +79,13 @@ export const routes: PageRoute[] = [
     element: <OtherPage></OtherPage>,
     title: "other 相关",
     children: otherChildren
+  },
+  {
+    path: '/public',
+    element: <PublicPage></PublicPage>,
+    title: "补充",
   }
-];
+]
 
 export const RouteContainer = () => (
   <HashRouter>
