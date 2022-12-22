@@ -5,6 +5,7 @@ const AsyncAwaitRetry = lazy(() => import('./async-await-retry'));
 const RxJS = lazy(() => import('./rx-js'));
 const WebsocketChat = lazy(() => import('./WebsocketChat'));
 const CodeMirror = lazy(() => import('./codemirror'));
+const SandBox = lazy(() => import('./sandbox'));
 
 export const children = [
   {
@@ -26,6 +27,11 @@ export const children = [
     path: "codemirror",
     element: <CodeMirror></CodeMirror>,
     title: "代码高亮 CodeMirror",
+  },
+  {
+    path: "sandbox",
+    element: <SandBox></SandBox>,
+    title: "SandBox 沙箱",
   },
 ]
 
