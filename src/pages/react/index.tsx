@@ -6,6 +6,7 @@ const Scheduler = lazy(() => import('./scheduler'));
 const UseTransition = lazy(() => import('./useTransition'));
 const TestSuspense = lazy(() => import('./suspense'));
 const TestSwr = lazy(() => import('./swr'));
+const AHooks = lazy(() => import('./ahooks'));
 
 export const children = [
   {
@@ -27,6 +28,11 @@ export const children = [
     path: "swr",
     element: <TestSwr></TestSwr>,
     title: "swr",
+  },
+  {
+    path: "ahooks",
+    element: <AHooks></AHooks>,
+    title: "ahooks 仿写",
   }
 ]
 
