@@ -6,6 +6,7 @@ const RxJS = lazy(() => import('./rx-js'));
 const WebsocketChat = lazy(() => import('./WebsocketChat'));
 const CodeMirror = lazy(() => import('./codemirror'));
 const SandBox = lazy(() => import('./sandbox'));
+const AbortController = lazy(() => import('./abort-controller'));
 
 export const children = [
   {
@@ -33,6 +34,11 @@ export const children = [
     element: <SandBox></SandBox>,
     title: "SandBox 沙箱",
   },
+  {
+    path: "abort-controller",
+    element: <AbortController></AbortController>,
+    title: "AbortController 中断请求",
+  }
 ]
 
 export const OtherPage = () => {
