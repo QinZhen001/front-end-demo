@@ -23,7 +23,7 @@ const DefaultPage = lazy(() => import('../pages/default'));
 const WebRtcPage = lazy(() => import('../pages/web-rtc'));
 const OtherPage = lazy(() => import('../pages/others'));
 const PublicPage = lazy(() => import('../pages/public'));
-
+const OtherJsPage = lazy(() => import('../pages/other'));
 
 
 export const routes: PageRoute[] = [
@@ -76,8 +76,14 @@ export const routes: PageRoute[] = [
   },
   {
     path: '/other',
+    element: <OtherJsPage></OtherJsPage>,
+    title: "other （纯js demo）",
+    children: otherChildren
+  },
+  {
+    path: '/others',
     element: <OtherPage></OtherPage>,
-    title: "other 相关",
+    title: "others 相关",
     children: otherChildren
   },
   {

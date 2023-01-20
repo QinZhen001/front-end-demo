@@ -7,6 +7,7 @@ const UseTransition = lazy(() => import('./useTransition'));
 const TestSuspense = lazy(() => import('./suspense'));
 const TestSwr = lazy(() => import('./swr'));
 const AHooks = lazy(() => import('./ahooks'));
+const Dob = lazy(() => import('./dob'));
 
 export const children = [
   {
@@ -33,6 +34,11 @@ export const children = [
     path: "ahooks",
     element: <AHooks></AHooks>,
     title: "ahooks 仿写",
+  },
+  {
+    path: "dob",
+    element: <Dob></Dob>,
+    title: "dob 仿写",
   }
 ]
 
