@@ -2,22 +2,29 @@ import { Link, Outlet } from "react-router-dom";
 import { lazy } from "react"
 import { CommonPageRouter } from "../default"
 
-
-
 export const routes = [
   {
-    path: "/other/compose/index.html",
+    path: "compose",
     title: "compose",
   },
   {
-    path: "/other/cross-domain/index.html",
+    path: "cross-domain",
     title: "cross-domain",
   },
   {
-    path: "/other/delegate/index.html",
+    path: "delegate",
     title: "delegate",
   },
-]
+  {
+    path: "await-to-js",
+    title: "await-to-js",
+  }
+].map(item => {
+  return {
+    ...item,
+    path:`/other/${item.path}/index.html`
+  }
+})
 
 export const OtherJsPage = () => {
   return <ul> {routes.map(({ title, path, }) => (
