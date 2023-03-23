@@ -18,6 +18,10 @@ export const routes = [
   {
     path: "await-to-js",
     title: "await-to-js",
+  },
+  {
+    path: "co",
+    title: "co",
   }
 ].map(item => {
   return {
