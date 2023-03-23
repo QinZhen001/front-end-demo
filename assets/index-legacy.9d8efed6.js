@@ -1,0 +1,1 @@
+System.register(["./index-legacy.2d91516a.js"],(function(e){"use strict";var t,r;return{setters:[function(e){t=e.a,r=e.j}],execute:function(){const a=()=>t("div",{className:"editor",children:[r("textarea",{ref:"fromEl","v-text":"from"}),r("div",{className:"border"}),r("textarea",{ref:"toEl","v-text":"to"})]});e({CodeMirror:a,default:a})}}}));

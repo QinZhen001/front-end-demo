@@ -1,0 +1,1 @@
+import{a as e,j as r}from"./index.8a83a182.js";const a=()=>e("div",{className:"editor",children:[r("textarea",{ref:"fromEl","v-text":"from"}),r("div",{className:"border"}),r("textarea",{ref:"toEl","v-text":"to"})]});export{a as CodeMirror,a as default};
