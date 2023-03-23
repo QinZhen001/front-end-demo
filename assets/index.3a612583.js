@@ -1,1 +1,0 @@
-import{j as e}from"./index.c4d5c32e.js";const r=[{path:"/other/delegate/index.html",name:"delegate"}],i=()=>e("ul",{children:r.map(({path:l,name:t})=>e("li",{children:e("a",{href:l,children:t})},l))});export{i as PublicPage,i as default};
