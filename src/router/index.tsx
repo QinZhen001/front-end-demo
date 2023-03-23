@@ -2,6 +2,7 @@
 import { children as otherChildren } from "../pages/others";
 import { children as RtcChildren } from "../pages/web-rtc";
 import { children as ReactChildren } from "../pages/react"
+import { children as CssChildren } from "../pages/css"
 import { Suspense, lazy } from "react"
 import { HashRouter, Route, Routes } from "react-router-dom";
 
@@ -22,8 +23,7 @@ const VitePage = lazy(() => import('../pages/vite'));
 const DefaultPage = lazy(() => import('../pages/default'));
 const WebRtcPage = lazy(() => import('../pages/web-rtc'));
 const OtherPage = lazy(() => import('../pages/others'));
-const OtherJsPage = lazy(() => import('../pages/other'));
-
+const CssPage = lazy(() => import('../pages/css'));
 
 export const routes: PageRoute[] = [
   {
@@ -74,10 +74,10 @@ export const routes: PageRoute[] = [
     children: RtcChildren
   },
   {
-    path: '/other',
-    element: <OtherJsPage></OtherJsPage>,
-    title: "other （纯js demo）",
-    children: otherChildren
+    path: '/css',
+    element: <CssPage></CssPage>,
+    title: "css效果",
+    children: CssChildren
   },
   {
     path: '/others',
@@ -85,7 +85,6 @@ export const routes: PageRoute[] = [
     title: "others 相关",
     children: otherChildren
   },
-
 ]
 
 export const RouteContainer = () => (
