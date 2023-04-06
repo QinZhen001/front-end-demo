@@ -1,1 +1,0 @@
-System.register(["./index-legacy.2d91516a.js"],(function(e){"use strict";var t;return{setters:[function(e){t=e.j}],execute:function(){const n=[{path:"/other/delegate/index.html",name:"delegate"}],a=()=>t("ul",{children:n.map((({path:e,name:n})=>t("li",{children:t("a",{href:e,children:n})},e)))});e({PublicPage:a,default:a})}}}));
