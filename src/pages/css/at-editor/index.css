@@ -1,0 +1,23 @@
+.container{
+  position: relative;
+  width: 500px;
+  height: 300px;
+  border: 1px solid grey;
+  padding: 10px;
+  color: burlywood;
+  margin-bottom: 10px;
+  background: #333;
+}
+
+
+.tag {
+  color: red;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border-radius: 4px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  margin: 0 2px;
+}
