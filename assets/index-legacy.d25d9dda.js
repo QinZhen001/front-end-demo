@@ -1,1 +1,0 @@
-System.register(["./index-legacy.a6fbc0bd.js"],(function(e){"use strict";var t;return{setters:[function(e){t=e.j}],execute:function(){const c=()=>t("div",{children:"WebpackPage"});e({WebpackPage:c,default:c})}}}));
