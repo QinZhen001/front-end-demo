@@ -7,6 +7,7 @@ const WebsocketChat = lazy(() => import('./WebsocketChat'));
 const CodeMirror = lazy(() => import('./codemirror'));
 const SandBox = lazy(() => import('./sandbox'));
 const AbortController = lazy(() => import('./abort-controller'));
+const JSBridgeComponent = lazy(() => import('./js-bridge'));
 
 export const children = [
   {
@@ -38,7 +39,13 @@ export const children = [
     path: "abort-controller",
     element: <AbortController></AbortController>,
     title: "AbortController 中断请求",
-  }
+  },
+  {
+    path: "js-bridge",
+    element: <JSBridgeComponent></JSBridgeComponent>,
+    title: "JSBridge",
+  },
+  
 ]
 
 export const OtherPage = () => {
