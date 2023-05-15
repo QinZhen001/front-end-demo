@@ -1,0 +1,1 @@
+System.register(["./index-legacy.eef37416.js"],(function(e){"use strict";var t,n,r;return{setters:[function(e){t=e.r,n=e.j,r=e.a}],execute:function(){e("default",(()=>{const[e,c]=t.exports.useState(1);return n("div",{children:r("button",{onClick:()=>c(e+1),children:["fetchData ",e]})})}))}}}));

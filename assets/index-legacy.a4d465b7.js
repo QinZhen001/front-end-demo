@@ -1,0 +1,1 @@
+System.register(["./index-legacy.eef37416.js"],(function(e){"use strict";var t;return{setters:[function(e){t=e.j}],execute:function(){const n=()=>t("div",{children:"vue 页面"});e({VuePage:n,default:n})}}}));
