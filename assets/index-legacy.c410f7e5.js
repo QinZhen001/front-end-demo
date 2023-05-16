@@ -1,0 +1,1 @@
+System.register(["./index-legacy.dad1776c.js"],(function(e){"use strict";var t;return{setters:[function(e){t=e.j}],execute:function(){const n=()=>t("div",{children:"NodePage"});e({NodePage:n,default:n})}}}));
