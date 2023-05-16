@@ -1,12 +1,11 @@
 import { lazy } from "react"
 import { CommonPageRouter } from "../default"
-import ChineseInput from "./chinese-input "
 
 const Progress = lazy(() => import('./progress'));
 const Lyric = lazy(() => import('./lyric'));
 const AtEditor = lazy(() => import('./at-editor'));
-// const ChineseInput from "" = lazy(() => import("./chineseinput/rrr.tsx"));
-// import ChineseInput from "./chineseinput/rrr.tsx"
+const ChineseInput = lazy(() => import('./chinese-input '));
+const Notification = lazy(() => import('./notification'));
 
 export const children = [
   {
@@ -29,6 +28,11 @@ export const children = [
     element: <ChineseInput></ChineseInput>,
     title: "监听中文输入法事件",
   },
+  {
+    path: "notification",
+    element: <Notification></Notification>,
+    title: "notification 系统通知",
+  }
 ]
 
 export const CssPage = () => {
