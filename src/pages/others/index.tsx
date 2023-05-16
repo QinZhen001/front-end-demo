@@ -8,6 +8,7 @@ const CodeMirror = lazy(() => import('./codemirror'));
 const SandBox = lazy(() => import('./sandbox'));
 const AbortController = lazy(() => import('./abort-controller'));
 const JSBridgeComponent = lazy(() => import('./js-bridge'));
+const ShareWorker = lazy(() => import('./share-worker'));
 
 export const children = [
   {
@@ -45,7 +46,11 @@ export const children = [
     element: <JSBridgeComponent></JSBridgeComponent>,
     title: "JSBridge",
   },
-  
+  {
+    path: "share-worker",
+    element: <ShareWorker></ShareWorker>,
+    title: "ShareWorker",
+  }
 ]
 
 export const OtherPage = () => {
