@@ -9,6 +9,7 @@ const SandBox = lazy(() => import('./sandbox'));
 const AbortController = lazy(() => import('./abort-controller'));
 const JSBridgeComponent = lazy(() => import('./js-bridge'));
 const ShareWorker = lazy(() => import('./share-worker'));
+const LongTask = lazy(() => import("./long-task"))
 
 export const children = [
   {
@@ -50,6 +51,10 @@ export const children = [
     path: "share-worker",
     element: <ShareWorker></ShareWorker>,
     title: "ShareWorker",
+  }, {
+    path: "long-task",
+    element: <LongTask></LongTask>,
+    title: "LongTask 监控长任务",
   }
 ]
 
