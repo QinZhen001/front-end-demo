@@ -1,1 +1,0 @@
-import{j as e}from"./index.5bd7d4ed.js";const i=()=>e("div",{style:{padding:"10px"},children:e("a",{href:"https://github.com/QinZhen001/vite/tree/plugin",children:"vite test plugin"})});export{i as VitePage,i as default};
