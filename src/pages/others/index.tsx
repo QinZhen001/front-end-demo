@@ -10,6 +10,7 @@ const AbortController = lazy(() => import('./abort-controller'));
 const JSBridgeComponent = lazy(() => import('./js-bridge'));
 const ShareWorker = lazy(() => import('./share-worker'));
 const LongTask = lazy(() => import("./long-task"))
+const InfinityDebugger = lazy(()=>import("./infinity-debugger"))
 
 export const children = [
   {
@@ -55,6 +56,10 @@ export const children = [
     path: "long-task",
     element: <LongTask></LongTask>,
     title: "LongTask 监控长任务",
+  },{
+    path:"infinity-debugger",
+    element:<InfinityDebugger></InfinityDebugger>,
+    title:"无限Debugger (禁止别人调试自己网页)"
   }
 ]
 
