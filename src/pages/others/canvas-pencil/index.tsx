@@ -2,13 +2,13 @@ import { useEffect, useRef } from "react"
 import "./index.css"
 
 let ctx: CanvasRenderingContext2D
-let offscreenCtx: OffscreenCanvasRenderingContext2D
-let offscreenCanvas: OffscreenCanvas
+let offCtx: CanvasRenderingContext2D
 let canvasLeft = 0
 let canvasTop = 0
 
 const CanvasPencil = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const offCanvasRef = useRef<HTMLCanvasElement>(null)
   const MouseStatus = useRef<'down' | 'up'>('up')
 
   const drawImg = () => {
@@ -24,22 +24,26 @@ const CanvasPencil = () => {
   }
 
   const canvasToImageByBackgroundColor = () => {
-    // TODO: 离屏渲染 or 双canvas
-    // ctx.globalCompositeOperation = 'destination-over';
-    // ctx.fillStyle = "black";
-    // ctx.fillRect(0, 0, canvasRef.current!.width, canvasRef.current!.height);
-    let imageData = canvasRef.current!.toDataURL('image/png');
+    let imageData = offCanvasRef.current!.toDataURL('image/png');
     return imageData
   }
 
-
-  const init = async () => {
+  const initcanvas = () => {
     ctx = canvasRef.current!.getContext('2d')!;
     const { left, top } = canvasRef.current!.getBoundingClientRect()
-    offscreenCanvas = new OffscreenCanvas(canvasRef.current!.width, canvasRef.current!.height)
-    offscreenCtx = offscreenCanvas.getContext("2d")!;
     canvasLeft = left
     canvasTop = top
+  }
+
+  const initOffCanvas = () => {
+    offCtx = offCanvasRef.current!.getContext('2d')!;
+    offCtx.fillStyle = "black";
+    offCtx.fillRect(0, 0, canvasRef.current!.width, canvasRef.current!.height);
+  }
+
+  const init = async () => {
+    initOffCanvas()
+    initcanvas()
     await drawImg()
   }
 
@@ -53,10 +57,7 @@ const CanvasPencil = () => {
     const { clientX, clientY } = e
     let x = clientX - canvasLeft
     let y = clientY - canvasTop
-    ctx.strokeStyle = 'red'
-    ctx.lineWidth = 4;
-    ctx.beginPath()
-    ctx.moveTo(x, y)
+    drawDown(x, y)
   }
 
   const onMouseMove = (e: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
@@ -64,15 +65,40 @@ const CanvasPencil = () => {
     const { clientX, clientY } = e
     let x = clientX - canvasLeft
     let y = clientY - canvasTop
-    ctx.lineTo(x, y)
-    ctx.stroke()
+    drawMove(x, y)
   }
 
   const onMouseUp = (e: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
     console.log('onMouseUp')
     if (MouseStatus.current === 'up') return
     MouseStatus.current = 'up'
+    drawUp()
+  }
+
+  const drawDown = (x: number, y: number) => {
+    ctx.strokeStyle = 'red'
+    ctx.lineWidth = 4;
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+
+    offCtx.strokeStyle = "white"
+    offCtx.lineWidth = 4;
+    offCtx.beginPath()
+    offCtx.moveTo(x, y)
+  }
+
+  const drawMove = (x: number, y: number) => {
+    ctx.lineTo(x, y)
+    ctx.stroke()
+
+    offCtx.lineTo(x, y)
+    offCtx.stroke()
+  }
+
+  const drawUp = () => {
     ctx.closePath()
+
+    offCtx.closePath()
   }
 
   const outputImg = () => {
@@ -84,22 +110,33 @@ const CanvasPencil = () => {
   }
 
 
-  return <div>
-    <div>
+  return <div >
+    <section>
       <button onClick={outputImg}>导出图片</button>
-    </div>
-    <div id="img-wrapper">
-      {/* img */}
-    </div>
-    <canvas
-      className="my-canvas"
-      width={300}
-      height={600}
-      ref={canvasRef}
-      onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
-    ></canvas>
+    </section>
+    <section className="content">
+      <div className="canvas-wrapper">
+        <canvas
+          className="off-canvas"
+          width={300}
+          height={600}
+          ref={offCanvasRef}
+        ></canvas>
+        <canvas
+          className="my-canvas"
+          width={300}
+          height={600}
+          ref={canvasRef}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+        ></canvas>
+      </div>
+      {/* 导出图片 */}
+      <div id="img-wrapper">
+        {/* img */}
+      </div>
+    </section>
   </div>
 }
 
