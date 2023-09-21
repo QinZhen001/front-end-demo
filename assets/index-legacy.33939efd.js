@@ -1,1 +1,0 @@
-System.register(["./index-legacy.dc21acea.js"],(function(e){"use strict";var t,n,c;return{setters:[function(e){t=e.r,n=e.j,c=e.a}],execute:function(){e("default",(()=>{const[e,r]=t.exports.useState(1);return n("div",{children:c("button",{onClick:()=>r(e+1),children:["fetchData ",e]})})}))}}}));
