@@ -1,13 +1,26 @@
-import { useEffect, useRef } from "react"
+import { ReactEventHandler, useEffect, useRef } from "react"
 import "./index.css"
+
+interface IOperate {
+  color: string
+  data: Set<number[]>
+}
 
 let ctx: CanvasRenderingContext2D
 let canvasLeft = 0
 let canvasTop = 0
-
-
-// TODO: 优化
-// 我们定义 size > 100 的区块为可操作区块  =>  忽略小区块
+let curColor = ""
+let map = new Map()
+// 之前高亮的操作 
+// {
+//   color : string
+//   data: set 
+// }  
+let operates: IOperate[] = []
+// @ts-expect-error
+window.operates = operates
+// @ts-expect-error
+window.map = map
 
 
 function rgbToHex(r: number, g: number, b: number) {
@@ -40,16 +53,7 @@ function LightenDarkenColor(col: string, amt: number) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-let round = 1
-const getRoundColor = () => {
-  round++
-  if (round % 2 == 0) {
-    return "red"
-  }
-  return "green"
-}
 
-let map = new Map()
 
 const CanvasHighlight = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -103,11 +107,16 @@ const CanvasHighlight = () => {
         }
       }
     }
+    // filter
+    for (let [key, value] of map) {
+      if (value.size <= 100) {
+        map.delete(key)
+      }
+    }
 
     let end = Date.now()
     console.log("cost time ", end - start)
-
-    console.log(map)
+    console.log("final map", map)
   }
 
 
@@ -121,21 +130,47 @@ const CanvasHighlight = () => {
     init()
   }, [])
 
-  const onClick = (e: any) => {
-    let x = e.clientX - canvasLeft
-    let y = e.clientY - canvasTop
+
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    let x = Math.floor(e.clientX - canvasLeft)
+    let y = Math.floor(e.clientY - canvasTop)
+
     const hexColor = getPosColor(x, y)
-    if (map.has(hexColor)) {
-      let set = map.get(hexColor)
-      highlight(hexColor, set)
+    if (curColor !== hexColor) {
+      curColor = hexColor
+      if (map.has(curColor)) {
+        restore()
+        highlight()
+      }
     }
   }
 
-  const highlight = (color: string, set: Set<any>) => {
+  const restore = () => {
+    while (operates.length) {
+      const { color, data } = operates.pop() || {}
+      if (color && data) {
+        console.log("restore drawColor", color)
+        ctx.beginPath()
+        ctx.fillStyle = color
+        for (let item of data) {
+          const [x, y] = item
+          ctx.rect(x, y, 1, 1);
+        }
+        ctx.fill();
+        ctx.closePath()
+      }
+    }
+  }
 
+  const highlight = () => {
+    if (!curColor) {
+      return
+    }
+    const set = map.get(curColor)
+    let drawColor = LightenDarkenColor(curColor, 50)
+    console.log("highlight drawColor", drawColor)
     ctx.beginPath()
-    let drawColor = LightenDarkenColor(color, 50)
-    console.log("onClick hexColor", color, drawColor, set.size)
     ctx.fillStyle = drawColor
     for (let item of set) {
       const [x, y] = item
@@ -143,6 +178,15 @@ const CanvasHighlight = () => {
     }
     ctx.fill();
     ctx.closePath()
+    operates.push({
+      color: curColor,
+      data: set
+    })
+  }
+
+  const onMouseLeave = () => {
+    curColor = ""
+    restore()
   }
 
 
@@ -152,7 +196,8 @@ const CanvasHighlight = () => {
     <section className="content">
       <div className="canvas-wrapper">
         <canvas
-          onClick={onClick}
+          onMouseMove={onMouseMove}
+          onMouseLeave={onMouseLeave}
           className="my-canvas"
           width={300}
           height={600}
