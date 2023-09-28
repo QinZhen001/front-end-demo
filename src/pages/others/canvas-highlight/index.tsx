@@ -72,6 +72,9 @@ function LightenDarkenColor(col: string, amt: number) {
 
 const CanvasHighlight = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  let isLocked = false // 是否锁定高亮某个色块
+  let drawColor: string = '' // 当前颜色高亮后的颜色
+  let drawSet: Set<number[]> = new Set() // 当前颜色高亮后的颜色 -- 对应的像素点集合
 
   const drawImg = () => {
     return new Promise((resolve, reject) => {
@@ -168,10 +171,13 @@ const CanvasHighlight = () => {
    * 还原之前绘制的颜色区域
    */
   const restore = () => {
+    if (isLocked) {
+      isLocked = false
+      return
+    }
     while (operates.length) {
       const { color, data } = operates.pop() || {} // 使用一个空对象 {} 来避免解构错误
       if (color && data) {
-        console.log("restore drawColor", color)
         ctx.beginPath()
         ctx.fillStyle = color
         for (let item of data) {
@@ -192,8 +198,8 @@ const CanvasHighlight = () => {
       return
     }
     const set = map.get(curColor)
-    let drawColor = LightenDarkenColor(curColor, 50) // 获取当前颜色高亮后的颜色
-    console.log("highlight drawColor", drawColor)
+    drawColor = LightenDarkenColor(curColor, 100) // 获取当前颜色高亮后的颜色
+    drawSet = set
     ctx.beginPath()
     ctx.fillStyle = drawColor
     for (let item of set) {
@@ -216,20 +222,55 @@ const CanvasHighlight = () => {
     restore()
   }
 
+  /**
+   * 在 Canvas 中点击时触发
+   */
+  const onClick = () => {
+    isLocked = true
 
+    ctx.beginPath()
+    ctx.fillStyle = drawColor // '#FFFFFF'
+    for (let item of drawSet) {
+      const [x, y] = item
+      ctx.rect(x, y, 1, 1);
+    }
+    ctx.fill();
+    ctx.closePath()
+
+    operates.pop()
+    operates.push({
+      color: drawColor, // '#FFFFFF'
+      data: drawSet
+    })
+
+    
+  }
+  
   return <div >
     <section>
     </section>
     <section className="content">
-      <div className="canvas-wrapper">
-        <canvas
-          onMouseMove={onMouseMove}
-          onMouseLeave={onMouseLeave}
-          className="my-canvas"
-          width={300}
-          height={600}
-          ref={canvasRef}
-        ></canvas>
+      <div>
+        <h4>模特图</h4>
+        <img src="https://fullapp.oss-cn-beijing.aliyuncs.com/pic/266571695718749_.pic.jpg" width="300" height="600" />
+      </div>
+      <div>
+        <h4>色块图（原图）</h4>
+        <img src="https://fullapp.oss-cn-beijing.aliyuncs.com/pic/266631695719704_.pic.jpg" width="300" height="600" />
+      </div>
+      <div>
+        <h4>色块图（支持用户hover高亮，点击选中）</h4>
+        <div className="canvas-wrapper">
+          <canvas
+            onMouseMove={onMouseMove}
+            onMouseLeave={onMouseLeave}
+            onClick={onClick}
+            className="my-canvas"
+            width={300}
+            height={600}
+            ref={canvasRef}
+          ></canvas>
+        </div>
       </div>
     </section>
   </div>
