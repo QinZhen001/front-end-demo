@@ -4,7 +4,7 @@ import { CommonPageRouter } from "../default"
 const Progress = lazy(() => import('./progress'));
 const Lyric = lazy(() => import('./lyric'));
 const AtEditor = lazy(() => import('./at-editor'));
-const ChineseInput = lazy(() => import('./chinese-input'));
+const ChineseInput = lazy(() => import('./chinese-input '));
 const Notification = lazy(() => import('./notification'));
 
 export const children = [
