@@ -1,0 +1,1 @@
+import{j as n}from"./index.8e91bc6c.js";const p=()=>n("div",{children:n("input",{type:"text",onCompositionStart:o=>{console.log("onCompositionStart",o.data)},onCompositionUpdate:o=>{console.log("onCompositionupdate",o.data)},onCompositionEnd:o=>{console.log("onCompositionEnd",o.data)},onChange:o=>{console.log("onChange",o.target.value)}})});export{p as default};
