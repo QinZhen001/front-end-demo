@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react"
 
 const Scheduler = lazy(() => import('./scheduler'));
 const UseTransition = lazy(() => import('./useTransition'));
+const UseDeferredValue = lazy(() => import('./useDeferredValue'));
 const TestSuspense = lazy(() => import('./suspense'));
 const TestSwr = lazy(() => import('./swr'));
 const AHooks = lazy(() => import('./ahooks'));
@@ -19,6 +20,11 @@ export const children = [
     path: "useTransition",
     element: <UseTransition></UseTransition>,
     title: "useTransition",
+  },
+  {
+    path: "useDeferredValue",
+    element: <UseDeferredValue></UseDeferredValue>,
+    title: "useDeferredValue",
   },
   {
     path: "suspense",
