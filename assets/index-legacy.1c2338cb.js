@@ -1,0 +1,1 @@
+System.register(["./index-legacy.12c4c523.js"],(function(e){"use strict";var t;return{setters:[function(e){t=e.j}],execute:function(){const c=()=>t("div",{children:"NodePage"});e({NodePage:c,default:c})}}}));
