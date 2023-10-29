@@ -6,6 +6,8 @@ const Lyric = lazy(() => import('./lyric'));
 const AtEditor = lazy(() => import('./at-editor'));
 const ChineseInput = lazy(() => import('./chinese-input'));
 const Notification = lazy(() => import('./notification'));
+const Slider = lazy(() => import("../animation/slider"))
+
 
 export const children = [
   {
@@ -32,6 +34,11 @@ export const children = [
     path: "notification",
     element: <Notification></Notification>,
     title: "notification 系统通知",
+  },
+  {
+    path: "slider",
+    element: <Slider></Slider>,
+    title: "轮播图 (center active item)",
   }
 ]
 

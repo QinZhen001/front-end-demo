@@ -14,7 +14,7 @@ const CanvasPencil = () => {
   const drawImg = () => {
     return new Promise((resolve, reject) => {
       const image = new Image();
-      image.src = 'https://fullapp.oss-cn-beijing.aliyuncs.com/pic/1686831479688.jpg';
+      image.src = '/images/color_block.jpg';
       image.crossOrigin = 'Anonymous'
       image.onload = () => {
         ctx.drawImage(image, 0, 0, canvasRef.current!.width, canvasRef.current!.height);

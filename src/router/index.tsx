@@ -2,7 +2,8 @@
 import { children as otherChildren } from "../pages/others";
 import { children as RtcChildren } from "../pages/web-rtc";
 import { children as ReactChildren } from "../pages/react"
-import { children as CssChildren } from "../pages/css"
+import { children as AnimateChildren } from "../pages/animation"
+import { children as CanvasChildren } from "../pages/canvas"
 import { Suspense, lazy } from "react"
 import { HashRouter, Route, Routes } from "react-router-dom";
 
@@ -23,7 +24,8 @@ const VitePage = lazy(() => import('../pages/vite'));
 const DefaultPage = lazy(() => import('../pages/default'));
 const WebRtcPage = lazy(() => import('../pages/web-rtc'));
 const OtherPage = lazy(() => import('../pages/others'));
-const CssPage = lazy(() => import('../pages/css'));
+const AnimationPage = lazy(() => import('../pages/animation'));
+const CanvasPage = lazy(() => import('../pages/canvas'));
 
 export const routes: PageRoute[] = [
   {
@@ -74,11 +76,18 @@ export const routes: PageRoute[] = [
     children: RtcChildren
   },
   {
-    path: '/css',
-    element: <CssPage></CssPage>,
-    title: "css效果",
-    children: CssChildren
+    path: '/animation',
+    element: <AnimationPage></AnimationPage>,
+    title: "动画 相关",
+    children: AnimateChildren
   },
+  {
+    path: '/canvas',
+    element: <CanvasPage></CanvasPage>,
+    title: "canvas 相关",
+    children: CanvasChildren
+  },
+  // other should be the last one
   {
     path: '/others',
     element: <OtherPage></OtherPage>,

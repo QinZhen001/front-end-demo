@@ -11,8 +11,6 @@ const JSBridgeComponent = lazy(() => import('./js-bridge'));
 const ShareWorker = lazy(() => import('./share-worker'));
 const LongTask = lazy(() => import("./long-task"))
 const InfinityDebugger = lazy(() => import("./infinity-debugger"))
-const CanvasPencil = lazy(() => import("./canvas-pencil"))
-const CanvasHighlight = lazy(() => import("./canvas-highlight"))
 
 export const children = [
   {
@@ -64,16 +62,6 @@ export const children = [
     element: <InfinityDebugger></InfinityDebugger>,
     title: "无限Debugger (禁止别人调试自己网页)"
   },
-  {
-    path: "canvas-pencil",
-    element: <CanvasPencil></CanvasPencil>,
-    title: "canvas 绘制鼠标轨迹"
-  },
-  {
-    path: "canvas-highlight",
-    element: <CanvasHighlight></CanvasHighlight>,
-    title: "canvas 高亮区块"
-  }
 ]
 
 export const OtherPage = () => {

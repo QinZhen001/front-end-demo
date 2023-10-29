@@ -79,7 +79,7 @@ const CanvasHighlight = () => {
   const drawImg = () => {
     return new Promise((resolve, reject) => {
       const image = new Image();
-      image.src = 'https://fullapp.oss-cn-beijing.aliyuncs.com/pic/266631695719704_.pic.jpg';
+      image.src = '/images/color_block.jpg';
       image.crossOrigin = 'Anonymous'
       image.onload = () => {
         ctx.drawImage(image, 0, 0, canvasRef.current!.width, canvasRef.current!.height);
@@ -107,6 +107,8 @@ const CanvasHighlight = () => {
     return hexColor
   }
 
+  // TODO: 优化
+  // 这里只根据相同颜色做了分组，但是如果相同颜色区域不连通的话，就会出现问题
   const genData = async () => {
     let width = canvasRef.current!.width
     let height = canvasRef.current!.height
@@ -252,11 +254,11 @@ const CanvasHighlight = () => {
     <section className="content">
       <div>
         <h4>模特图</h4>
-        <img src="https://fullapp.oss-cn-beijing.aliyuncs.com/pic/266571695718749_.pic.jpg" width="300" height="600" />
+        <img src="/images/model.jpg" width="300" height="600" />
       </div>
       <div>
         <h4>色块图（原图）</h4>
-        <img src="https://fullapp.oss-cn-beijing.aliyuncs.com/pic/266631695719704_.pic.jpg" width="300" height="600" />
+        <img src="/images/color_block.jpg" width="300" height="600" />
       </div>
       <div>
         <h4>色块图（支持用户hover高亮，点击选中）</h4>

@@ -1,0 +1,16 @@
+.slider-page {
+  padding-top: 10px;
+  width: 375px;
+  height: 500px;
+  background: #ddd;
+}
+
+.item {
+  padding: 10px;
+  width: 200px;
+  height: 100px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+}
