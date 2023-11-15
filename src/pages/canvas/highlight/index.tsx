@@ -91,6 +91,8 @@ const CanvasHighlight = () => {
 
   const initcanvas = () => {
     ctx = canvasRef.current!.getContext('2d', {
+      // willReadFrequently: boolean值表明是否有重复读取计划
+      // https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/getContext
       willReadFrequently: true
     })!;
     const { left, top } = canvasRef.current!.getBoundingClientRect()

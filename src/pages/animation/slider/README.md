@@ -18,4 +18,12 @@ swiper的loopedSlides属性用于设置循环轮播时预加载的slide数量。
 
 * loopedSlides的默认值为0，表示不预加载任何slide。
 
-  
+换做大白话：
+index 0 显示在 loop 中的index
+
+loopedSlides 0  =>  data-swiper-slide-index="0"  第一项显示在loop数组最后
+loopedSlides 1 => data-swiper-slide-index="0" 第一项显示在loop数组第一项
+
+# loopAdditionalSlides
+
+https://www.swiper.com.cn/api/loop/23.html
