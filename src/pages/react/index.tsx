@@ -1,4 +1,4 @@
-import { CommonPageRouter } from "../default"
+import { CommonPageRouter } from "../main"
 import { Suspense, lazy } from "react"
 
 

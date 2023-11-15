@@ -1,5 +1,5 @@
 import { lazy } from "react"
-import { CommonPageRouter } from "../default"
+import { CommonPageRouter } from "../main"
 
 const WebRtcSimple = lazy(() => import('./simple'));
 const WebRtcDataChannel = lazy(() => import('./data-channel'));

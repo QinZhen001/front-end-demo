@@ -21,7 +21,7 @@ const ReduxPage = lazy(() => import('../pages/redux'));
 const NodePage = lazy(() => import('../pages/node'));
 const VuexPage = lazy(() => import('../pages/vuex'));
 const VitePage = lazy(() => import('../pages/vite'));
-const DefaultPage = lazy(() => import('../pages/default'));
+const MainPage = lazy(() => import('../pages/main'));
 const WebRtcPage = lazy(() => import('../pages/web-rtc'));
 const OtherPage = lazy(() => import('../pages/others'));
 const AnimationPage = lazy(() => import('../pages/animation'));
@@ -30,7 +30,7 @@ const CanvasPage = lazy(() => import('../pages/canvas'));
 export const routes: PageRoute[] = [
   {
     path: "/",
-    element: <DefaultPage></DefaultPage>,
+    element: <MainPage></MainPage>,
     title: "default",
   },
   {

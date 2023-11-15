@@ -1,5 +1,5 @@
 import { lazy } from "react"
-import { CommonPageRouter } from "../default"
+import { CommonPageRouter } from "../main"
 
 const Progress = lazy(() => import('./progress'));
 const Lyric = lazy(() => import('./lyric'));

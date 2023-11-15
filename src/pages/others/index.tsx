@@ -1,5 +1,5 @@
 import { lazy } from "react"
-import { CommonPageRouter } from "../default"
+import { CommonPageRouter } from "../main"
 
 const AsyncAwaitRetry = lazy(() => import('./async-await-retry'));
 const RxJS = lazy(() => import('./rx-js'));

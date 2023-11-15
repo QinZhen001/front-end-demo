@@ -1,5 +1,5 @@
 import { lazy } from "react"
-import { CommonPageRouter } from "../default"
+import { CommonPageRouter } from "../main"
 
 const Pencil = lazy(() => import("./pencil"))
 const Highlight = lazy(() => import("./highlight"))

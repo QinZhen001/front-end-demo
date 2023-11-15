@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import { routes,PageRoute } from "../../router";
 import "./index.css";
 
-export const DefaultPage = () => {
+export const MainPage = () => {
   const finalRoutes = routes.filter((item) => item.path !== "/");
 
   return (
@@ -38,4 +38,4 @@ export const CommonPageRouter = ({routes}:{routes:PageRoute[]}) => {
 }
 
 
-export default DefaultPage
+export default MainPage
