@@ -1,1 +1,0 @@
-System.register(["./index-legacy.12c4c523.js"],(function(t){"use strict";var e,n,c;return{setters:[function(t){e=t.r,n=t.j,c=t.a}],execute:function(){t("default",(()=>{const[t,r]=e.exports.useState(1);return n("div",{children:c("button",{onClick:()=>r(t+1),children:["fetchData ",t]})})}))}}}));
