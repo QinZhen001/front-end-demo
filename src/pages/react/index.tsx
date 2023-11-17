@@ -9,6 +9,8 @@ const TestSuspense = lazy(() => import('./suspense'));
 const TestSwr = lazy(() => import('./swr'));
 const AHooks = lazy(() => import('./ahooks'));
 const Dob = lazy(() => import('./dob'));
+const UseCountdown  = lazy(() => import('./useCountdown'));
+
 
 export const children = [
   {
@@ -45,6 +47,11 @@ export const children = [
     path: "dob",
     element: <Dob></Dob>,
     title: "dob 仿写",
+  },
+  {
+    path: "useCountdown",
+    element: <UseCountdown></UseCountdown>,
+    title: "useCountdown（倒计时）",
   }
 ]
 

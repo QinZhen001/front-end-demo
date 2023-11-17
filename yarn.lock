@@ -2139,6 +2139,11 @@ react@^18.0.2:
   dependencies:
     loose-envify "^1.1.0"
 
+reflect-metadata@^0.1.13:
+  version "0.1.13"
+  resolved "http://10.90.0.218:4873/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha1-Z648pXyXKiqhZCsQ/jY/4y1J3Ag=
+
 regenerate-unicode-properties@^10.0.1:
   version "10.0.1"
   resolved "https://registry.npmmirror.com/regenerate-unicode-properties/-/regenerate-unicode-properties-10.0.1.tgz#7f442732aa7934a3740c779bb9b3340dccc1fb56"
