@@ -2,12 +2,19 @@
 
 [https://mp.weixin.qq.com/s/Or2YTrRcCPGK2UgnuRRCpw](https://mp.weixin.qq.com/s/Or2YTrRcCPGK2UgnuRRCpw)
 
+[https://codesandbox.io/s/di-playground-oz2j9](https://codesandbox.io/s/di-playground-oz2j9)
 
 
 
 ## reflect-metadata
 
+[https://www.npmjs.com/package/reflect-metadata](https://www.npmjs.com/package/reflect-metadata)
+
 [https://rbuckton.github.io/reflect-metadata/#syntax](https://rbuckton.github.io/reflect-metadata/#syntax)
+
+`reflect-metadata` Allows you to do runtime reflection on types.
+
+
 
 
 
