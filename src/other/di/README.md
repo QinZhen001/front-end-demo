@@ -30,6 +30,32 @@
 
 
 
+# 分析
+
+Injectable 的时候 Reflect.defineMetadata(REFLECT_KEY.Injectable） 设置deps
+
+Container.resolve 的时候Reflect.getOwnMetadata(REFLECT_KEY.Injectable) 获取相关deps
+
+所谓deps 举个例子
+
+```ts
+@Injectable()
+export class Student {
+  constructor(transportation: Transportation,test:Test) {}
+  
+}
+
+// deps: [transportation,test]
+```
+
+----
+
+deps.map((dep) => this.resolve(dep as any));
+
+递归去
+
+
+
 # 踩坑
 
 [Why can't reflect-metadata be used in vite](https://stackoverflow.com/questions/68570519/why-cant-reflect-metadata-be-used-in-vite)

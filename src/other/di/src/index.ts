@@ -1,13 +1,20 @@
 import "reflect-metadata";
-import { ContainerV1,ContainerV2 } from "../di";
+import { ContainerV1, ContainerV2 } from "../di";
 import {
   Student
 } from "../others/students";
+import {
+  Bicycle,
+  Car,
+  Transportation,
+  ITransportation
+} from "../others/transportations";
 
-
-const testReflectMetadata = document.getElementById("testReflectMetadata")!
-const testContainerV1 = document.getElementById("testContainerV1")!
-const testContainerV2 = document.getElementById("testContainerV2")!
+const testReflectMetadata = document.getElementById("TestReflectMetadata")!
+const testContainerV1 = document.getElementById("TestContainerV1")!
+const testContainerV2 = document.getElementById("TestContainerV2")!
+const containerV2_Factory = document.getElementById("ContainerV2_Factory")!
+const containerV2_Abstract = document.getElementById("ContainerV2_Abstract")!
 
 
 testReflectMetadata.addEventListener("click", () => {
@@ -32,6 +39,7 @@ testContainerV1.addEventListener("click", () => {
   console.log(res)
 })
 
+
 testContainerV2.addEventListener("click", () => {
   const container = new ContainerV2();
   container.register({
@@ -39,5 +47,44 @@ testContainerV2.addEventListener("click", () => {
     useClass: Bicycle
   });
   const student = container.resolve(Student);
+  const res = student.gotoSchool();
+  console.log(res)
+})
+
+
+containerV2_Factory.addEventListener("click", () => {
+  const container = new ContainerV2();
+  let weekday = Math.round(Math.random() * 10);
+  container.register({
+    token: Transportation,
+    useFactory: (c) => {
+      console.log("containerV2: ", c)
+      if (weekday > 5) {
+        return c.resolve(Car);
+      } else {
+        return c.resolve(Bicycle);
+      }
+    }
+  });
+  const student = container.resolve(Student);
+  const res = student.gotoSchool();
+  console.log(res)
+})
+
+
+containerV2_Abstract.addEventListener("click", () => {
+  const container = new ContainerV2();
+  let weekday = Math.round(Math.random() * 10);
+  container.register({
+    token: ITransportation,
+    useFactory: (c) => {
+      if (weekday > 5) {
+        return c.resolve(Car);
+      } else {
+        return c.resolve(Bicycle);
+      }
+    }
+  });
+  const student = container.resolve(StudentWithAbstraction);
   return student.gotoSchool();
 })

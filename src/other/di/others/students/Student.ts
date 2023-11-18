@@ -12,3 +12,12 @@ export class Student {
     return `Go to school by ${ret}.`;
   }
 }
+
+
+
+// @Injectable({ muiltple: true })
+// export class StudentWithAbstraction extends Student{}
+
+
+
+// @Injectable({ muiltple: true })

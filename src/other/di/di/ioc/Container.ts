@@ -28,10 +28,69 @@ export class ContainerV1 {
 
   protected parseInjectableOpts(target: ConstructorOf<any>): InjectableOpts {
     const ret = Reflect.getOwnMetadata(REFLECT_KEY.Injectable, target);
-    debugger
     if (!ret) {
       throw new Error(ERROR_MSG.NO_INJECTABLE);
     }
     return ret;
+  }
+}
+
+
+export class ContainerV2 extends ContainerV1 implements IContainer {
+  protected providerMap = new Map<Token, Provider>();
+
+  constructor(...providers: Provider[]) {
+    super()
+    this.register(...providers);
+  }
+
+  resolve<T>(token: Token<T>): T {
+    const provider = this.providerMap.get(token);
+    if (provider) {
+      if (ProviderAssertion.isClassProvider(provider)) {
+        return this.resolveClassProvider(provider);
+      } else if (ProviderAssertion.isValueProvider(provider)) {
+        return this.resolveValueProvider(provider);
+      }
+      return this.resolveFactoryProvider(provider);
+    }
+
+    if (typeof token !== "function") {
+      throw new Error(ERROR_MSG.PROVIDER_NO_FOUND);
+    }
+
+    return this.resolveClassProvider({
+      token,
+      useClass: token
+    });
+
+  }
+
+  register(...providers: Provider[]) {
+    providers.forEach(p => {
+      this.providerMap.set(p.token, p);
+    })
+  }
+
+  protected resolveValueProvider(provider: ValueProvider) {
+    return provider.useValue;
+  }
+
+  protected resolveFactoryProvider(provider: FactoryProvider) {
+    return provider.useFactory(this);
+  }
+
+  protected resolveClassProvider(provider: ClassProvider) {
+    const constructorFn = provider.useClass;
+    const injectableOpts = this.parseInjectableOpts(constructorFn);
+    const args = injectableOpts.deps.map((dep) => this.resolve(dep));
+
+    constructorFn.prototype[REFLECT_KEY.Container] = this;
+    const instance = new constructorFn(...args);
+    delete constructorFn.prototype[REFLECT_KEY.Container];
+
+    instance[REFLECT_KEY.Container] = this;
+
+    return instance;
   }
 }
