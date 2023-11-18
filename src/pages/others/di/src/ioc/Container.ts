@@ -26,7 +26,6 @@ export class ContainerV1 {
     return new target(...args);
   }
 
-
   protected parseInjectableOpts(target: ConstructorOf<any>): InjectableOpts {
     const ret = Reflect.getOwnMetadata(REFLECT_KEY.Injectable, target);
     if (!ret) {

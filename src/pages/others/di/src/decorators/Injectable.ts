@@ -14,7 +14,18 @@ export function Injectable<T>(opts: InjectableDecoratorOpts = {}){
       target
     );
     if(tokenMap){
-      
+      for (const [index, token] of tokenMap.entries()) {
+        deps[index] = token;
+      }
     }
+
+    const injectableOpts = {
+      ...opts,
+      deps
+    };
+
+    debugger
+    
+    Reflect.defineMetadata(REFLECT_KEY.Injectable, injectableOpts, target);
   }
 }

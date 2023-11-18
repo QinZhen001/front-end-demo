@@ -1,4 +1,9 @@
 import "reflect-metadata";
+import "./index.css"
+import { ContainerV1 } from "./src";
+import {
+  Student
+} from "./others/students";
 
 const testReflectMetadata = () => {
   class C {
@@ -15,15 +20,20 @@ const testReflectMetadata = () => {
 
 
 
-
-
-
-
 const DIDecorator = () => {
 
   testReflectMetadata()
 
+  const testContainerV1 = () => {
+    const container = new ContainerV1();
+    const student = container.resolve(Student);
+    return student.gotoSchool();
+  }
+
   return <div>
+    <section className="item">
+      <button onClick={testContainerV1}>Test ContainerV1</button>
+    </section>
     {/* <div>
       <select id="version_select" value="ByHandle">
         <option value="ByHandle">ByHandle</option>

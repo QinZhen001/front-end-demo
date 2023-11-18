@@ -28,7 +28,7 @@
     "public/other/compose",
     "public/other/delegate",
     "public/other/cross-domain",
-    "src/other/await-to-js",
+    "src/other/js/await-to-js",
     "public/other/co"
   ]
 }
