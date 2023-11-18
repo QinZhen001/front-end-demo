@@ -2,8 +2,6 @@ import process from "process";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import legacy from "@vitejs/plugin-legacy";
-import typescript from "@rollup/plugin-typescript";
-import swc from "rollup-plugin-swc";
 
 
 const { name = "" } = require("./package.json");
@@ -21,26 +19,7 @@ if (process.env.CI && process.env.VERCEL_ENV == "production") {
 // https://vitejs.dev/config/
 export default defineConfig({
   base: base,
-  plugins: [
-    swc({
-      jsc: {
-        parser: {
-          syntax: "typescript",
-          tsx: true, // If you use react
-          dynamicImport: true,
-          decorators: true,
-        },
-        target: "es2021",
-        transform: {
-          react: {
-            runtime: "automatic"
-          },
-          decoratorMetadata: true,
-        },
-      },
-    }),
-  ],
-  esbuild: false,
+  // plugins: [
   // in plugins
   // legacy({
   //   targets: ["defaults", "not IE 11"],

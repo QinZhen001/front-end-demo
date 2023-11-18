@@ -1,4 +1,4 @@
-import { Injectable } from "../../src";
+import { Injectable } from "../../di";
 
 
 @Injectable()

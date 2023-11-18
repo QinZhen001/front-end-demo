@@ -1,0 +1,22 @@
+{
+  "name": "di-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.6.1",
+    "reflect-metadata": "0.1.13",
+    "tsyringe": "4.6.0"
+  },
+  "devDependencies": {
+    "typescript": "4.2.3"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  },
+  "keywords": []
+}

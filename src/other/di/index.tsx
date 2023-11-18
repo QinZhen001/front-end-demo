@@ -1,21 +1,12 @@
 import "reflect-metadata";
 import "./index.css"
-import { ContainerV1 } from "./src";
+import { ContainerV1 } from "./di";
 import {
   Student
 } from "./others/students";
 
 const testReflectMetadata = () => {
-  class C {
-    @Reflect.metadata("aaa", { aaa: "test" })
-    method() {
-    }
-  }
 
-  let obj = new C();
-  let metadataValue = Reflect.getMetadata("aaa", obj, "method");
-
-  console.log("metadataValue", metadataValue)
 }
 
 
@@ -31,9 +22,7 @@ const DIDecorator = () => {
   }
 
   return <div>
-    <section className="item">
-      <button onClick={testContainerV1}>Test ContainerV1</button>
-    </section>
+
     {/* <div>
       <select id="version_select" value="ByHandle">
         <option value="ByHandle">ByHandle</option>

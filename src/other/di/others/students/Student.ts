@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "../../src";
+import { Inject, Injectable } from "../../di";
 import { Transportation } from "../transportations";
 
 

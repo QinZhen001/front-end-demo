@@ -11,7 +11,6 @@ const JSBridgeComponent = lazy(() => import('./js-bridge'));
 const ShareWorker = lazy(() => import('./share-worker'));
 const LongTask = lazy(() => import("./long-task"))
 const InfinityDebugger = lazy(() => import("./infinity-debugger"))
-const DIDecorator = lazy(() => import("./di"))
 
 export const children = [
   {
@@ -63,12 +62,6 @@ export const children = [
     element: <InfinityDebugger></InfinityDebugger>,
     title: "无限Debugger（禁止别人调试自己网页）"
   },
-  {
-    path: "di",
-    element: <DIDecorator></DIDecorator>,
-    title: "依赖注入（装饰器实现）"
-  },
-  
 ]
 
 export const OtherPage = () => {
