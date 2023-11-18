@@ -1,20 +1,30 @@
 <html>
-  <head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./index.css" />
-  </head>
 
-  <body>
-    <div id="app">
-      <section className="item">
-        <button id="testReflectMetadata" onClick={testReflectMetadata}></button>
-      </section>
-      <section className="item">
-        <button id="testContainerV1" onClick={testContainerV1}>Test ContainerV1</button>
-      </section>
-    </div>
+<head>
+  <title>Parcel Sandbox</title>
+  <meta charset="UTF-8" />
+  <style>
+    section {
+      padding: 10px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
 
-    <script src="src/index.ts"></script>
-  </body>
+<body>
+  <div id="app">
+    <section className="item">
+      <button id="testReflectMetadata">TestReflectMetadata</button>
+    </section>
+    <section className="item">
+      <button id="testContainerV1">TestContainerV1</button>
+    </section>
+    <section className="item">
+      <button id="testContainerV2">TestContainerV2</button>
+    </section>
+  </div>
+
+  <script src="src/index.ts"></script>
+</body>
+
 </html>

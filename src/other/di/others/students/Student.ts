@@ -5,6 +5,7 @@ import { Transportation } from "../transportations";
 @Injectable({ muiltple: true })
 export class Student {
   constructor(protected transportation: Transportation) {}
+  
 
   gotoSchool() {
     const ret = this.transportation.drive();

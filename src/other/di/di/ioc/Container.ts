@@ -28,6 +28,7 @@ export class ContainerV1 {
 
   protected parseInjectableOpts(target: ConstructorOf<any>): InjectableOpts {
     const ret = Reflect.getOwnMetadata(REFLECT_KEY.Injectable, target);
+    debugger
     if (!ret) {
       throw new Error(ERROR_MSG.NO_INJECTABLE);
     }
