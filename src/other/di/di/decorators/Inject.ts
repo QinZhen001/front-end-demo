@@ -52,7 +52,7 @@ export function Inject(tokenOrFactory: Token | TokenFactory): any {
     key: string | symbol,
     index?: number
   ) => {
-    debugger
+    console.log("[Inject]:", target, key, index)
     if (typeof index !== "number" || typeof target === "object") {
       return decorateProperty(target, key, tokenOrFactory);
     } else {
