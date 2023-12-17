@@ -1,11 +1,12 @@
 import process from "process";
 import { defineConfig } from "vite";
+// https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react
 import react from "@vitejs/plugin-react";
 import legacy from "@vitejs/plugin-legacy";
 
-
 const { name = "" } = require("./package.json");
 
+// just for debug vercel env
 console.log("process.env.VERCEL_ENV", process.env.VERCEL_ENV)
 console.log("process.env.VITE_VERCEL_ENV", process.env.VITE_VERCEL_ENV)
 
@@ -19,17 +20,11 @@ if (process.env.CI && process.env.VERCEL_ENV == "production") {
 // https://vitejs.dev/config/
 export default defineConfig({
   base: base,
-  // plugins: [
-  // in plugins
-  // legacy({
-  //   targets: ["defaults", "not IE 11"],
-  // }),
-  // react({
-  //   babel: {
-  //     parserOpts: {
-  //       // https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#proposed-syntax
-  //       plugins: ['decorators-legacy']
-  //     },
-  //   },
-  // }),
+  plugins: [
+    // in plugins
+    // legacy({
+    //   targets: ["defaults", "not IE 11"],
+    // }),
+    react(),
+  ]
 });

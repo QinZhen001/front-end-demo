@@ -72,11 +72,9 @@ export default class Compile {
     // <div k-model="foo" k-text="test" @click="onClick">
     let nodeAttrs = node.attributes
     console.log("nodeAttrs", nodeAttrs)
-    debugger
     Array.from(nodeAttrs).forEach(attr => {
       const attrName = attr.name;
       const exp = attr.value;
-      debugger
       if (this.isDirective(attrName)) {
         const dir = attrName.substring(2)
         this[dir] && this[dir](node, this.$vm, exp)
@@ -100,7 +98,6 @@ export default class Compile {
 
   compileText(node) {
     console.log("compileText", RegExp.$1)
-    debugger
     this.update(node, this.$vm, RegExp.$1, "text")
   }
 

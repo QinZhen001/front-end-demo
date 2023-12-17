@@ -1,4 +1,3 @@
-import "./index.html"
 import KVue from "./src/kvue"
 
 const vue = new KVue({
@@ -15,9 +14,11 @@ const vue = new KVue({
     }, 1500)
   },
   methods: {
-    changeName() {
-      this.name = 'test1234567'
-      this.age = 1
+    changeName(val) {
+      console.log(val.target.value)
+      debugger
+      // this.name = 'test1234567'
+      // this.age = 1
     }
   }
 })

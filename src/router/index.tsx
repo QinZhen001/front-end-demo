@@ -1,4 +1,5 @@
 // 最好把这几个children直接写进这里 （不要import）（import会导致加载对应的index.js 懒加载失效）
+import { children as vueChildren } from "../pages/vue";
 import { children as otherChildren } from "../pages/others";
 import { children as RtcChildren } from "../pages/web-rtc";
 import { children as ReactChildren } from "../pages/react"
@@ -37,6 +38,7 @@ export const routes: PageRoute[] = [
     path: "/vue",
     element: <VuePage></VuePage>,
     title: "vue 相关",
+    children: vueChildren
   },
   {
     path: "/vuex",
@@ -44,14 +46,20 @@ export const routes: PageRoute[] = [
     title: "vuex 相关",
   },
   {
-    path: "/vite",
-    element: <VitePage></VitePage>,
-    title: "vite 相关",
+    path: "/react",
+    element: <ReactPage></ReactPage>,
+    title: "react 相关",
+    children: ReactChildren
   },
   {
     path: "/redux",
     element: <ReduxPage></ReduxPage>,
     title: "redux 相关",
+  },
+  {
+    path: "/vite",
+    element: <VitePage></VitePage>,
+    title: "vite 相关",
   },
   {
     path: "/webpack",
@@ -62,12 +70,6 @@ export const routes: PageRoute[] = [
     path: "/node",
     element: <NodePage></NodePage>,
     title: "node 相关",
-  },
-  {
-    path: "/react",
-    element: <ReactPage></ReactPage>,
-    title: "react 相关",
-    children: ReactChildren
   },
   {
     path: '/web-rtc',

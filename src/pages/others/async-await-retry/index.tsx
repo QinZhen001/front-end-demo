@@ -75,16 +75,14 @@ export const AsyncAwaitRetry = () => {
     console.log("retryCallBackWithErr", res); // 存在error 这里不会打印
   };
 
-  return (
-    <div className="retry">
-      <button onClick={retryNormal}>retryNormal</button>
-      <button onClick={retryError}>retryError</button>
-      <button onClick={retrySecond}>retrySecond</button>
-      <button onClick={retryCallBack}>retryCallBack</button>
-      <button onClick={retryCallBackWithArgs}>retryCallBackWithArgs</button>
-      <button onClick={retryCallBackWithErr}>retryCallBackWithErr</button>
-    </div>
-  );
+  return <div className="retry">
+    <button onClick={retryNormal}>retryNormal</button>
+    <button onClick={retryError}>retryError</button>
+    <button onClick={retrySecond}>retrySecond</button>
+    <button onClick={retryCallBack}>retryCallBack</button>
+    <button onClick={retryCallBackWithArgs}>retryCallBackWithArgs</button>
+    <button onClick={retryCallBackWithErr}>retryCallBackWithErr</button>
+  </div>
 };
 
 
