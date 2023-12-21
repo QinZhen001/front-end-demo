@@ -1,3 +1,5 @@
+// Dep.target = null
+
 export default class Dep {
   constructor() {
     this.deps = []

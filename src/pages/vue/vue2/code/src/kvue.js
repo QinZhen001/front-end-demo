@@ -15,11 +15,7 @@ export default class KVue {
     // 响应式
     this.observe(this.$data)
 
-    // new Watcher();
-    // this.$data.test;
-    // new Watcher();
-    // this.$data.foo.bar;
-
+  
     new Compile(options.el, this)
 
     if (options.created) {
@@ -46,9 +42,8 @@ export default class KVue {
     const dep = new Dep()
     Object.defineProperty(obj, key, {
       get() {
-        // 将Dep.target添加到dep中
+        // 依赖收集
         if (Dep.target) {
-          console.log("Dep.target", Dep.target)
           dep.addDep(Dep.target)
         }
         return val

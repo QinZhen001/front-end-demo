@@ -10,9 +10,6 @@
  */
 import Watcher from "./watcher"
 
-
-// new Compile(el, vm)
-
 export default class Compile {
   constructor(el, vm) {
     this.$vm = vm
@@ -21,6 +18,7 @@ export default class Compile {
     if (this.$el) {
       // 提取宿主中的模板内容到Fragment标签，dom操作会提高效率
       this.$fragment = this.node2Fragment(this.$el)
+      console.log("this.$fragment", this.$fragment)
       // 编译模板内容，同时进行依赖收集
       this.compile(this.$fragment)
       this.$el.appendChild(this.$fragment)
@@ -32,6 +30,7 @@ export default class Compile {
     const fragment = document.createDocumentFragment()
     let child
     while ((child = el.firstChild)) {
+      // firstChild will be move all node to fragment
       fragment.appendChild(child)
     }
     return fragment
@@ -40,18 +39,19 @@ export default class Compile {
 
   compile(el) {
     const childNodes = el.childNodes
-
     Array.from(childNodes).forEach(node => {
       // 判断节点类型
       if (node.nodeType === 1) {
         // element节点
-        // console.log('编译元素节点'+node.nodeName);
         this.compileElement(node);
-      } else if (this.isInterpolation(node)) {
-        // 插值表达式
-        // console.log('编译插值文本'+node.textContent);
-        this.compileText(node);
+      } else if (node.nodeType == 2) {
+       // TODO: attr node
+      } else if (node.nodeType == 3) {
+        if(this.isInterpolation(node)){
+          this.compileText(node);
+        }
       }
+      
 
       //递归子节点
       if (node.childNodes && node.childNodes.length > 0) {
@@ -68,22 +68,19 @@ export default class Compile {
 
 
   compileElement(node) {
-    console.log("compileElement", node)
-    // <div k-model="foo" k-text="test" @click="onClick">
     let nodeAttrs = node.attributes
-    console.log("nodeAttrs", nodeAttrs)
     Array.from(nodeAttrs).forEach(attr => {
       const attrName = attr.name;
       const exp = attr.value;
       if (this.isDirective(attrName)) {
         const dir = attrName.substring(2)
-        this[dir] && this[dir](node, this.$vm, exp)
-      }
-
-      if (this.isEvent(attrName)) {
+        let finalDir = `dir_${dir}`
+        this[finalDir] && this[finalDir](node, exp)
+      } else if (this.isEvent(attrName)) {
         const dir = attrName.substring(1)
         this.eventHandler(node, this.$vm, exp, dir)
       }
+
     })
   }
 
@@ -97,17 +94,35 @@ export default class Compile {
   }
 
   compileText(node) {
-    console.log("compileText", RegExp.$1)
-    this.update(node, this.$vm, RegExp.$1, "text")
+    // RegExp.$1 
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/n
+    this.update("text", node, RegExp.$1,)
   }
 
-  update(node, vm, exp, dir) {
-    let updateFn = this[dir + "Updater"]
-    updateFn && updateFn(node, vm[exp])
-    // 收集依赖
-    new Watcher(vm, exp, function (value) {
-      updateFn && updateFn(node, value)
-    })
+  update(type, node, key) {
+    let updater = null
+    switch (type) {
+      case "text":
+        updater = this.updateText;
+        // first time (set initVal)
+        const initVal = node.textContent;
+        updater(node, this.$vm[key], initVal);
+
+        new Watcher(this.$vm, key, initVal, function (value, initVal) {
+          updater(node, value, initVal);
+        });
+        break;
+      case "model":
+        updater = this.updateModel;
+        // first time (set initVal)
+        updater(node, this.$vm[key]);
+
+        new Watcher(this.$vm, key, null, function (value, initVal) {
+          updater(node, value);
+        });
+        break;
+    }
+
   }
 
 
@@ -118,12 +133,45 @@ export default class Compile {
     }
   }
 
-  text(node, vm, exp) {
-    this.update(node, vm, exp, "text");
+
+  // directive
+  dir_model(node, value) {
+    const vm = this.$vm;
+    this.update('model', node, value);
+    node.addEventListener("input", e => {
+      vm[value] = e.target.value;
+    });
   }
 
-  textUpdater(node, val) {
-    node.textContent = val;
+  dir_html(node, value) {
+    this.updateHtml(node, this.$vm[value]);
   }
+
+  dir_text(node, value) {
+    this.updateText(node, this.$vm[value]);
+  }
+
+
+  // operate dom
+  updateHtml(node, value) {
+    node.innerHTML = value
+  }
+
+  updateText(node, value, initVal = "") {
+    if (!initVal) {
+      // k-text situation
+      node.textContent = value
+      return
+    }
+    var reg = /{{(.*)}}/ig;
+    var replaceStr = String(initVal.match(reg)); // arr[0] => string
+    var result = initVal.replace(replaceStr, value);
+    node.textContent = result;
+  }
+
+  updateModel(node, value) {
+    node.value = value;
+  }
+
 
 }

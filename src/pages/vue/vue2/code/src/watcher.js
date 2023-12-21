@@ -1,20 +1,18 @@
 import Dep from "./dep"
 
-export default  class Watcher {
-  constructor(vm, key, cb) {
+export default class Watcher {
+
+  constructor(vm, key, initVal, cb) {
     this.vm = vm
     this.key = key
     this.cb = cb
-
-
+    this.initVal = initVal
     Dep.target = this
-    // 添加watcher到dep
-    this.vm[this.key]
+    this.vm[this.key] // 触发依赖收集 get
     Dep.target = null;
   }
 
   update() {
-    console.log("属性更新了!")
-    this.cb.call(this.vm, this.vm[this.key])
+    this.cb.call(this.vm, this.vm[this.key], this.initVal)
   }
 }

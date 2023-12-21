@@ -1,33 +1,58 @@
+// @ts-nocheck
+import KVue from "./code/src/kvue"
 import { useEffect } from "react";
 
-// need kvue 
 
 const Vue2Realize = () => {
 
-  useEffect(()=>{
-    init()
-  },[])
+  useEffect(() => {
+    initDom()
+    initVue()
+  }, [])
 
-  const init = () => {
-    const node = document.getElementById('vue3')!
+  const initDom = () => {
+    const node = document.getElementById('vue')!
     node.innerHTML = `
       <div id="app">
-      <p>{{name}}</p>
-      <p k-text="name"></p>
-      <br>
-      <p>age:{{age}}</p>
-      <p>
-          {{doubleAge}}
-      </p>
-      <input type="text" k-model="name">
-      <button @click="changeName">changeName</button>
-      <div k-html="html"></div>
+        <div k-text="name"></div>
+        <div>name: {{name}}</div>
+        <div>{{age}}</div>
+        <input type="text" k-model="name">
+        <button @click="changeName">changeName</button>
+        <div k-html="html"></div>
     </div>
     `
+
+
   }
 
-  return <div>
-    <div id="vue3"></div>
+  const initVue = () => {
+    const vue = new KVue({
+      el: '#app',
+      data: {
+        name: "test",
+        age: 12,
+        html: '<button>这是一个按钮</button>'
+      },
+      created() {
+        // setTimeout(() => {
+        //   this.name = 'created change name'
+        // }, 3000)
+      },
+      methods: {
+        changeName() {
+          console.log('before change name: ', this.name)
+          this.name = 'changeName'
+          console.log('after change name: ', this.name)
+        }
+      }
+    })
+
+    window.vue = vue
+    console.log("custom vue2: ", vue)
+  }
+
+  return <div id="vue">
   </div>;
 }
 
