@@ -2,6 +2,7 @@ import { CommonPageRouter } from "../main"
 import { lazy } from "react"
 
 const Vue2Realize = lazy(() => import('./vue2'));
+const Vue3Realize = lazy(() => import('./vue3'));
 const SimpleVueRouter = lazy(() => import('./simple-vue-router'));
 
 
@@ -15,6 +16,11 @@ export const children = [
     path: "simple-vue-router",
     element: <SimpleVueRouter></SimpleVueRouter>,
     title: "vue router 简单实现",
+  },
+  {
+    path: "vue3",
+    element: <Vue3Realize></Vue3Realize>,
+    title: "vue3 简单实现",
   },
   // just for simple vue router test
   {
