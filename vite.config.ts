@@ -3,6 +3,8 @@ import { defineConfig } from "vite";
 // https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react
 import react from "@vitejs/plugin-react";
 import legacy from "@vitejs/plugin-legacy";
+import commonjs from 'vite-plugin-commonjs'
+
 
 const { name = "" } = require("./package.json");
 
@@ -21,6 +23,7 @@ if (process.env.CI && process.env.VERCEL_ENV == "production") {
 export default defineConfig({
   base: base,
   plugins: [
+    commonjs(),
     // in plugins
     // legacy({
     //   targets: ["defaults", "not IE 11"],

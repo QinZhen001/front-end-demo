@@ -12,6 +12,7 @@ export type PageRoute = {
   path: string;
   element: React.ReactNode;
   title: string;
+  hidden?: boolean;
   children?: PageRoute[];
 };
 
@@ -101,20 +102,22 @@ export const routes: PageRoute[] = [
 export const RouteContainer = () => (
   <HashRouter>
     <Routes>
-      {routes.map((item) => (
-        <Route key={item.path} path={item.path} element={
-          <Suspense fallback={<div>Loading...</div>}>{item.element}</Suspense>
-        }
-        >
-          {item.children
-            ? item.children.map(({ path, element }) => (
-              <Route key={path} path={path} element={
-                <Suspense fallback={<div>Loading...</div>}>{element}</Suspense>
-              }></Route>
-            ))
-            : null}
-        </Route>
-      ))}
+      {routes
+        .map((item) => (
+          <Route key={item.path} path={item.path} element={
+            <Suspense fallback={<div>Loading...</div>}>{item.element}</Suspense>
+          }
+          >
+            {item.children
+              ? item.children
+                .map(({ path, element }) => (
+                  <Route key={path} path={path} element={
+                    <Suspense fallback={<div>Loading...</div>}>{element}</Suspense>
+                  }></Route>
+                ))
+              : null}
+          </Route>
+        ))}
     </Routes>
   </HashRouter>
 );

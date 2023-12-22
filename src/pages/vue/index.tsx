@@ -16,7 +16,20 @@ export const children = [
     element: <SimpleVueRouter></SimpleVueRouter>,
     title: "vue router 简单实现",
   },
-
+  // just for simple vue router test
+  {
+    path: "simple-vue-router/foo",
+    element: <SimpleVueRouter></SimpleVueRouter>,
+    title: "vue router 简单实现",
+    hidden: true,
+  },
+  {
+    path: "simple-vue-router/bar",
+    element: <SimpleVueRouter></SimpleVueRouter>,
+    title: "vue router 简单实现",
+    hidden: true,
+  },
+  // just for simple vue router test
 ]
 
 const VuePage = () => {
