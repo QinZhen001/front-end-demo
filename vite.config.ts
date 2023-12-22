@@ -2,7 +2,6 @@ import process from "process";
 import { defineConfig } from "vite";
 // https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react
 import react from "@vitejs/plugin-react";
-import legacy from "@vitejs/plugin-legacy";
 import commonjs from 'vite-plugin-commonjs'
 
 
