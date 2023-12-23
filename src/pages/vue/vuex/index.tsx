@@ -1,11 +1,11 @@
-// @ts-ignore
+// @ts-nocheck
 import store from "./store";
 import { useEffect, useState } from "react";
 
 // @ts-ignore
 window.store = store;
 
-export const VuexPage = () => {
+export const SimpleVuex = () => {
   const [updater, setUpdater] = useState(0);
 
   const syncIncre = () => {
@@ -33,4 +33,4 @@ export const VuexPage = () => {
 };
 
 
-export default VuexPage
+export default SimpleVuex

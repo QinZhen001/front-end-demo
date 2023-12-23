@@ -1,5 +1,9 @@
 // https://juejin.cn/post/7170852747749621791
 
+class SyncHook{
+
+}
+
 // Compiler 它就是整个打包过程的大管家，它里面放着各种你可能需要的编译信息和生命周期 Hook，而且是单例模式
 class Compiler {
   constructor(webpackOptions) {
@@ -120,8 +124,6 @@ class WebpackDonePlugin {
     });
   }
 }
-
-
 
 
 // Webpack 的用法可以看出， Webpack 本质上是一个函数，它接受一个配置信息作为参数，执行后返回一个 compiler 对象

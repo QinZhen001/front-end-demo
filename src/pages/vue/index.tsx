@@ -4,7 +4,7 @@ import { lazy } from "react"
 const Vue2Realize = lazy(() => import('./vue2'));
 const Vue3Realize = lazy(() => import('./vue3'));
 const SimpleVueRouter = lazy(() => import('./simple-vue-router'));
-
+const SimpleVuex = lazy(() => import('./vuex'));
 
 export const children = [
   {
@@ -21,6 +21,11 @@ export const children = [
     path: "vue3",
     element: <Vue3Realize></Vue3Realize>,
     title: "vue3 简单实现",
+  },
+  {
+    path: "vuex",
+    element: <SimpleVuex></SimpleVuex>,
+    title: "vuex 简单实现",
   },
   // just for simple vue router test
   {

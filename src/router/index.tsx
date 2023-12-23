@@ -5,6 +5,7 @@ import { children as RtcChildren } from "../pages/web-rtc";
 import { children as ReactChildren } from "../pages/react"
 import { children as AnimateChildren } from "../pages/animation"
 import { children as CanvasChildren } from "../pages/canvas"
+import { children as WebpackChildren } from "../pages/webpack"
 import { Suspense, lazy } from "react"
 import { HashRouter, Route, Routes } from "react-router-dom";
 
@@ -21,7 +22,6 @@ const VuePage = lazy(() => import('../pages/vue'));
 const WebpackPage = lazy(() => import('../pages/webpack'));
 const ReduxPage = lazy(() => import('../pages/redux'));
 const NodePage = lazy(() => import('../pages/node'));
-const VuexPage = lazy(() => import('../pages/vuex'));
 const VitePage = lazy(() => import('../pages/vite'));
 const MainPage = lazy(() => import('../pages/main'));
 const WebRtcPage = lazy(() => import('../pages/web-rtc'));
@@ -40,11 +40,6 @@ export const routes: PageRoute[] = [
     element: <VuePage></VuePage>,
     title: "vue 相关",
     children: vueChildren
-  },
-  {
-    path: "/vuex",
-    element: <VuexPage></VuexPage>,
-    title: "vuex 相关",
   },
   {
     path: "/react",
@@ -66,6 +61,7 @@ export const routes: PageRoute[] = [
     path: "/webpack",
     element: <WebpackPage></WebpackPage>,
     title: "webpack 相关",
+    children: WebpackChildren
   },
   {
     path: "/node",

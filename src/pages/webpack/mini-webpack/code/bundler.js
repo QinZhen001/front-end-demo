@@ -7,7 +7,6 @@ const babel = require("@babel/core");
 
 let ID = 0
 
-
 //读取文件信息，并获得当前js文件的依赖关系
 function createAsset(filename) {
   // if (filename.indexOf(".js") === -1) {
@@ -129,15 +128,10 @@ function bundle(graph) {
 
 
 const entryPath = path.resolve(__dirname, "./example/entry.js")
-
-
 const graph = createGraph(entryPath)
 
-
 console.log("graph", graph)
-
 const ret = bundle(graph);
-
 // 打包生成文件
 const outputPath = path.resolve(__dirname, "./dist/bundle.js")
 fs.writeFileSync(outputPath, ret);
