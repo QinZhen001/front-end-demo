@@ -1,1 +1,0 @@
-System.register(["./index-legacy.b3d2934e.js"],(function(e){"use strict";var t;return{setters:[function(e){t=e.j}],execute:function(){const i=()=>t("div",{style:{padding:"10px"},children:t("a",{href:"https://github.com/QinZhen001/vite/tree/plugin",children:"vite test plugin"})});e({VitePage:i,default:i})}}}));
