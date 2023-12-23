@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
-import { routes, PageRoute } from "../../router";
+import { routes } from "../../router";
+import { PageRoute } from "../../types";
 import "./index.css";
 
 export const MainPage = () => {
@@ -10,7 +11,7 @@ export const MainPage = () => {
       <ul>
         {finalRoutes.map(({ path, title }) => (
           <li key={path}>
-            <Link to={path}>{title}</Link>
+            {path ? <Link to={path}>{title}</Link> : title}
           </li>
         ))}
       </ul>
@@ -23,9 +24,9 @@ export const CommonPageRouter = ({ routes }: { routes: PageRoute[] }) => {
     <div className="page">
       <section className="left">
         <ul>
-          {routes.filter(item => !item.hidden).map(({ title, path, element }) => (
+          {routes.filter(item => !item.hidden && !item.index).map(({ title, path, element }) => (
             <li key={path}>
-              <Link to={path}>{title}</Link>
+              {path ? <Link to={path}>{title}</Link> : title}
             </li>
           ))}
         </ul>

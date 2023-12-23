@@ -7,20 +7,13 @@ import { children as AnimateChildren } from "../pages/animation"
 import { children as CanvasChildren } from "../pages/canvas"
 import { children as WebpackChildren } from "../pages/webpack"
 import { Suspense, lazy } from "react"
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes, } from "react-router-dom";
+import { PageRoute } from "../types";
 
-export type PageRoute = {
-  path: string;
-  element: React.ReactNode;
-  title: string;
-  hidden?: boolean;
-  children?: PageRoute[];
-};
 
 const ReactPage = lazy(() => import('../pages/react'));
 const VuePage = lazy(() => import('../pages/vue'));
 const WebpackPage = lazy(() => import('../pages/webpack'));
-const ReduxPage = lazy(() => import('../pages/redux'));
 const NodePage = lazy(() => import('../pages/node'));
 const VitePage = lazy(() => import('../pages/vite'));
 const MainPage = lazy(() => import('../pages/main'));
@@ -46,11 +39,6 @@ export const routes: PageRoute[] = [
     element: <ReactPage></ReactPage>,
     title: "react 相关",
     children: ReactChildren
-  },
-  {
-    path: "/redux",
-    element: <ReduxPage></ReduxPage>,
-    title: "redux 相关",
   },
   {
     path: "/vite",
@@ -95,25 +83,35 @@ export const routes: PageRoute[] = [
   },
 ]
 
-export const RouteContainer = () => (
-  <HashRouter>
-    <Routes>
-      {routes
-        .map((item) => (
-          <Route key={item.path} path={item.path} element={
-            <Suspense fallback={<div>Loading...</div>}>{item.element}</Suspense>
+export const RouteContainer = () => {
+
+  const genRoutes = (routes: PageRoute[]) => {
+    let finalRoutes = routes
+      .map((item) => {
+        const { path, element, children, index } = item
+        return !index ? <Route key={path} path={path} element={
+          <Suspense
+            fallback={<div > Loading...</div >}>
+            {element}
+          </Suspense >
+        }
+        >
+          {
+            children && children.length
+              ? genRoutes(children)
+              : null
           }
-          >
-            {item.children
-              ? item.children
-                .map(({ path, element }) => (
-                  <Route key={path} path={path} element={
-                    <Suspense fallback={<div>Loading...</div>}>{element}</Suspense>
-                  }></Route>
-                ))
-              : null}
-          </Route>
-        ))}
+        </Route > :
+          <Route key="index" index element={element} />
+      })
+
+    return finalRoutes
+  }
+
+
+  return <HashRouter>
+    <Routes>
+      {genRoutes(routes)}
     </Routes>
   </HashRouter>
-);
+}
