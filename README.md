@@ -1,3 +1,5 @@
+![last commit](https://badgen.net/github/last-commit/QinZhen001/front-end-demo)
+
 # front-end-demo
 记录下前端学习的一些东西
 
