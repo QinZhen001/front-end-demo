@@ -2,9 +2,7 @@
 
 [https://promisesaplus.com/](https://promisesaplus.com/)
 
-
 简单手写实现promise
-
 
 ## 测试promise
 

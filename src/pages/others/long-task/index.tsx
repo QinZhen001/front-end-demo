@@ -5,10 +5,8 @@ const MockTrackerSend = (data: any) => {
   console.log("[mock send]: ", data)
 }
 
-
 const LongTask = () => {
   const { getLast } = useLastEvent()
-
 
   useLayoutEffect(() => {
     observeLongTask()
@@ -16,7 +14,7 @@ const LongTask = () => {
 
   const observeLongTask = () => {
     if (PerformanceObserver) {
-      new PerformanceObserver(list => {
+      new PerformanceObserver((list) => {
         list.getEntries().forEach((entry) => {
           if (entry.duration > 100) {
             const lastEvent = getLast()
@@ -27,22 +25,22 @@ const LongTask = () => {
                 eventType: lastEvent?.type,
                 startTime: entry.startTime, // 开始时间
                 duration: entry.duration, // 持续时间
-                selector: lastEvent?.target
+                selector: lastEvent?.target,
               })
             })
           }
         })
       }).observe({
-        entryTypes: ["longtask"]
+        entryTypes: ["longtask"],
       })
     }
   }
 
   const addLongTask = () => {
-    let start = Date.now();
-    console.log("longTask开始 start", start);
-    while (Date.now() < 2000 + start) { }
-    console.log("longTask结束 end", Date.now());
+    let start = Date.now()
+    console.log("longTask开始 start", start)
+    while (Date.now() < 2000 + start) {}
+    console.log("longTask结束 end", Date.now())
   }
 
   const test1 = () => {
@@ -53,13 +51,13 @@ const LongTask = () => {
     console.log("test2")
   }
 
-  return <div>
-    <button onClick={test1}>test1</button>
-    <button onClick={test2}>test2</button>
-    <button onClick={addLongTask}>add long task</button>
-  </div>
+  return (
+    <div>
+      <button onClick={test1}>test1</button>
+      <button onClick={test2}>test2</button>
+      <button onClick={addLongTask}>add long task</button>
+    </div>
+  )
 }
 
-
-
-export default LongTask;
+export default LongTask

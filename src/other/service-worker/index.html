@@ -1,88 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <body>
+    <p>navigator.serviceWorker.register('sw.js', { scope: './' })</p>
+    <p>
+      scope 属性：它是 Service Worker 控制的内容的子目录，这个属性所表示的路径不能在 service worker
+      文件的路径之上，默认是 Serivce Worker 文件所在的目录
+    </p>
+    <button onclick="oneWayCommunication()">oneWayCommunication</button>
+    <button onclick="twoWayCommunication()">twoWayCommunication</button>
+    <button onclick="requestBroadcast()">requestBroadcast</button>
+  </body>
 
-<body>
-  <p>navigator.serviceWorker.register('sw.js', { scope: './' })</p>
-  <p>scope 属性：它是 Service Worker 控制的内容的子目录，这个属性所表示的路径不能在 service worker 文件的路径之上，默认是 Serivce Worker 文件所在的目录 </p>
-  <button onclick="oneWayCommunication()">oneWayCommunication</button>
-  <button onclick="twoWayCommunication()">twoWayCommunication</button>
-  <button onclick="requestBroadcast()">requestBroadcast</button>
-</body>
-
-<script>
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js', { scope: './' })
-      .then((registration) => {
-        console.log("registration", registration)
-      }).catch((err) => {
-        console.log("err", err)
-      })
-  }
-
-  // 单向通信
-  function oneWayCommunication() {
-    if (navigator.serviceWorker.controller) {
-      navigator.serviceWorker.controller.postMessage({
-        command: "oneWayCommunication",
-        message: "Hi, SW"
-      })
-    } else {
-      console.log("No active ServiceWorker")
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("sw.js", { scope: "./" })
+        .then((registration) => {
+          console.log("registration", registration)
+        })
+        .catch((err) => {
+          console.log("err", err)
+        })
     }
-  }
 
-  // 双向通信
-  function twoWayCommunication() {
-    if (navigator.serviceWorker.controller) {
-      const messageChannel = new MessageChannel()
-      // 监听service worker 的消息
-      messageChannel.port1.onmessage = (event) => {
-        console.log("Response from the SW : ", event.data.message);
-      }
-      // 向service worker发消息
-      navigator.serviceWorker.controller.postMessage({
-        "command": "twoWayCommunication",
-        "message": "Hi, SW2"
-      }, [messageChannel.port2])
-    } else {
-      console.log("No active ServiceWorker")
-    }
-  }
-
-  // 广播
-  function requestBroadcast() {
-    registerBroadcastReceiver()
-
-    if (navigator.serviceWorker.controller) {
-      console.log("Sending message to service worker");
-      navigator.serviceWorker.controller.postMessage({
-        "command": "broadcast"
-      })
-    } else {
-      console.log("No active ServiceWorker");
-    }
-  }
-
-
-  function registerBroadcastReceiver() {
-    navigator.serviceWorker.onmessage = (event) => {
-      console.log("Broadcasted from SW : ", event.data);
-
-      const data = event.data;
-
-      if (data.command == "broadcastOnRequest") {
-        console.log("Broadcasted message from the ServiceWorker : ", data.message);
+    // 单向通信
+    function oneWayCommunication() {
+      if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({
+          command: "oneWayCommunication",
+          message: "Hi, SW",
+        })
+      } else {
+        console.log("No active ServiceWorker")
       }
     }
-  }
 
-</script>
+    // 双向通信
+    function twoWayCommunication() {
+      if (navigator.serviceWorker.controller) {
+        const messageChannel = new MessageChannel()
+        // 监听service worker 的消息
+        messageChannel.port1.onmessage = (event) => {
+          console.log("Response from the SW : ", event.data.message)
+        }
+        // 向service worker发消息
+        navigator.serviceWorker.controller.postMessage(
+          {
+            command: "twoWayCommunication",
+            message: "Hi, SW2",
+          },
+          [messageChannel.port2],
+        )
+      } else {
+        console.log("No active ServiceWorker")
+      }
+    }
 
+    // 广播
+    function requestBroadcast() {
+      registerBroadcastReceiver()
+
+      if (navigator.serviceWorker.controller) {
+        console.log("Sending message to service worker")
+        navigator.serviceWorker.controller.postMessage({
+          command: "broadcast",
+        })
+      } else {
+        console.log("No active ServiceWorker")
+      }
+    }
+
+    function registerBroadcastReceiver() {
+      navigator.serviceWorker.onmessage = (event) => {
+        console.log("Broadcasted from SW : ", event.data)
+
+        const data = event.data
+
+        if (data.command == "broadcastOnRequest") {
+          console.log("Broadcasted message from the ServiceWorker : ", data.message)
+        }
+      }
+    }
+  </script>
 </html>

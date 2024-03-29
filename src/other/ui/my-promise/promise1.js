@@ -38,11 +38,11 @@ class KPromise {
   }
 
   then(onFulfilled, onRejected) {
-    if (typeof onFulfilled === 'function') {
+    if (typeof onFulfilled === "function") {
       // 成功的回调
       this.fulfilledCbs.push(onFulfilled)
     }
-    if (typeof onRejected === 'function') {
+    if (typeof onRejected === "function") {
       // 失败的回调
       this.rejectCbs.push(onRejected)
     }
@@ -58,17 +58,17 @@ let promise = new KPromise((resolve, reject) => {
   let a = 2
   let b = 1
   if (a > b) {
-    resolve('resolve111')
+    resolve("resolve111")
   } else {
-    reject('reject11111')
+    reject("reject11111")
   }
 }).then(
   (res) => {
     setTimeout(() => {
-      console.log('then resolve: ', res)
+      console.log("then resolve: ", res)
     }, 1000)
   },
   (rej) => {
-    console.log('then reject: ', rej)
-  }
+    console.log("then reject: ", rej)
+  },
 )

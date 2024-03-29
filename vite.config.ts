@@ -1,11 +1,10 @@
-import process from "process";
-import { defineConfig } from "vite";
+import process from "process"
+import { defineConfig } from "vite"
 // https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react
-import react from "@vitejs/plugin-react";
-import commonjs from 'vite-plugin-commonjs'
+import react from "@vitejs/plugin-react"
+import commonjs from "vite-plugin-commonjs"
 
-
-const { name = "" } = require("./package.json");
+const { name = "" } = require("./package.json")
 
 // just for debug vercel env
 console.log("process.env.VERCEL_ENV", process.env.VERCEL_ENV)
@@ -27,6 +26,13 @@ export default defineConfig({
     // legacy({
     //   targets: ["defaults", "not IE 11"],
     // }),
-    react(),
-  ]
-});
+    react({
+      babel: {
+        plugins: [
+          ["@babel/plugin-proposal-decorators", { legacy: true }],
+          ["@babel/plugin-proposal-class-properties", { loose: true }],
+        ],
+      },
+    }),
+  ],
+})

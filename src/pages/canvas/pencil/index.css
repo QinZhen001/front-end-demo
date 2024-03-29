@@ -1,4 +1,4 @@
-.content{
+.content {
   display: flex;
 }
 
@@ -25,5 +25,5 @@
   top: 0;
   bottom: 0;
   z-index: 1;
-  visibility:visible
+  visibility: visible;
 }

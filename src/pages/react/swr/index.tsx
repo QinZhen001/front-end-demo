@@ -3,7 +3,7 @@
 import { useState } from "react"
 // import { useFetch } from "./mini/index"
 
-const url = 'https://jsonplaceholder.typicode.com/posts'
+const url = "https://jsonplaceholder.typicode.com/posts"
 
 const TestSwr = () => {
   const [num, setNum] = useState(1)
@@ -11,12 +11,13 @@ const TestSwr = () => {
   //   return fetch(`${url}/${num}`).then((response) => response.json())
   // }, [num])
 
-  return <div>
-    <button onClick={() => setNum(num + 1)} >fetchData {num}</button>
-    {/* <div>{data?.id}</div>
+  return (
+    <div>
+      <button onClick={() => setNum(num + 1)}>fetchData {num}</button>
+      {/* <div>{data?.id}</div>
     <div>{data?.body}</div> */}
-  </div>
+    </div>
+  )
 }
-
 
 export default TestSwr

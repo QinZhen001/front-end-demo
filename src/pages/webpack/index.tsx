@@ -1,7 +1,7 @@
 import { CommonPageRouter } from "../main"
-import {lazy} from "react"
+import { lazy } from "react"
 
-const MiniWebpack = lazy(() => import('./mini-webpack'));
+const MiniWebpack = lazy(() => import("./mini-webpack"))
 
 export const children = [
   {
@@ -13,8 +13,6 @@ export const children = [
 
 export const WebpackPage = () => {
   return <CommonPageRouter routes={children}></CommonPageRouter>
-};
-
-
+}
 
 export default WebpackPage

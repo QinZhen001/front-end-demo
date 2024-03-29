@@ -1,10 +1,10 @@
 import { CommonPageRouter } from "../main"
 import { lazy } from "react"
 
-const Vue2Realize = lazy(() => import('./vue2'));
-const Vue3Realize = lazy(() => import('./vue3'));
-const SimpleVueRouter = lazy(() => import('./simple-vue-router'));
-const SimpleVuex = lazy(() => import('./vuex'));
+const Vue2Realize = lazy(() => import("./vue2"))
+const Vue3Realize = lazy(() => import("./vue3"))
+const SimpleVueRouter = lazy(() => import("./simple-vue-router"))
+const SimpleVuex = lazy(() => import("./vuex"))
 
 export const children = [
   {
@@ -45,7 +45,6 @@ export const children = [
 
 const VuePage = () => {
   return <CommonPageRouter routes={children}></CommonPageRouter>
-};
-
+}
 
 export default VuePage

@@ -1,68 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <body>
+    <button onclick="handleCrash()">点击我使页面崩溃</button>
+  </body>
 
-<body>
-  <button onclick='handleCrash()'>点击我使页面崩溃</button>
-
-</body>
-
-<script>
-  function handleCrash() {
-    var total = "";
-    for (var i = 0; i < 1000000; i++) {
-      var dom = document.createElement('span');
-      dom.innerHTML = "崩溃";
-      document.getElementsByTagName("body")[0].appendChild(dom)
+  <script>
+    function handleCrash() {
+      var total = ""
+      for (var i = 0; i < 1000000; i++) {
+        var dom = document.createElement("span")
+        dom.innerHTML = "崩溃"
+        document.getElementsByTagName("body")[0].appendChild(dom)
+      }
     }
-  }
 
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("service-worker.js", { scope: "./" })
+        .then((registration) => {
+          console.log("registration", registration)
+          debugger
+          if (navigator.serviceWorker.controller) {
+            // 每五秒发一次心跳
+            let HEARTBEAT_INTERVAL = 5 * 1000
+            // 计算id出来
+            let sessionId = "uuid()"
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js', { scope: './' })
-      .then((registration) => {
-        console.log("registration", registration)
-        debugger
-        if (navigator.serviceWorker.controller) {
-          // 每五秒发一次心跳
-          let HEARTBEAT_INTERVAL = 5 * 1000
-          // 计算id出来
-          let sessionId = "uuid()"
+            let heartbeat = () => {
+              console.log("页面发送 state:running")
+              navigator.serviceWorker.controller.postMessage({
+                type: "running",
+                id: sessionId,
+                // 附加信息，如果页面 crash，上报的附加数据
+                data: {},
+              })
+            }
 
-          let heartbeat = () => {
-            console.log("页面发送 state:running")
-            navigator.serviceWorker.controller.postMessage({
-              type: "running",
-              id: sessionId,
-              // 附加信息，如果页面 crash，上报的附加数据
-              data: {}
+            window.addEventListener("beforeunload", () => {
+              console.log("页面发送 state:clear") // clear
+              navigator.serviceWorker.controller.postMessage({
+                type: "clear",
+                id: sessionId,
+              })
             })
+
+            setInterval(heartbeat, HEARTBEAT_INTERVAL)
+            heartbeat()
           }
-
-          window.addEventListener("beforeunload", () => {
-            console.log("页面发送 state:clear") // clear
-            navigator.serviceWorker.controller.postMessage({
-              type: 'clear',
-              id: sessionId
-            })
-          })
-
-          setInterval(heartbeat, HEARTBEAT_INTERVAL)
-          heartbeat();
-
-        }
-      }).catch(err => {
-        // Something went wrong during registration. The service-worker.js file
-        // might be unavailable or contain a syntax error.
-      })
-  }
-
-
-</script>
-
+        })
+        .catch((err) => {
+          // Something went wrong during registration. The service-worker.js file
+          // might be unavailable or contain a syntax error.
+        })
+    }
+  </script>
 </html>

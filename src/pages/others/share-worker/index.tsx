@@ -3,36 +3,39 @@
 // github: https://github.com/coolaj86/html5-shared-web-worker-examples
 // MDN: https://developer.mozilla.org/zh-CN/docs/Web/API/SharedWorker
 import { useState, useEffect } from "react"
-const worker = new SharedWorker("/worker.js");
+const worker = new SharedWorker("/worker.js")
 
 const ShareWorker = () => {
-
   const [content, setContent] = useState<any[]>([])
 
   const initWorker = () => {
-    worker.port.addEventListener('message', function (e) {
-      console.log('Message received from worker', e.data.msg);
-      setContent(pre => ([...pre, e.data.msg]))
-    }, false);
-    worker.port.start();
-    worker.port.postMessage({ msg: 'ping' });
+    worker.port.addEventListener(
+      "message",
+      function (e) {
+        console.log("Message received from worker", e.data.msg)
+        setContent((pre) => [...pre, e.data.msg])
+      },
+      false,
+    )
+    worker.port.start()
+    worker.port.postMessage({ msg: "ping" })
   }
 
   useEffect(() => {
     initWorker()
   }, [])
 
-  return <div>
-    <h3>ShareWorker</h3>
-    <h3>请多开几个tab查看效果</h3>
-    <div className="content">
-      {content.map((item, index) => {
-        return <div key={index}>{item}</div>
-      })}
+  return (
+    <div>
+      <h3>ShareWorker</h3>
+      <h3>请多开几个tab查看效果</h3>
+      <div className="content">
+        {content.map((item, index) => {
+          return <div key={index}>{item}</div>
+        })}
+      </div>
     </div>
-  </div>
+  )
 }
-
-
 
 export default ShareWorker

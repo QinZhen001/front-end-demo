@@ -31,9 +31,8 @@ export const useLastEvent = () => {
 
   const getLast = () => ref.current
 
-
   return {
     last,
-    getLast
+    getLast,
   }
 }

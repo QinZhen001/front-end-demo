@@ -1,7 +1,10 @@
-const arrayThunk = ({dispatch, getState}) => next => action => {
+const arrayThunk =
+  ({ dispatch, getState }) =>
+  (next) =>
+  (action) => {
     //如果是函数，执行一下
     if (Array.isArray(action)) {
-        return action.forEach(v => dispatch(v))
+      return action.forEach((v) => dispatch(v))
     }
 
     //如果不符合我们的要求，就直接调用下一个中间件，使用next
@@ -10,6 +13,6 @@ const arrayThunk = ({dispatch, getState}) => next => action => {
     //     return action(dispatch, getState)
     // }
     return next(action)
-}
+  }
 
 export default arrayThunk

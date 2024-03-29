@@ -4,16 +4,10 @@
 
 测试 service-worker
 
-
-
-
 ### 启动服务
-
-
 
 ```
 cd src/other/service-worker
 
 nodemon server.js
 ```
-

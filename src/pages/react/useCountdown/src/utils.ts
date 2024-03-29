@@ -2,7 +2,7 @@ import { useMemo, useRef } from "react"
 
 type Noop = (...args: any[]) => void
 
-export const noop = (...args: any[]) => { }
+export const noop = (...args: any[]) => {}
 
 export const useLatest = <T>(value: T) => {
   const ref = useRef<any>()
@@ -10,7 +10,6 @@ export const useLatest = <T>(value: T) => {
 
   return ref
 }
-
 
 const useMemoizedFn = <T extends Noop>(fn: T) => {
   const fnRef = useRef<T>(fn)

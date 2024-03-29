@@ -1,31 +1,30 @@
 class Event {
   events = new Map()
 
-
   // 触发事件
   on(eventType, callback) {
     const event = {
-      callback
+      callback,
     }
     if (this.events.get(eventType)) {
       this.events.get(eventType).push(event)
     } else {
-      this.events.set(eventType, [event]);
+      this.events.set(eventType, [event])
     }
   }
 
   // 取消订阅
   off(eventType, callback) {
     if (!this.events.get(eventType)) {
-      return false;
+      return false
     }
-    const events = this.events.get(eventType).filter(event => {
-      return event.callback !== callback;
-    });
+    const events = this.events.get(eventType).filter((event) => {
+      return event.callback !== callback
+    })
 
-    this.events.set(eventType, events);
+    this.events.set(eventType, events)
 
-    return true;
+    return true
   }
 
   // 发布事件
@@ -34,10 +33,10 @@ class Event {
       return false
     }
 
-    this.events.get(eventType).forEach(event => {
-      event.callback(context);
-    });
+    this.events.get(eventType).forEach((event) => {
+      event.callback(context)
+    })
 
-    return true;
+    return true
   }
 }

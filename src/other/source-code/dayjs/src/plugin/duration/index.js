@@ -6,10 +6,10 @@
  * @param {Any} d
  * @return {Boolean}
  */
-const isDuration = (d) => d instanceof Duration;
+const isDuration = (d) => d instanceof Duration
 
-let $d;
-let $u;
+let $d
+let $u
 
 /**
  * @description: Duration实例的封装器
@@ -18,19 +18,19 @@ let $u;
  * @param {String} unit 单位
  * @return {Duration} 返回一个Duration实例
  */
-const wrapper = (input, instance, unit) => new Duration(input, unit, instance.$l);
+const wrapper = (input, instance, unit) => new Duration(input, unit, instance.$l)
 
 /**
  * @description: 给单位加上s
  * @param {String} unit
  * @return {String} 返回units
  */
-const prettyUnit = (unit) => `${$u.p(unit)}s`;
+const prettyUnit = (unit) => `${$u.p(unit)}s`
 
 class Duration {
   constructor(input, unit, locale) {
     // 解析出$d和$ms
-    return this;
+    return this
   }
 
   /**
@@ -137,10 +137,10 @@ class Duration {
  * @param {Any} d
  * @return {Boolean}
  */
-const isDuration = (d) => d instanceof Duration;
+const isDuration = (d) => d instanceof Duration
 
-let $d;
-let $u;
+let $d
+let $u
 
 /**
  * @description: Duration实例的封装器
@@ -149,19 +149,19 @@ let $u;
  * @param {String} unit 单位
  * @return {Duration} 返回一个Duration实例
  */
-const wrapper = (input, instance, unit) => new Duration(input, unit, instance.$l);
+const wrapper = (input, instance, unit) => new Duration(input, unit, instance.$l)
 
 /**
  * @description: 给单位加上s
  * @param {String} unit
  * @return {String} 返回units
  */
-const prettyUnit = (unit) => `${$u.p(unit)}s`;
+const prettyUnit = (unit) => `${$u.p(unit)}s`
 
 class Duration {
   constructor(input, unit, locale) {
     // 解析出$d和$ms
-    return this;
+    return this
   }
 
   /**
@@ -264,8 +264,8 @@ class Duration {
 }
 
 export default (option, Dayjs, dayjs) => {
-  $d = dayjs;
-  $u = dayjs().$utils();
+  $d = dayjs
+  $u = dayjs().$utils()
 
   /**
    * @description: 把duration方法加到了dayjs函数对象上
@@ -273,22 +273,22 @@ export default (option, Dayjs, dayjs) => {
    * @param {String} unit 单位
    * @return {*}
    */
-  dayjs.duration = function (input, unit) {};
-  dayjs.isDuration = isDuration;
+  dayjs.duration = function (input, unit) {}
+  dayjs.isDuration = isDuration
 
-  const oldAdd = Dayjs.prototype.add;
-  const oldSubtract = Dayjs.prototype.subtract;
+  const oldAdd = Dayjs.prototype.add
+  const oldSubtract = Dayjs.prototype.subtract
 
   /**
    * @description: 扩展add方法
    * @param {Duration} value 值
    * @param {String} unit 单位
    */
-  Dayjs.prototype.add = function (value, unit) {};
+  Dayjs.prototype.add = function (value, unit) {}
   /**
    * @description: 扩展subtract方法
    * @param {Duration} value 值
    * @param {String} unit 单位
    */
-  Dayjs.prototype.subtract = function (value, unit) {};
-};
+  Dayjs.prototype.subtract = function (value, unit) {}
+}

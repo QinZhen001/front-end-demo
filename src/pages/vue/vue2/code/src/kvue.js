@@ -15,11 +15,10 @@ export default class KVue {
     // 响应式
     this.observe(this.$data)
 
-  
     new Compile(options.el, this)
 
     if (options.created) {
-      options.created.call(this);
+      options.created.call(this)
     }
   }
 
@@ -28,7 +27,7 @@ export default class KVue {
       return
     }
     // 遍历对象
-    Object.keys(value).forEach(key => {
+    Object.keys(value).forEach((key) => {
       if (value.hasOwnProperty(key)) {
         this.defineReactive(value, key, value[key])
         // 代理到vm上
@@ -36,7 +35,6 @@ export default class KVue {
       }
     })
   }
-
 
   defineReactive(obj, key, val) {
     const dep = new Dep()
@@ -51,10 +49,10 @@ export default class KVue {
       set(newVal) {
         if (newVal !== val) {
           val = newVal
-          console.log(`${key}更新了：${newVal}`);
-          dep.notify();
+          console.log(`${key}更新了：${newVal}`)
+          dep.notify()
         }
-      }
+      },
     })
     // 递归
     this.observe(val)
@@ -72,9 +70,8 @@ export default class KVue {
         return this.$data[key]
       },
       set(newVal) {
-        this.$data[key] = newVal;
-      }
+        this.$data[key] = newVal
+      },
     })
   }
-
 }

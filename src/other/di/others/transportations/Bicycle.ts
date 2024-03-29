@@ -1,14 +1,12 @@
-import { Injectable } from "../../di";
-
+import { Injectable } from "../../di"
 
 @Injectable()
 export class Bicycle {
-
   constructor() {
-    console.log("New Bicycle");
+    console.log("New Bicycle")
   }
 
   drive() {
-    return "driving a bicycle";
+    return "driving a bicycle"
   }
 }

@@ -1,6 +1,6 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const http = require("http")
+const fs = require("fs")
+const path = require("path")
 
 const mineTypeMap = {
   html: "text/html;charset=utf-8",
@@ -24,24 +24,24 @@ const mineTypeMap = {
   // 注意下面这个 (爬坑)
   // Error: The script does not have a MIME type.  (js缺少MIME type)
   js: "application/javascript",
-};
+}
 
 const server = http.createServer((req, res) => {
-  const fileName = path.resolve(__dirname, "." + req.url);
-  const extName = path.extname(fileName).substr(1);
+  const fileName = path.resolve(__dirname, "." + req.url)
+  const extName = path.extname(fileName).substr(1)
 
-  console.log("fileName", fileName);
-  console.log("extName", extName);
+  console.log("fileName", fileName)
+  console.log("extName", extName)
 
   if (fs.existsSync(fileName)) {
     if (mineTypeMap[extName]) {
-      res.setHeader("Content-Type", mineTypeMap[extName]);
+      res.setHeader("Content-Type", mineTypeMap[extName])
     }
-    const stream = fs.createReadStream(fileName);
-    stream.pipe(res);
+    const stream = fs.createReadStream(fileName)
+    stream.pipe(res)
   } else {
-    console.error(`${fileName} is non-existent!`);
+    console.error(`${fileName} is non-existent!`)
   }
-});
+})
 
-server.listen(80);
+server.listen(80)

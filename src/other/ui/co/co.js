@@ -2,27 +2,24 @@ function toPromise(obj) {
   if (!obj) return obj
   if (isPromise(obj)) return obj
   if (isGeneratorFunction(obj) || isGenerator(obj)) return co.call(this, obj)
-  if (typeof obj == 'function') return thunkToPromise.call(this, obj)
+  if (typeof obj == "function") return thunkToPromise.call(this, obj)
   if (Array.isArray(obj)) return arrayToPromise.call(this, obj)
   if (isObject(obj)) return objectToPromise.call(this, obj)
   return obj
 }
 
 function isPromise(val) {
-  return val && typeof val.then == 'function'
+  return val && typeof val.then == "function"
 }
 
 function isGenerator(val) {
-  return typeof val.next == 'function' && typeof val.throw == 'function'
+  return typeof val.next == "function" && typeof val.throw == "function"
 }
 
 function isGeneratorFunction(obj) {
   const constructor = obj.constructor
   if (!constructor) return false
-  if (
-    constructor.name == 'GeneratorFunction' ||
-    constructor.displayName == 'GeneratorFunction'
-  )
+  if (constructor.name == "GeneratorFunction" || constructor.displayName == "GeneratorFunction")
     return true
   return isGenerator(constructor.prototype)
 }
@@ -69,10 +66,10 @@ function objectToPromise(obj) {
 function co(gen) {
   const ctx = this
   return new Promise((resolve, reject) => {
-    if (typeof gen == 'function') {
+    if (typeof gen == "function") {
       gen = gen.call(ctx)
     }
-    if (!gen || typeof gen.next !== 'function') {
+    if (!gen || typeof gen.next !== "function") {
       return resolve(gen)
     }
 
@@ -105,11 +102,11 @@ function co(gen) {
       }
       return onRejected(
         new TypeError(
-          'You may only yield a function, promise, generator, array, or object, ' +
+          "You may only yield a function, promise, generator, array, or object, " +
             'but the following object was passed: "' +
             String(ret.value) +
-            '"'
-        )
+            '"',
+        ),
       )
     }
 

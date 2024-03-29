@@ -5,15 +5,15 @@ const UserModel = {
         const userObjet = {
           id: userId,
           notificationsEnabled: true,
-        };
+        }
 
-        return resolve(userObjet);
+        return resolve(userObjet)
       }
 
-      reject("Data is missing");
-    });
+      reject("Data is missing")
+    })
   },
-};
+}
 
 const TaskModel = function ({ userId, name }) {
   return new Promise((resolve, reject) => {
@@ -22,46 +22,46 @@ const TaskModel = function ({ userId, name }) {
         assignedUser: {
           id: userId,
         },
-      };
+      }
 
-      return resolve(newTask);
+      return resolve(newTask)
     }
 
-    reject("Data is missing");
-  });
-};
+    reject("Data is missing")
+  })
+}
 
 const NotificationService = {
   sendNotification: (userId, name) => {
     return new Promise((resolve, reject) => {
-      if (userId && name) return resolve("Success");
+      if (userId && name) return resolve("Success")
 
-      reject("Data is missing");
-    });
+      reject("Data is missing")
+    })
   },
-};
+}
 
 async function asyncTask(userId, cb) {
-  let err, user, savedTask, notification;
-  [err, user] = await to(UserModel.findById(userId));
-  if (!(user && user.id)) return cb("No user found");
+  let err, user, savedTask, notification
+  ;[err, user] = await to(UserModel.findById(userId))
+  if (!(user && user.id)) return cb("No user found")
 
-  [err, savedTask] = await to(TaskModel({ userId: user.id, name: "Demo Task" }));
-  if (err) return cb("Error occurred while saving task");
+  ;[err, savedTask] = await to(TaskModel({ userId: user.id, name: "Demo Task" }))
+  if (err) return cb("Error occurred while saving task")
 
   if (user.notificationsEnabled) {
-    [err] = await to(NotificationService.sendNotification(user.id, "Task Created"));
-    if (err) return cb("Error while sending notification");
+    ;[err] = await to(NotificationService.sendNotification(user.id, "Task Created"))
+    if (err) return cb("Error while sending notification")
   }
 
   if (savedTask.assignedUser.id !== user.id) {
-    [err, notification] = await to(
-      NotificationService.sendNotification(savedTask.assignedUser.id, "Task was created for you")
-    );
-    if (err) return cb("Error while sending notification");
+    ;[err, notification] = await to(
+      NotificationService.sendNotification(savedTask.assignedUser.id, "Task was created for you"),
+    )
+    if (err) return cb("Error while sending notification")
   }
 
-  cb(null, savedTask);
+  cb(null, savedTask)
 }
 
 // asyncTask(1, (err, newTask) => {
@@ -71,7 +71,7 @@ async function asyncTask(userId, cb) {
 // });
 
 asyncTask(null, (err, newTask) => {
-  console.log("fail");
-  console.log(err);
-  console.log(newTask);
-});
+  console.log("fail")
+  console.log(err)
+  console.log(newTask)
+})

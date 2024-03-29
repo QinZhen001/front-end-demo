@@ -1,8 +1,6 @@
 // React 18 useTransition
 import { useState, useDeferredValue, useMemo, useEffect } from "react"
 
-
-
 const List = ({ input }: any) => {
   const LIST_SIZE = 20000
   const deferredInput = useDeferredValue(input)
@@ -15,7 +13,6 @@ const List = ({ input }: any) => {
     return l
   }, [deferredInput])
 
-
   useEffect(() => {
     console.log(`input: ${input} deferredInput: ${deferredInput}`)
   }, [deferredInput, input])
@@ -23,9 +20,7 @@ const List = ({ input }: any) => {
   return list
 }
 
-
 const UseDeferredValue = () => {
-
   // const data = useDeferredValue()
   const [input, setInput] = useState("")
 
@@ -33,12 +28,12 @@ const UseDeferredValue = () => {
     setInput(e.target.value)
   }
 
-
-  return <div >
-    <input type="text" value={input} onChange={handleChange} />
-    <List input={input}></List>
-  </div>
+  return (
+    <div>
+      <input type="text" value={input} onChange={handleChange} />
+      <List input={input}></List>
+    </div>
+  )
 }
-
 
 export default UseDeferredValue

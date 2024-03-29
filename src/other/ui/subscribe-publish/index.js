@@ -2,7 +2,6 @@ function isFunction(fn) {
   return typeof fn === "function"
 }
 
-
 class EventBus {
   constructor() {
     this.task = {}
@@ -18,11 +17,10 @@ class EventBus {
     this.task[name].push(cb)
   }
 
-
   emit(name, ...args) {
     let taskQueue = this.task[name]
     if (taskQueue && taskQueue.length) {
-      taskQueue.forEach(fn => fn(...args))
+      taskQueue.forEach((fn) => fn(...args))
     }
   }
 
@@ -40,7 +38,6 @@ class EventBus {
     }
   }
 
-
   once(name, cb) {
     if (!isFunction(cb)) {
       throw new Error(`method need a function`)
@@ -55,16 +52,10 @@ class EventBus {
 
 // --------------------------
 
-
-
 let bus = new EventBus()
 
 bus.on("add", (a, b) => {
   console.log(a + b)
 })
 
-
 bus.emit("add", 10, 11)
-
-
-

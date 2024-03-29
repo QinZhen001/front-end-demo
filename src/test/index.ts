@@ -1,4 +1,3 @@
-
 class A {
   aaa: string
 
@@ -6,7 +5,6 @@ class A {
     this.aaa = "aaa"
   }
 }
-
 
 class B extends A {
   bbb: string

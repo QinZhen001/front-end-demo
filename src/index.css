@@ -13,11 +13,9 @@ code {
   height: 100%;
 }
 
-
-button+button {
+button + button {
   margin-left: 10px;
 }
-
 
 iframe {
   border: 1px solid #ccc;

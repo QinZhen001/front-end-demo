@@ -1,18 +1,18 @@
-const ADD_GUN = "加机关枪";
-const REMOVE_GUN = "减机关枪";
+const ADD_GUN = "加机关枪"
+const REMOVE_GUN = "减机关枪"
 
 export function counter(state = 0, action) {}
 
 export function addGun() {
-  return { type: ADD_GUN };
+  return { type: ADD_GUN }
 }
 
 export function removeGun() {
-  return { type: REMOVE_GUN };
+  return { type: REMOVE_GUN }
 }
 
 export function addTwice() {
-  return [{ type: ADD_GUN }, addGunAsync()];
+  return [{ type: ADD_GUN }, addGunAsync()]
 }
 
 // 延迟添加，拖两天再给
@@ -21,18 +21,18 @@ export function addGunAsync() {
   return (dispatch) => {
     setTimeout(() => {
       //异步结束后，手动执行dispatch
-      dispatch(addGun());
-    }, 2000);
-  };
+      dispatch(addGun())
+    }, 2000)
+  }
 }
 
 export function counterReducer(state = 0, action) {
   switch (action.type) {
     case ADD_GUN:
-      return state + 1;
+      return state + 1
     case REMOVE_GUN:
-      return state - 1;
+      return state - 1
     default:
-      return 10;
+      return 10
   }
 }

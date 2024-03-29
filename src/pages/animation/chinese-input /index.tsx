@@ -2,7 +2,6 @@ import { CompositionEvent, ChangeEvent } from "react"
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Element/compositionstart_event
 
 const ChineseInput = () => {
-
   const onCompositionStart = (e: CompositionEvent<HTMLInputElement>) => {
     console.log("onCompositionStart", e.data)
   }
@@ -20,18 +19,17 @@ const ChineseInput = () => {
     console.log("onChange", e.target.value)
   }
 
-  return <div>
-    <input
-      type="text"
-      onCompositionStart={onCompositionStart}
-      onCompositionUpdate={onCompositionupdate}
-      onCompositionEnd={onCompositionEnd}
-      onChange={onChange}
-    ></input>
-  </div>
+  return (
+    <div>
+      <input
+        type="text"
+        onCompositionStart={onCompositionStart}
+        onCompositionUpdate={onCompositionupdate}
+        onCompositionEnd={onCompositionEnd}
+        onChange={onChange}
+      ></input>
+    </div>
+  )
 }
 
 export default ChineseInput
-
-
-

@@ -1,16 +1,17 @@
 import { lazy } from "react"
 import { CommonPageRouter } from "../main"
 
-const AsyncAwaitRetry = lazy(() => import('./async-await-retry'));
-const RxJS = lazy(() => import('./rx-js'));
-const WebsocketChat = lazy(() => import('./WebsocketChat'));
-const CodeMirror = lazy(() => import('./codemirror'));
-const SandBox = lazy(() => import('./sandbox'));
-const AbortController = lazy(() => import('./abort-controller'));
-const JSBridgeComponent = lazy(() => import('./js-bridge'));
-const ShareWorker = lazy(() => import('./share-worker'));
+const AsyncAwaitRetry = lazy(() => import("./async-await-retry"))
+const RxJS = lazy(() => import("./rx-js"))
+const WebsocketChat = lazy(() => import("./WebsocketChat"))
+const CodeMirror = lazy(() => import("./codemirror"))
+const SandBox = lazy(() => import("./sandbox"))
+const AbortController = lazy(() => import("./abort-controller"))
+const JSBridgeComponent = lazy(() => import("./js-bridge"))
+const ShareWorker = lazy(() => import("./share-worker"))
 const LongTask = lazy(() => import("./long-task"))
 const InfinityDebugger = lazy(() => import("./infinity-debugger"))
+const Immer = lazy(() => import("./immer"))
 
 export const children = [
   {
@@ -52,7 +53,8 @@ export const children = [
     path: "share-worker",
     element: <ShareWorker></ShareWorker>,
     title: "ShareWorker",
-  }, {
+  },
+  {
     path: "long-task",
     element: <LongTask></LongTask>,
     title: "LongTask 监控长任务",
@@ -60,12 +62,17 @@ export const children = [
   {
     path: "infinity-debugger",
     element: <InfinityDebugger></InfinityDebugger>,
-    title: "无限Debugger（禁止别人调试自己网页）"
+    title: "无限Debugger（禁止别人调试自己网页）",
+  },
+  {
+    path: "immer",
+    element: <Immer></Immer>,
+    title: "immer.js",
   },
 ]
 
 export const OtherPage = () => {
   return <CommonPageRouter routes={children}></CommonPageRouter>
-};
+}
 
 export default OtherPage

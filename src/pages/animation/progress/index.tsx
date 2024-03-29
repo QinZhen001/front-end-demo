@@ -16,14 +16,13 @@ const TestProgress = () => {
     return () => {
       clearTimeout(id)
     }
-
   }, [progress])
 
-
-
-  return <div>
-    <Progress progress={progress}></Progress>
-  </div>
+  return (
+    <div>
+      <Progress progress={progress}></Progress>
+    </div>
+  )
 }
 
 export default TestProgress

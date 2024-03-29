@@ -1,5 +1,5 @@
 export const NodePage = () => {
-  return <div>NodePage</div>;
-};
+  return <div>NodePage</div>
+}
 
 export default NodePage

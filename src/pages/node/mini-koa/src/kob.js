@@ -1,7 +1,7 @@
-const http = require('http')
-const context = require('./context')
-const request = require('./request')
-const response = require('./response')
+const http = require("http")
+const context = require("./context")
+const request = require("./request")
+const response = require("./response")
 
 /**
  *  核心模块
@@ -57,7 +57,7 @@ class KOB {
         return Promise.resolve(
           fn(ctx, function next() {
             return dispatch(i + 1)
-          })
+          }),
         )
       }
     }

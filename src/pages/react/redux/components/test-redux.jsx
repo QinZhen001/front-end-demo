@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "../mini-redux/custom-react-redux";
-import { addGun, removeGun, addGunAsync, addTwice } from "../reducer/index";
-
+import React, { Component } from "react"
+import { connect } from "../mini-redux/custom-react-redux"
+import { addGun, removeGun, addGunAsync, addTwice } from "../reducer/index"
 
 export const TestRedux = connect((state) => ({ num: state }), {
   addGun,
@@ -19,7 +18,7 @@ export const TestRedux = connect((state) => ({ num: state }), {
           <button onClick={this.props.addGunAsync}>拖两天再给</button>
           <button onClick={this.props.addTwice}>申请两把</button>
         </div>
-      );
+      )
     }
-  }
-);
+  },
+)

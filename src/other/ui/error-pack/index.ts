@@ -5,30 +5,30 @@ export enum AGRteErrorCode {
 
 export interface AGErrorOption {
   // original error object if there's any
-  original?: Error;
+  original?: Error
   // relevant object
-  currentTarget?: any;
+  currentTarget?: any
 }
 
 export class AGErrorBase extends Error {
-  readonly code: AGRteErrorCode;
-  readonly option?: AGErrorOption;
+  readonly code: AGRteErrorCode
+  readonly option?: AGErrorOption
   constructor(code: AGRteErrorCode, option?: AGErrorOption) {
-    super();
-    this.code = code;
-    this.option = option;
+    super()
+    this.code = code
+    this.option = option
   }
 }
 
 export class AGRteError extends AGErrorBase {}
 
 export abstract class AbstractErrorCenter {
-  abstract handleThrowableError(code: string, error?: Error): void;
-  abstract handleNonThrowableError(code: string, error?: Error): void;
+  abstract handleThrowableError(code: string, error?: Error): void
+  abstract handleNonThrowableError(code: string, error?: Error): void
 }
 
 export class RteErrorCenter extends AbstractErrorCenter {
-  static shared = new RteErrorCenter();
+  static shared = new RteErrorCenter()
 
   private _handleError(code: AGRteErrorCode, error?: Error) {
     // TODO:Logger
@@ -36,11 +36,11 @@ export class RteErrorCenter extends AbstractErrorCenter {
   }
 
   handleThrowableError(code: AGRteErrorCode, error?: Error) {
-    this._handleError(code, error);
-    throw error;
+    this._handleError(code, error)
+    throw error
   }
 
   handleNonThrowableError(code: AGRteErrorCode, error?: Error) {
-    this._handleError(code, error);
+    this._handleError(code, error)
   }
 }

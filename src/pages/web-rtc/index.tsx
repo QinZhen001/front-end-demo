@@ -1,9 +1,9 @@
 import { lazy } from "react"
 import { CommonPageRouter } from "../main"
 
-const WebRtcSimple = lazy(() => import('./simple'));
-const WebRtcDataChannel = lazy(() => import('./data-channel'));
-const AudioApi = lazy(() => import('./audio-api'));
+const WebRtcSimple = lazy(() => import("./simple"))
+const WebRtcDataChannel = lazy(() => import("./data-channel"))
+const AudioApi = lazy(() => import("./audio-api"))
 
 export const children = [
   {
@@ -23,10 +23,8 @@ export const children = [
   },
 ]
 
-
 export const WebRtcPage = () => {
   return <CommonPageRouter routes={children}></CommonPageRouter>
-};
-
+}
 
 export default WebRtcPage

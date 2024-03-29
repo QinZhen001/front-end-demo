@@ -1,37 +1,35 @@
 <html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <style>
+      section {
+        padding: 10px;
+        border: 1px solid red;
+      }
 
-<head>
-  <title>Parcel Sandbox</title>
-  <meta charset="UTF-8" />
-  <style>
-    section {
-      padding: 10px;
-      border: 1px solid red;
-    }
+      button + button {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
 
-    button+button {
-      margin-left: 10px;
-    }
-  </style>
-</head>
+  <body>
+    <div id="app">
+      <section className="item">
+        <button id="TestReflectMetadata">TestReflectMetadata</button>
+      </section>
+      <section className="item">
+        <button id="TestContainerV1">TestContainerV1</button>
+      </section>
+      <section className="item">
+        <button id="TestContainerV2">TestContainerV2</button>
+        <button id="ContainerV2_Factory">ContainerV2_Factory</button>
+        <button id="ContainerV2_Abstract">ContainerV2_Abstract</button>
+        <button id="ContainerV2_Lazy">ContainerV2_Lazy</button>
+      </section>
+    </div>
 
-<body>
-  <div id="app">
-    <section className="item">
-      <button id="TestReflectMetadata">TestReflectMetadata</button>
-    </section>
-    <section className="item">
-      <button id="TestContainerV1">TestContainerV1</button>
-    </section>
-    <section className="item">
-      <button id="TestContainerV2">TestContainerV2</button>
-      <button id="ContainerV2_Factory">ContainerV2_Factory</button>
-      <button id="ContainerV2_Abstract">ContainerV2_Abstract</button>
-      <button id="ContainerV2_Lazy">ContainerV2_Lazy</button>
-    </section>
-  </div>
-
-  <script src="src/index.ts"></script>
-</body>
-
+    <script src="src/index.ts"></script>
+  </body>
 </html>

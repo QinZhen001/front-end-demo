@@ -1,24 +1,24 @@
 // @ts-nocheck
-import store from "./store";
-import { useEffect, useState } from "react";
+import store from "./store"
+import { useEffect, useState } from "react"
 
 // @ts-ignore
-window.store = store;
+window.store = store
 
 export const SimpleVuex = () => {
-  const [updater, setUpdater] = useState(0);
+  const [updater, setUpdater] = useState(0)
 
   const syncIncre = () => {
-    store.mutations.incre(10);
-    setUpdater(updater + 1);
-  };
+    store.mutations.incre(10)
+    setUpdater(updater + 1)
+  }
 
   const asyncIncre = () => {
-    store.actions.actionTest(20);
+    store.actions.actionTest(20)
     setTimeout(() => {
-      setUpdater(updater + 1);
-    }, 3000);
-  };
+      setUpdater(updater + 1)
+    }, 3000)
+  }
 
   return (
     <div style={{ padding: "10px" }}>
@@ -29,8 +29,7 @@ export const SimpleVuex = () => {
         <button onClick={asyncIncre}>async incre</button>
       </div>
     </div>
-  );
-};
-
+  )
+}
 
 export default SimpleVuex

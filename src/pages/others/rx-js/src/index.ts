@@ -1,22 +1,22 @@
 export interface Observer {
-  next: (v: any) => void;
-  error: (e: any) => void;
-  complete: () => void;
+  next: (v: any) => void
+  error: (e: any) => void
+  complete: () => void
 }
 
-type ObserverFn = (o: Observer) => void;
+type ObserverFn = (o: Observer) => void
 
 function pipeFromArray(fns: Function[]) {
   if (fns.length == 0) {
-    return (x: any) => x;
+    return (x: any) => x
   }
   if (fns.length === 1) {
-    return fns[0];
+    return fns[0]
   }
 
   return (input: any) => {
-    return fns.reduce((pre, cur) => cur(pre), input);
-  };
+    return fns.reduce((pre, cur) => cur(pre), input)
+  }
 }
 
 export function map(project: Function) {
@@ -24,88 +24,88 @@ export function map(project: Function) {
     new Observable((subscriber) => {
       const subcription = observable.subscribe({
         next(value) {
-          return subscriber.next(project(value));
+          return subscriber.next(project(value))
         },
         error(err) {
-          subscriber.error(err);
+          subscriber.error(err)
         },
         complete() {
-          subscriber.complete();
+          subscriber.complete()
         },
-      });
+      })
 
-      return subcription;
-    });
+      return subcription
+    })
 }
 
 export class Observable {
-  _subscribe: ObserverFn;
+  _subscribe: ObserverFn
 
   constructor(_subscribe: ObserverFn) {
-    this._subscribe = _subscribe;
+    this._subscribe = _subscribe
   }
 
   subscribe(observer: Observer): Subscriber {
-    const subscriber = new Subscriber(observer);
-    subscriber.add(this._subscribe(subscriber));
-    return subscriber;
+    const subscriber = new Subscriber(observer)
+    subscriber.add(this._subscribe(subscriber))
+    return subscriber
   }
 
   pipe(...operations: Function[]) {
-    return pipeFromArray(operations)(this) as Observable;
+    return pipeFromArray(operations)(this) as Observable
   }
 }
 
 class Subscription {
-  private _teardowns: any[];
+  private _teardowns: any[]
 
   constructor() {
-    this._teardowns = [];
+    this._teardowns = []
   }
 
   unsubscribe() {
     this._teardowns.forEach((teardown) => {
-      typeof teardown == "function" ? teardown() : teardown.unsubscribe();
-    });
+      typeof teardown == "function" ? teardown() : teardown.unsubscribe()
+    })
   }
 
   add(teardown: any) {
     if (teardown) {
-      this._teardowns.push(teardown);
+      this._teardowns.push(teardown)
     }
   }
 }
 
 export class Subscriber extends Subscription {
-  observer: Observer;
-  isStopped: boolean;
+  observer: Observer
+  isStopped: boolean
 
   constructor(observer: Observer) {
-    super();
-    this.observer = observer;
-    this.isStopped = false;
+    super()
+    this.observer = observer
+    this.isStopped = false
   }
 
   next(value: any) {
     if (this.observer.next && !this.isStopped) {
-      this.observer.next(value);
+      this.observer.next(value)
     }
   }
 
   error(value: any) {
-    this.isStopped = true;
+    this.isStopped = true
     if (this.observer.error) {
-      this.observer.error(value);
+      this.observer.error(value)
     }
   }
 
   complete() {
-    this.isStopped = true;
+    this.isStopped = true
     if (this.observer.complete) {
-      this.observer.complete();
+      this.observer.complete()
     }
     if (this.unsubscribe) {
-      this.unsubscribe();
+      this.unsubscribe()
     }
   }
 }

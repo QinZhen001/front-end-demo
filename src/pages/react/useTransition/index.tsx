@@ -1,9 +1,8 @@
 // React 18 useTransition
 import { useState, useTransition } from "react"
 
-
 export const UseTransition = () => {
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState("")
   const [list, setList] = useState<any[]>([])
   const [isPending, startTransition] = useTransition()
 
@@ -22,12 +21,12 @@ export const UseTransition = () => {
     })
   }
 
-
-  return <div>
-    <input type="text" value={input} onChange={handleChange}></input>
-    {isPending ? "Loading..." : list.map((item, index) => (<div key={index}>{item}</div>))}
-  </div>
+  return (
+    <div>
+      <input type="text" value={input} onChange={handleChange}></input>
+      {isPending ? "Loading..." : list.map((item, index) => <div key={index}>{item}</div>)}
+    </div>
+  )
 }
-
 
 export default UseTransition

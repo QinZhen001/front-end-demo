@@ -1,61 +1,61 @@
 // https://mp.weixin.qq.com/s/ECI3tniwucE2Tpv4eWw7iA
-import { useState } from "react";
-import { Observable, Subscriber, Observer, map } from "./src";
-import "./index.css";
+import { useState } from "react"
+import { Observable, Subscriber, Observer, map } from "./src"
+import "./index.css"
 
-let source: Observable;
-let subscription: Subscriber;
+let source: Observable
+let subscription: Subscriber
 
 export const RxJS = () => {
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState(0)
 
   const onCreateObservable = () => {
     if (source) {
-      return;
+      return
     }
     source = new Observable((observer: Observer) => {
-      let i = 0;
+      let i = 0
       const timer = setInterval(() => {
-        observer.next(++i);
-      }, 1000);
+        observer.next(++i)
+      }, 1000)
 
       return function unsubscribe() {
-        clearInterval(timer);
-      };
-    });
-  };
+        clearInterval(timer)
+      }
+    })
+  }
 
   const onSubscribe = () => {
     if (subscription) {
-      return;
+      return
     }
     subscription = source.subscribe({
       next: (v) => {
-        console.log("next", v);
-        setVal(v);
+        console.log("next", v)
+        setVal(v)
       },
       error: (err) => console.error(err),
       complete: () => console.log("complete"),
-    });
-  };
+    })
+  }
 
   const onSubscribePipe = () => {
     if (subscription) {
-      return;
+      return
     }
     subscription = source.pipe(map((v: any) => v * v)).subscribe({
       next: (v) => {
-        console.log("pipe next", v);
-        setVal(v);
+        console.log("pipe next", v)
+        setVal(v)
       },
       error: (err) => console.error(err),
       complete: () => console.log("complete"),
-    });
-  };
+    })
+  }
 
   const onUnsubscribe = () => {
-    subscription.unsubscribe();
-  };
+    subscription.unsubscribe()
+  }
 
   return (
     <div className="rx-js">
@@ -66,8 +66,7 @@ export const RxJS = () => {
       <button onClick={onSubscribePipe}>Subscribe Pipe</button>
       <button onClick={onUnsubscribe}>Unsubscribe</button>
     </div>
-  );
-};
-
+  )
+}
 
 export default RxJS

@@ -2,16 +2,15 @@ import { CommonPageRouter } from "../main"
 import { Suspense, lazy } from "react"
 import { PageRoute } from "../../types"
 
-const SimpleRedux = lazy(() => import('./redux'));
-const Scheduler = lazy(() => import('./scheduler'));
-const UseTransition = lazy(() => import('./useTransition'));
-const UseDeferredValue = lazy(() => import('./useDeferredValue'));
-const TestSuspense = lazy(() => import('./suspense'));
-const TestSwr = lazy(() => import('./swr'));
-const AHooks = lazy(() => import('./ahooks'));
-const Dob = lazy(() => import('./dob'));
-const UseCountdown = lazy(() => import('./useCountdown'));
-
+const SimpleRedux = lazy(() => import("./redux"))
+const Scheduler = lazy(() => import("./scheduler"))
+const UseTransition = lazy(() => import("./useTransition"))
+const UseDeferredValue = lazy(() => import("./useDeferredValue"))
+const TestSuspense = lazy(() => import("./suspense"))
+const TestSwr = lazy(() => import("./swr"))
+const AHooks = lazy(() => import("./ahooks"))
+const Dob = lazy(() => import("./dob"))
+const UseCountdown = lazy(() => import("./useCountdown"))
 
 export let children: PageRoute[] = [
   {
@@ -58,10 +57,10 @@ export let children: PageRoute[] = [
     path: "useCountdown",
     element: <UseCountdown></UseCountdown>,
     title: "useCountdown（倒计时）",
-  }
+  },
 ]
 
-// TIP: first element is default page,show as default router in outlet 
+// TIP: first element is default page,show as default router in outlet
 children.unshift({
   index: true,
   element: children[0].element,
@@ -70,8 +69,6 @@ children.unshift({
 
 const ReactPage = () => {
   return <CommonPageRouter routes={children}></CommonPageRouter>
-};
+}
 
 export default ReactPage
-
-

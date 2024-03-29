@@ -1,8 +1,8 @@
 export type PageRoute = {
-  path?: string;
+  path?: string
   element: React.ReactNode
-  title: string;
-  hidden?: boolean;
-  index?: boolean;
-  children?: PageRoute[];
-};
+  title: string
+  hidden?: boolean
+  index?: boolean
+  children?: PageRoute[]
+}

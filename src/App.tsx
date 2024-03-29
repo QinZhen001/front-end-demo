@@ -1,7 +1,5 @@
-import { RouteContainer } from "./router";
-
+import { RouteContainer } from "./router"
 
 export default function App() {
-  return <RouteContainer></RouteContainer>;
+  return <RouteContainer></RouteContainer>
 }
-

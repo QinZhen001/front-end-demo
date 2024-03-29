@@ -1,49 +1,44 @@
 class Router {
-    constructor() {
-        this.stack = []
-    }
+  constructor() {
+    this.stack = []
+  }
 
-    register(path, methods, middleware) {
-        let route = { path, methods, middleware }
-        this.stack.push(route)
-    }
+  register(path, methods, middleware) {
+    let route = { path, methods, middleware }
+    this.stack.push(route)
+  }
 
-    // 现在只支持get和post，其他的同理
-    get(path, middleware) {
-        this.register(path, "get", middleware)
-    }
+  // 现在只支持get和post，其他的同理
+  get(path, middleware) {
+    this.register(path, "get", middleware)
+  }
 
-    post(path, middleware) {
-        this.register(path,"post",middleware)
-    }
+  post(path, middleware) {
+    this.register(path, "post", middleware)
+  }
 
-    routes(){
-        let stock = this.stack 
-        return async function(ctx,next){
-            let currentPath = ctx.url 
-            let route 
+  routes() {
+    let stock = this.stack
+    return async function (ctx, next) {
+      let currentPath = ctx.url
+      let route
 
-            for(let i=0;i<stock.length;i++){
-                let item = stock[i]
-                if(currentPath === item.path && item.methods.indexOf(ctx.methods)>-1){
-                    route = item.middleware
-                    break
-                }
-            }
-
-            if(typeof route === "function"){
-                route(ctx,next)
-                return
-            }
-
-            await next()
+      for (let i = 0; i < stock.length; i++) {
+        let item = stock[i]
+        if (currentPath === item.path && item.methods.indexOf(ctx.methods) > -1) {
+          route = item.middleware
+          break
         }
-    }
+      }
 
+      if (typeof route === "function") {
+        route(ctx, next)
+        return
+      }
+
+      await next()
+    }
+  }
 }
 
-
 module.exports = Router
-
-
-

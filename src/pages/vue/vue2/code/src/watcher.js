@@ -1,7 +1,6 @@
 import Dep from "./dep"
 
 export default class Watcher {
-
   constructor(vm, key, initVal, cb) {
     this.vm = vm
     this.key = key
@@ -9,7 +8,7 @@ export default class Watcher {
     this.initVal = initVal
     Dep.target = this
     this.vm[this.key] // 触发依赖收集 get
-    Dep.target = null;
+    Dep.target = null
   }
 
   update() {

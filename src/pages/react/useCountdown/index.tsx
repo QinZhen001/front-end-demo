@@ -7,16 +7,17 @@ const UseCountdownPage = () => {
     },
     onEnd: (val) => {
       console.log("onEnd: ", val)
-    }
+    },
   })
 
-  return <div>
-    <div>You can see something the console.</div>
+  return (
     <div>
-      <button onClick={start}>start count: {count}</button>
+      <div>You can see something the console.</div>
+      <div>
+        <button onClick={start}>start count: {count}</button>
+      </div>
     </div>
-  </div>
+  )
 }
-
 
 export default UseCountdownPage

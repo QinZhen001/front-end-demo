@@ -5,22 +5,20 @@ const options = {
 }
 
 const NotificationComponent = () => {
-
   const onClick = async () => {
     if (Notification && Notification.permission !== "granted") {
       const status = await Notification.requestPermission()
-      if (status === 'denied') {
-        console.log('Permission wasn\'t granted. Allow a retry.');
-        return;
+      if (status === "denied") {
+        console.log("Permission wasn't granted. Allow a retry.")
+        return
       }
-      if (status === 'default') {
-        console.log('The permission request was dismissed.');
-        return;
+      if (status === "default") {
+        console.log("The permission request was dismissed.")
+        return
       }
     }
-    const notification = new Notification(title, options);
+    const notification = new Notification(title, options)
     console.log("notification", notification)
-
 
     notification.onclick = (e) => {
       console.log("onclick", e)
@@ -33,7 +31,6 @@ const NotificationComponent = () => {
     // onclose: ((this: Notification, ev: Event) => any) | null;
     // onerror: ((this: Notification, ev: Event) => any) | null;
     // onshow: ((this: Notification, ev: Event) => any) | null;
-
   }
 
   return (
@@ -41,9 +38,7 @@ const NotificationComponent = () => {
       <h1>Notification</h1>
       <button onClick={onClick}>click</button>
     </div>
-  );
-};
-
-
+  )
+}
 
 export default NotificationComponent

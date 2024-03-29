@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
-import { noop, useLatest } from './utils'
+import { noop, useLatest } from "./utils"
 
-export const useCountdown = (initCount: number, {
-  onEnd = noop,
-  countdownCall = noop
-}) => {
+export const useCountdown = (initCount: number, { onEnd = noop, countdownCall = noop }) => {
   const endfnRef = useLatest(onEnd)
   const cbFnRef = useLatest(countdownCall)
   const [count, setCount] = useState(0)
@@ -18,9 +15,7 @@ export const useCountdown = (initCount: number, {
       }
       countDowning.current = false
     }
-
   }, [])
-
 
   useEffect(() => {
     if (countDowning.current && count != initCount) {
@@ -31,7 +26,6 @@ export const useCountdown = (initCount: number, {
       }
     }
   }, [count, initCount])
-
 
   const start = useCallback(() => {
     countDowning.current = true
@@ -46,10 +40,8 @@ export const useCountdown = (initCount: number, {
     }, 1000)
   }, [initCount])
 
-
   return {
-    start, count
+    start,
+    count,
   }
 }
-
-
