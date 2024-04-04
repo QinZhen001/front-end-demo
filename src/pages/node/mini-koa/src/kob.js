@@ -1,3 +1,5 @@
+简单手写实现koa
+
 const http = require("http")
 const context = require("./context")
 const request = require("./request")
@@ -50,7 +52,7 @@ class KOB {
       return dispatch(0)
 
       function dispatch(i) {
-        let fn = middlewares[i]
+        const fn = middlewares[i]
         if (!fn) {
           return Promise.resolve()
         }

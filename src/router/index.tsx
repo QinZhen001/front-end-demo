@@ -6,6 +6,7 @@ import { children as ReactChildren } from "../pages/react"
 import { children as AnimateChildren } from "../pages/animation"
 import { children as CanvasChildren } from "../pages/canvas"
 import { children as WebpackChildren } from "../pages/webpack"
+import { children as NodeChildren } from "../pages/node"
 import { Suspense, lazy } from "react"
 import { HashRouter, Route, Routes } from "react-router-dom"
 import { PageRoute } from "../types"
@@ -54,6 +55,7 @@ export const routes: PageRoute[] = [
     path: "/node",
     element: <NodePage></NodePage>,
     title: "node 相关",
+    children: NodeChildren,
   },
   {
     path: "/web-rtc",
@@ -84,7 +86,7 @@ export const routes: PageRoute[] = [
 
 export const RouteContainer = () => {
   const genRoutes = (routes: PageRoute[]) => {
-    let finalRoutes = routes.map((item) => {
+    const finalRoutes = routes.map((item) => {
       const { path, element, children, index } = item
       return !index ? (
         <Route
