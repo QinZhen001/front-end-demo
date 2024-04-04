@@ -1,0 +1,1 @@
+import{r as e,j as r,a}from"./index.f6ad69a0.js";const o=()=>{const[t,s]=e.exports.useState(1);return r("div",{children:a("button",{onClick:()=>s(t+1),children:["fetchData ",t]})})};export{o as default};
