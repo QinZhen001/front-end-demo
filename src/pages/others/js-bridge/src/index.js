@@ -1,8 +1,23 @@
 const ua = navigator.userAgent
 const IOS = "ios"
 const ANDROID = "android"
-// android: 在js中注入全局变量
-// customWebView.addJavascriptInterface(jsbridge, "JSBridgeAndroid");
+
+// WebViewJavascriptBridge 是一个用于在 Android 和 iOS 同时使用的 WebView 和 JavaScript 进行通信的桥接库。
+// 它可以方便地在 WebView 中注册 JavaScript 函数和 Native 函数，从而实现 JavaScript 和 Native 之间的相互调用和数据传递。
+// WebViewJavascriptBridge 可以解决 WebView 和 JavaScript 之间通信想复杂、局限性高的问题，提供了一个简单、高效的解决方案。
+
+// 在 Native 端，通过创建一个 Webview 或者 WebViewJavascriptBridge 对象来与 JavaScript 进行通信。
+
+// 在 Native 端通过注入 JavaScript 代码，将一个 JavaScript 的对象或者函数暴露给 JavaScript 端，
+// 使得 JavaScript 可以通过该对象或者函数来调用 Native 的方法。
+
+// TIP:
+// iosMethod/androidMethod
+// 当 h5 js 调用 native 方法时 会带上 callBackId (在这里是 method + uid),
+// 并将 callBackId 对应的 callBack 存入 eventMap
+
+// 在 Native 端，通过 WebView 的代理方法或者 WebViewJavascriptBridge 对象的调用方法，将 Native 的方法回调给 JavaScript 端。
+// Native 端通过 evaluateJavascript/stringByEvaluatingJavaScript 方法，执行 JavaScript 逻辑，callBackId 找到对应的 eventMap callBack 并执行
 
 /**
  * 监听浏览器回退事件
@@ -91,23 +106,23 @@ function isJSBridgeAPPDemo() {
 }
 
 function getDeviceInfo() {
-  var device = {
+  const device = {
     type: null,
     version: null,
   }
-  //设备类型
+  // 设备类型
   if (/\(i[^;]+;( U;)? CPU.+Mac OS X/.test(ua)) {
     // iOS: Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H321 AliApp(LX/5.8.1) AliTrip/5.8.1
     device.type = IOS
 
     // iOS 版本号提取
-    var iosVersion = /\b[0-9]+_[0-9]+(?:_[0-9]+)?\b/.exec(ua)
+    const iosVersion = /\b[0-9]+_[0-9]+(?:_[0-9]+)?\b/.exec(ua)
     if (iosVersion && iosVersion[0]) {
       device.version = iosVersion[0].replace(/_/g, ".")
     }
   } else if (/Android/i.test(ua)) {
     device.type = ANDROID
-    var match = ua.match(/Android\s+([\d\.]+)/i)
+    const match = ua.match(/Android\s+([\d\.]+)/i)
     device.version = match && match[1]
   } else {
     device.type = undefined
@@ -123,7 +138,7 @@ const JSBridge = {
   },
   uid: 0,
   getDeviceId(callback) {
-    //获取设备id
+    // 获取设备id
     this.deviceRouter("getDeviceId", null, callback)
   },
   deviceRouter(method, params, callback, isHold) {
@@ -181,6 +196,7 @@ const JSBridge = {
     }
     try {
       if (params && callback) {
+        // 查看 android/WebViewActivity.java  在window上注入了
         JSBridgeAndroid[method](JSON.stringify(params), method + uid)
       } else if (params) {
         JSBridgeAndroid[method](JSON.stringify(params))

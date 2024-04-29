@@ -247,6 +247,7 @@ public class WebViewActivity extends AppCompatActivity {
         //参数1：Java对象名
         //参数2：Javascript对象名
         JSBridge jsbridge = new JSBridge(WebViewActivity.this, uiHandler);
+        // android: 在js中注入全局变量
         customWebView.addJavascriptInterface(jsbridge, "JSBridgeAndroid");
 
         //如果没有 pageUrl 则默认打开本地demo测试页面
