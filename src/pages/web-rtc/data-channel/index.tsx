@@ -1,10 +1,10 @@
 import { useRef, useState } from "react"
 
-var localConnection: RTCPeerConnection | null // RTCPeerConnection for our "local" connection
-var remoteConnection: RTCPeerConnection | null // RTCPeerConnection for the "remote"
+let localConnection: RTCPeerConnection | null // RTCPeerConnection for our "local" connection
+let remoteConnection: RTCPeerConnection | null // RTCPeerConnection for the "remote"
 
-var sendChannel: RTCDataChannel | null // RTCDataChannel for the local (sender)
-var receiveChannel: RTCDataChannel | null // RTCDataChannel for the remote (receiver)
+let sendChannel: RTCDataChannel | null // RTCDataChannel for the local (sender)
+let receiveChannel: RTCDataChannel | null // RTCDataChannel for the remote (receiver)
 
 export const WebRtcDataChannel = () => {
   const textRef = useRef<HTMLDivElement>(null)
@@ -69,7 +69,7 @@ export const WebRtcDataChannel = () => {
   // in this example.
   const handleSendChannelStatusChange = (event: any) => {
     if (sendChannel) {
-      var state = sendChannel.readyState
+      const state = sendChannel.readyState
       if (state == "open") {
         console.log("sendChannel is open")
       } else {
@@ -91,8 +91,8 @@ export const WebRtcDataChannel = () => {
   // These are the data messages sent by the sending channel.
   const handleReceiveMessage = (event: MessageEvent) => {
     console.log("Received Message: " + event.data)
-    var el = document.createElement("p")
-    var txtNode = document.createTextNode(event.data)
+    const el = document.createElement("p")
+    const txtNode = document.createTextNode(event.data)
     el.appendChild(txtNode)
     textRef.current!.appendChild(el)
   }

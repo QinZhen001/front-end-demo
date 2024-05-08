@@ -15,16 +15,16 @@ export const WebRtcSimple = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   let mediaRecorder: MediaRecorder = null as unknown as MediaRecorder
-  let blobs: BlobPart[] = []
+  const blobs: BlobPart[] = []
 
   const record = async (type: RecordType) => {
     const getMediaMethod = type === "screen" ? "getDisplayMedia" : "getUserMedia"
     // @ts-ignore
     const stream = await navigator.mediaDevices[getMediaMethod]({
       video: {
-        width: width,
-        height: height,
-        frameRate: frameRate,
+        width,
+        height,
+        frameRate,
       },
     })
     if (playerRef.current) {
@@ -62,9 +62,9 @@ export const WebRtcSimple = () => {
   }
 
   const download = () => {
-    var blob = new Blob(blobs, { type: "video/webm" })
-    var url = window.URL.createObjectURL(blob)
-    var a = document.createElement("a")
+    const blob = new Blob(blobs, { type: "video/webm" })
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement("a")
     a.href = url
     a.style.display = "none"
     a.download = "record.webm"
@@ -73,7 +73,7 @@ export const WebRtcSimple = () => {
 
   const takePicture = () => {
     if (canvasRef.current) {
-      var context = canvasRef.current.getContext("2d")!
+      const context = canvasRef.current.getContext("2d")!
       canvasRef.current.width = width
       canvasRef.current.height = height
       context.drawImage(playerRef.current!, 0, 0, width, height)

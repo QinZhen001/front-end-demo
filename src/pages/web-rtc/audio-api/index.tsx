@@ -58,7 +58,7 @@ export const AudioApi = () => {
           const encodedBuffer = evt.currentTarget?.result
           const context = new AudioContext()
           context.decodeAudioData(encodedBuffer, (decodedBuffer) => {
-            const dataSource = context.createBufferSource() //AudioBufferSourceNode
+            const dataSource = context.createBufferSource() // AudioBufferSourceNode
             dataSource.buffer = decodedBuffer
             console.log("dataSource", dataSource)
             analyser = createAnalyser(context, dataSource)
