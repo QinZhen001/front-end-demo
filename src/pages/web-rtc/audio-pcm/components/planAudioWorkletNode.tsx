@@ -17,9 +17,9 @@ const PlanAudioWorkletNode = (props: PlanAudioWorkletNodeProps) => {
     const audioContext = new AudioContext()
 
     await audioContext.audioWorklet.addModule("pcm-processor.js")
-    const audioMediaStreamTrack = audioTrack.getMediaStreamTrack()
+    // const audioMediaStreamTrack = audioTrack.getMediaStreamTrack()
     // 创建MediaStreamDestination节点
-    const audioDestination = audioContext.createMediaStreamDestination()
+    // const audioDestination = audioContext.createMediaStreamDestination()
     // 创建AudioWorkletNode节点
     const audioWorkletNode = new AudioWorkletNode(audioContext, "pcm-processor")
     // 连接AudioWorkletNode到MediaStreamDestination
@@ -29,19 +29,18 @@ const PlanAudioWorkletNode = (props: PlanAudioWorkletNodeProps) => {
     // 将MediaStreamDestination作为媒体输入
     // const mediaStream = audioDestination.stream
 
-    audioWorkletNode.port.onmessage = (event) => {
-      // 获取 PCM 数据
-      const pcmData = event.data
-      // 处理 PCM 数据
-      // ...你的代码...
+    const audioMediaStreamTrack = audioTrack.getMediaStreamTrack()
+    const mNode = audioContext.createMediaStreamSource(new MediaStream([audioMediaStreamTrack]))
+    mNode.connect(audioWorkletNode)
 
-      console.log("pcmData", pcmData)
+    audioWorkletNode.port.onmessage = (event) => {
+      console.log("event onmessage", event.data)
     }
 
     // const options = {}
     // const source = new MediaElementAudioSourceNode(audioContext, options)
 
-    // const source = audioContext.createMediaStreamSource(audioTrack)
+    // const source = audioContext.createMediaStreamSource(audioMediaStreamTrack)
     // const processor = audioContext.createScriptProcessor(1024, 1, 1)
 
     // processor.onaudioprocess = (event) => {
