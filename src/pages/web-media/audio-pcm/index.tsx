@@ -43,7 +43,7 @@ const AudioPcm = () => {
         <button onClick={audioStop}>audioStop</button>
       </section>
       <section className="section">
-        <button onClick={changeScheme}>changeScheme: {schemeText}</button>
+        <button onClick={changeScheme}>scheme: {schemeText}</button>
       </section>
       <section className="section">
         {plan == 1 ? (

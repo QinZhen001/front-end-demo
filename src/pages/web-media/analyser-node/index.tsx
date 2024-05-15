@@ -9,20 +9,13 @@ import { useEffect, useRef } from "react"
 let frequencyData: Uint8Array
 let bufferLength = 0
 let analyser: AnalyserNode
+const context = new AudioContext()
+// 它包含了一些写在内存中的音频数据，通常储存在一个 ArrayBuffer 对象中
+const dataSourceNode = context.createBufferSource()
 
 export const AudioApi = () => {
   const ref = useRef<HTMLInputElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  function createAnalyser(context: AudioContext, dataSource: AudioBufferSourceNode): AnalyserNode {
-    console.log("context", context)
-    const analyser = context.createAnalyser()
-    // The size of the FFT (Fast Fourier Transform) used for frequency-domain analysis.
-    analyser.fftSize = 512
-    dataSource.connect(analyser)
-    analyser.connect(context.destination)
-    return analyser
-  }
 
   function drawBar() {
     requestAnimationFrame(drawBar)
@@ -52,22 +45,22 @@ export const AudioApi = () => {
         const file = event.target?.files[0]
         const reader = new FileReader()
         reader.readAsArrayBuffer(file)
-        reader.onload = (evt) => {
-          console.log("evt", evt)
-          // @ts-ignore
-          const encodedBuffer = evt.currentTarget?.result
-          const context = new AudioContext()
-          context.decodeAudioData(encodedBuffer, (decodedBuffer) => {
-            const dataSource = context.createBufferSource() // AudioBufferSourceNode
-            dataSource.buffer = decodedBuffer
-            console.log("dataSource", dataSource)
-            analyser = createAnalyser(context, dataSource)
-            bufferLength = analyser.frequencyBinCount
-            console.log("analyser", analyser)
-            frequencyData = new Uint8Array(bufferLength)
-            dataSource.start()
-            drawBar()
-          })
+        reader.onload = async (evt: any) => {
+          const audioArrayBuffer = evt.target.result // ArrayBuffer
+          console.log("audioData", audioArrayBuffer)
+          // 从一个音频文件解码构建一个 AudioBuffer
+          const decodeAudioBuffer = await context.decodeAudioData(audioArrayBuffer)
+          dataSourceNode.buffer = decodeAudioBuffer
+          analyser = context.createAnalyser()
+          // The size of the FFT (Fast Fourier Transform) used for frequency-domain analysis.
+          // FFT 是一种用于将时域信号（例如音频）转换为频域信号的算法。
+          analyser.fftSize = 512
+          dataSourceNode.connect(analyser)
+          analyser.connect(context.destination)
+          bufferLength = analyser.frequencyBinCount
+          frequencyData = new Uint8Array(bufferLength)
+          dataSourceNode.start()
+          drawBar()
         }
       }
     }
