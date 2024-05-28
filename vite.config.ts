@@ -19,7 +19,7 @@ if (process.env.CI && process.env.VERCEL_ENV == "production") {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: base,
+  base,
   plugins: [
     commonjs(),
     // in plugins
@@ -35,4 +35,9 @@ export default defineConfig({
       },
     }),
   ],
+  css: {
+    modules: {
+      generateScopedName: "[name]__[local]__[hash:base64:2]",
+    },
+  },
 })

@@ -1,21 +1,27 @@
 import { lazy } from "react"
 import { CommonPageRouter } from "../main"
 
-const WebRtcSimple = lazy(() => import("./simple"))
+const MediaRecorderComponent = lazy(() => import("./media-recorder"))
 const WebRtcDataChannel = lazy(() => import("./data-channel"))
 const AnalyserNode = lazy(() => import("./analyser-node"))
 const AudioPcm = lazy(() => import("./audio-pcm"))
 const AudioBuffer = lazy(() => import("./audio-buffer"))
 const GainNode = lazy(() => import("./gain-node"))
+const CanvasCaptureStream = lazy(() => import("./canvas-capture-stream"))
 
 export const children = [
   {
-    path: "webrtcSimple",
-    element: <WebRtcSimple></WebRtcSimple>,
-    title: "快速入门 WebRTC",
+    path: "mediaRecorder",
+    element: <MediaRecorderComponent></MediaRecorderComponent>,
+    title: "MediaRecorder相关",
   },
   {
-    path: "webrtcDataChannel",
+    path: "canvas-capture-stream",
+    element: <CanvasCaptureStream></CanvasCaptureStream>,
+    title: "canvasCaptureStream相关",
+  },
+  {
+    path: "dataChannel",
     element: <WebRtcDataChannel></WebRtcDataChannel>,
     title: "WebRTC DataChannel",
   },

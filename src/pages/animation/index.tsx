@@ -7,6 +7,8 @@ const AtEditor = lazy(() => import("./at-editor"))
 const ChineseInput = lazy(() => import("./chinese-input"))
 const Notification = lazy(() => import("./notification"))
 const Slider = lazy(() => import("../animation/slider"))
+const MultipleType = lazy(() => import("./multiple-type"))
+const GradientBorder = lazy(() => import("./gradient-border"))
 
 export const children = [
   {
@@ -37,7 +39,17 @@ export const children = [
   {
     path: "slider",
     element: <Slider></Slider>,
-    title: "轮播图 (center active item)",
+    title: "轮播图 (center active)",
+  },
+  {
+    path: "multiple-type",
+    element: <MultipleType></MultipleType>,
+    title: "多行文字打字机效果",
+  },
+  {
+    path: "gradient-border",
+    element: <GradientBorder></GradientBorder>,
+    title: "渐变边框文字",
   },
 ]
 

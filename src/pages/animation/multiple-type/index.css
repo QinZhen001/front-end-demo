@@ -1,0 +1,29 @@
+:root {
+  --pointerColor: #000;
+}
+
+.multiple-type .example p {
+  display: inline;
+  background: linear-gradient(90deg, transparent, transparent calc(100% - 2px), var(--pointerColor) calc(100% - 2px), var(--pointerColor));
+  animation: colorChange .6s linear infinite;
+  padding-right: 4px;
+  white-space:pre-wrap;
+}
+
+/* 
+  TIP:
+  在移动端浏览器中，无法在css中动态改变css变量
+ 因为移动端浏览器的CSS解析引擎对于CSS变量的支持有限。
+  只能在js中改变css变量
+  getComputedStyle(document.documentElement).getPropertyValue('--pointerColor')
+  document.documentElement.style.setProperty('--pointerColor', "transparent")
+
+*/
+@keyframes colorChange {
+  0%, 50% {
+      --pointerColor: #000;
+  }
+  50%, 100% {
+      --pointerColor: transparent;
+  }
+}

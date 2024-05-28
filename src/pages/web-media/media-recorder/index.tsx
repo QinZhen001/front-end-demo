@@ -1,6 +1,3 @@
-// https://mp.weixin.qq.com/s/u6MkezGj1o9h5-ACEkFcRQ
-// 音视频通信的流程有五步：采集、编码、通信、解码、渲染。
-
 import { useRef } from "react"
 
 type RecordType = "screen" | "camera"
@@ -9,12 +6,11 @@ const width = 300
 const height = 150
 const frameRate = 20
 
-export const WebRtcSimple = () => {
+export const MediaRecorderComponent = () => {
   const playerRef = useRef<HTMLVideoElement>(null)
   const recordPlayerRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  let mediaRecorder: MediaRecorder = null as unknown as MediaRecorder
+  let mediaRecorder: MediaRecorder = null as any
   const blobs: BlobPart[] = []
 
   const record = async (type: RecordType) => {
@@ -28,13 +24,16 @@ export const WebRtcSimple = () => {
       },
     })
     if (playerRef.current) {
+      // https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/srcObject
+      // 该对象可以是一个 MediaStream、一个 MediaSource、一个 Blob 或者一个 File 类型
       playerRef.current.srcObject = stream
     }
     mediaRecorder = new MediaRecorder(stream, {
       mimeType: "video/webm",
     })
-    mediaRecorder.ondataavailable = (e) => {
+    mediaRecorder.ondataavailable = (e: any) => {
       console.log("mediaRecorder ondataavailable ", e)
+      // e.data 为 Blob 类型
       blobs.push(e.data)
     }
     mediaRecorder.start(100)
@@ -113,4 +112,4 @@ export const WebRtcSimple = () => {
   )
 }
 
-export default WebRtcSimple
+export default MediaRecorderComponent
