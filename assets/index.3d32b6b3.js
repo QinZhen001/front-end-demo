@@ -1,0 +1,1 @@
+import{r as t,j as r}from"./index.e68da9fa.js";function s(){const e=t.exports.useRef(null);return t.exports.useEffect(()=>{setInterval(()=>{var o;console.log((o=e==null?void 0:e.current)==null?void 0:o.value)},1e3)}),r("input",{ref:e,defaultValue:"Bob",type:"text"})}const n=()=>(t.exports.useState(!1),r("div",{children:r(s,{})}));export{n as default};
