@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Toaster } from "@/components/ui/toaster"
+import AppLayout from "@/components/Layout/index"
 
 import "../theme/variable.css"
 import "./globals.css"
@@ -17,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body>
-        {children}
-        <Toaster />
+        <AppLayout>
+          {children}
+          <Toaster />
+        </AppLayout>
       </body>
     </html>
   )
