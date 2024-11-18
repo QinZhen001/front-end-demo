@@ -19,3 +19,8 @@ nrm use npm
 - [x] 改成 vite 构建
 - [x] 加入github action
 - [x] 内容整理
+
+### 2024.11.18
+
+- [x] 改成 next 构建
+- [x] 页面内容整理

@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../theme/variable.css";
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --rte-dark-bg: #0f0f11;
+    --color-gray-text-dark: #575757;
+    --color-header-bg: #19191d;
+    --color-input-bg: #191b1d;
+    --color-switch-bg: #c9cdd4;
+
+    /* TODO: some custom properties */
+    /* --rte-header-height: 60px;
+    --rte-nav-height: 60px;
+    --rte-header-nav-height: calc(var(--rte-header-height) + var(--rte-nav-height)); */
+  }
+
+  :root {
+    --background: #fff;
+    --foreground: var(--gray-text-dark);
+    --card: #fff;
+    --card-foreground: var(--gray-text-dark);
+    --popover: #fff;
+    --popover-foreground: var(--gray-text-dark);
+    --primary: var(--blue-60);
+    --primary-foreground: #fff;
+    --secondary: #fff;
+    --secondary-foreground: var(--gray-text-dark);
+    --muted: var(--gray-bg);
+    --muted-foreground: var(--gray-text);
+    --accent: var(--gray-bg-hover);
+    --accent-foreground: var(--gray-text-dark-active);
+    --destructive: var(--error);
+    --destructive-foreground: #fff;
+    --border: var(--gray-border);
+    --input: var(--gray-border);
+    --ring: var(--primary-border-hover);
+  }
+
+  .dark {
+    --background: var(--rte-dark-bg);
+    --foreground: #fff;
+    --card: #153031;
+    --card-foreground: #d8d8d9;
+    --popover: #153031;
+    --popover-foreground: #d8d8d9;
+    /* --primary: var(--blue-60);
+    --primary-foreground: #fff; */
+    --secondary: #272a2f;
+    --secondary-foreground: #fff;
+    --muted: #153031;
+    --muted-foreground: #d8d8d9;
+    /* --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%; */
+    --destructive: var(--error);
+    --destructive-foreground: #fff;
+    --border: #272a2f;
+    --input: transparent;
+    --ring: var(--primary-border-hover);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ------------------ Scrollbar ---------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6b6b6b;
+  border-radius: 4px;
+}
