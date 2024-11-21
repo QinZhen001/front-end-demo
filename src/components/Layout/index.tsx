@@ -9,11 +9,11 @@ const Layout = (props: LayoutProps) => {
   const { children } = props
 
   return (
-    <div className="w-full h-[100vh]">
-      <Header></Header>
-      <div>
-        <LeftNav></LeftNav>
-        {children}
+    <div className="w-full h-[100vh] flex">
+      <LeftNav></LeftNav>
+      <div className="flex-1">
+        <Header></Header>
+        <div className="h-[calc(100vh-2rem)] bg-slate-50 overflow-auto p-2">{children}</div>
       </div>
     </div>
   )

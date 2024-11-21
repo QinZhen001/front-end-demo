@@ -1,5 +1,6 @@
+"use client"
+
 import { ReactEventHandler, useEffect, useRef } from "react"
-import "./index.css"
 
 interface IOperate {
   /**
@@ -154,7 +155,6 @@ const CanvasHighlight = () => {
   const onMouseMove = (e: React.MouseEvent) => {
     let x = Math.floor(e.clientX - canvasLeft)
     let y = Math.floor(e.clientY - canvasTop)
-
     const hexColor = getPosColor(x, y)
     if (curColor !== hexColor) {
       // 如果两者不相等，说明鼠标在移动过程中进入了一个新的颜色区域
@@ -246,7 +246,7 @@ const CanvasHighlight = () => {
   return (
     <div>
       <section></section>
-      <section className="content">
+      <section className="flex gap-3">
         <div>
           <h4>模特图</h4>
           <img src="/images/model.jpg" width="300" height="600" />
@@ -257,12 +257,11 @@ const CanvasHighlight = () => {
         </div>
         <div>
           <h4>色块图（支持用户hover高亮，点击选中）</h4>
-          <div className="canvas-wrapper">
+          <div className="relative">
             <canvas
               onMouseMove={onMouseMove}
               onMouseLeave={onMouseLeave}
               onClick={onClick}
-              className="my-canvas"
               width={300}
               height={600}
               ref={canvasRef}

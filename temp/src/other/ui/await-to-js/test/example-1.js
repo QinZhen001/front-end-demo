@@ -45,7 +45,6 @@ async function asyncTask(userId, cb) {
   let err, user, savedTask, notification
   ;[err, user] = await to(UserModel.findById(userId))
   if (!(user && user.id)) return cb("No user found")
-
   ;[err, savedTask] = await to(TaskModel({ userId: user.id, name: "Demo Task" }))
   if (err) return cb("Error occurred while saving task")
 

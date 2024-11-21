@@ -4,7 +4,7 @@ import { children as otherChildren } from "../pages/others"
 import { children as RtcChildren } from "../pages/web-media"
 import { children as ReactChildren } from "../pages/react"
 import { children as AnimateChildren } from "../pages/animation"
-import { children as CanvasChildren } from "../pages/canvas"
+import { children as CanvasChildren } from "../../../src/app/canvas/canvas"
 import { children as WebpackChildren } from "../pages/webpack"
 import { children as NodeChildren } from "../pages/node"
 import { Suspense, lazy } from "react"
@@ -20,7 +20,7 @@ const MainPage = lazy(() => import("../pages/main"))
 const WebMediaPage = lazy(() => import("../pages/web-media"))
 const OtherPage = lazy(() => import("../pages/others"))
 const AnimationPage = lazy(() => import("../pages/animation"))
-const CanvasPage = lazy(() => import("../pages/canvas"))
+const CanvasPage = lazy(() => import("../../../src/app/canvas/canvas"))
 
 export const routes: PageRoute[] = [
   {

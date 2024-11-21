@@ -1,5 +1,4 @@
 .gradient-border {
-
   .section1 {
     .gradient {
       font-size: 64px;
@@ -9,15 +8,10 @@
       filter: url(#dilate);
     }
 
-
     .erode {
       filter: url(#erode);
     }
-
-
   }
-
-
 
   .section2 {
     font-size: 64px;
@@ -49,10 +43,7 @@
       z-index: 1;
       background-image: var(--text-gradient);
     }
-
   }
-
-
 
   .section3 {
     div {
@@ -79,11 +70,6 @@
       &::after {
         filter: url(#outline);
       }
-
-
     }
-
-
   }
-
 }

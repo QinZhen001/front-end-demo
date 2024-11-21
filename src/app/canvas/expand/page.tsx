@@ -1,14 +1,18 @@
+"use client"
+
 // 用canvas绘制一个曲线动画——深入理解贝塞尔曲线
 // https://github.com/hujiulong/blog/issues/1
 
 import { useEffect, useRef } from "react"
 import generate from "./generator"
+import { Button } from "@/components/ui/button"
 
 // consant
 const START_R: number = 10
 const END_R: number = 150
 const FPS: number = 60
-const DURATION: number = 1000
+const DURATION: number = 5000
+
 // 贝塞尔曲线控制点
 const p1x = 0.2
 const p1y = 0.8
@@ -29,7 +33,7 @@ const Expand = () => {
 
   const startDraw = () => {
     if (percent > 1) {
-      endDraw()
+      pauseDraw()
       return
     }
     drawArc()
@@ -40,7 +44,7 @@ const Expand = () => {
     globalID = requestAnimationFrame(startDraw)
   }
 
-  const endDraw = () => {
+  const pauseDraw = () => {
     if (globalID) {
       cancelAnimationFrame(globalID)
       globalID = undefined
@@ -55,23 +59,29 @@ const Expand = () => {
     ctx.fill()
   }
 
+  const endDraw = () => {
+    const width = canvasRef.current!.width ?? 0
+    const height = canvasRef.current!.height ?? 0
+    ctx.clearRect(0, 0, width, height)
+    percent = 0
+    r = START_R
+  }
+
   return (
-    <div className="expand">
-      <div>
-        <button onClick={startDraw}>开始绘制</button>
-        <button onClick={endDraw}>结束绘制</button>
+    <>
+      <div className="space-x-2">
+        <Button onClick={startDraw}>开始绘制</Button>
+        <Button onClick={pauseDraw}>暂停绘制</Button>
+        <Button onClick={endDraw}>清理绘制</Button>
       </div>
       <canvas
         id="canvas"
         width="200"
         height="200"
         ref={canvasRef}
-        style={{
-          width: "200px",
-          height: "200px",
-        }}
+        className="w-[200px] h-[200px] mt-2"
       ></canvas>
-    </div>
+    </>
   )
 }
 

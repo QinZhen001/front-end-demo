@@ -1,5 +1,7 @@
+"use client"
+
 import { useEffect, useRef } from "react"
-import "./index.css"
+import { Button } from "@/components/ui/button"
 
 let ctx: CanvasRenderingContext2D
 let offCtx: CanvasRenderingContext2D
@@ -111,14 +113,17 @@ const CanvasPencil = () => {
 
   return (
     <div>
-      <section>
-        <button onClick={outputImg}>导出图片</button>
-      </section>
-      <section className="content">
-        <div className="canvas-wrapper">
-          <canvas className="off-canvas" width={300} height={600} ref={offCanvasRef}></canvas>
+      <Button onClick={outputImg}>导出图片</Button>
+      <section className="flex mt-2">
+        <div className="w-[300px] h-[600px] relative">
           <canvas
-            className="my-canvas"
+            className="absolute left-0 right-0 top-0 bottom-0 -z-10 invisible"
+            width={300}
+            height={600}
+            ref={offCanvasRef}
+          ></canvas>
+          <canvas
+            className="absolute left-0 right-0 top-0 bottom-0 z-10 visible"
             width={300}
             height={600}
             ref={canvasRef}

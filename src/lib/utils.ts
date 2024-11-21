@@ -98,11 +98,3 @@ export const generateRandomString = (length: number = 5) => {
   return result
 }
 
-// 判断当前是否在iframe中
-export const isInIframe = () => {
-  if (window === undefined) {
-    return false
-  }
-
-  return window.self !== window.top
-}
