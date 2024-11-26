@@ -10,9 +10,9 @@ const Layout = (props: LayoutProps) => {
 
   return (
     <div className="w-full h-[100vh] flex">
-      <LeftNav></LeftNav>
-      <div className="flex-1">
-        <Header></Header>
+      <LeftNav className="flex-none w-52"></LeftNav>
+      <div className="flex-auto">
+        <Header className="h-[2rem]"></Header>
         <div className="h-[calc(100vh-2rem)] bg-slate-50 overflow-auto p-2">{children}</div>
       </div>
     </div>

@@ -8,11 +8,16 @@ import {
 } from "../../ui/accordion"
 import { usePathname, useRouter } from "next/navigation"
 import { useMemo } from "react"
-import { CONTENT_LIST } from "@/constant"
 import NavItem from "./NavItem"
 import { cn } from "@/lib/utils"
+import { SORT_NAV_LIST } from "@/constant"
 
-const LeftNav = () => {
+interface ILeftNavProps {
+  className?: string
+}
+
+const LeftNav = (props: ILeftNavProps) => {
+  const { className } = props
   const pathname = usePathname()
   const router = useRouter()
 
@@ -29,7 +34,7 @@ const LeftNav = () => {
   }, [pathname])
 
   const onValueChange = (value: string) => {
-    const target = CONTENT_LIST.find((item) => item.href === value)
+    const target = SORT_NAV_LIST.find((item) => item.href === value)
     if (target?.href) {
       router.replace(target.href)
     }
@@ -37,13 +42,13 @@ const LeftNav = () => {
 
   return (
     <AccordionRoot
-      className="flex-initial w-52"
+      className={cn(className)}
       type="single"
       onValueChange={onValueChange}
       value={firstPath}
       collapsible
     >
-      {CONTENT_LIST.map((item) => {
+      {SORT_NAV_LIST.map((item) => {
         return (
           <AccordionItem key={item.title} value={item.href}>
             <AccordionTrigger

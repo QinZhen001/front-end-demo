@@ -1,3 +1,3 @@
-export default function AnimationPage() {
-  return <div>AnimationPage</div>
+export default function Page() {
+  return <div>其他页面</div>
 }
