@@ -1,3 +1,6 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
 import { EventSystem } from "./src"
 
 const eventSystem = new EventSystem()
@@ -22,10 +25,10 @@ const Eventloop = () => {
   }
 
   return (
-    <div>
-      <button onClick={enQueue}>enQueue 添加任务</button>
-      <button onClick={run}>run 启动事件循环</button>
-      <button onClick={end}>end 关闭事件循环</button>
+    <div className="space-x-2">
+      <Button onClick={enQueue}>enQueue 添加任务</Button>
+      <Button onClick={run}>run 启动事件循环</Button>
+      <Button onClick={end}>end 关闭事件循环</Button>
     </div>
   )
 }

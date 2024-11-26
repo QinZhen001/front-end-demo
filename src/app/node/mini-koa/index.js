@@ -3,10 +3,10 @@ const path = require("path")
 const KOB = require("./src/kob.js")
 const app = new KOB()
 
-const static = require("./src/static")
+const static = require("./src/static.js")
 app.use(static(path.resolve(__dirname, "./src/public")))
 
-const Router = require("./src/router")
+const Router = require("./src/router.js")
 const router = new Router()
 
 router.get("/index", async (ctx) => {

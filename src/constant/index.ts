@@ -25,6 +25,18 @@ export const CONTENT_LIST: IContentItem[] = [
   {
     title: "Node",
     href: "/node",
+    children: [
+      {
+        title: "EventLoop",
+        href: "/node/event-loop",
+        description: "事件循环",
+      },
+      {
+        title: "js-libuv",
+        href: "/node/js-libuv",
+        description: "模拟libuv",
+      },
+    ],
   },
   {
     title: "Canvas",
