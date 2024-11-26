@@ -1,3 +1,4 @@
+import { children } from "@/app/webpack/webpack"
 import { IContentItem } from "@/type"
 import { title } from "process"
 
@@ -74,6 +75,13 @@ export const CONTENT_LIST: IContentItem[] = [
   {
     title: "Vite",
     href: "/vite",
+    children: [
+      {
+        title: "Plugin",
+        href: "/vite/plugin",
+        description: "简单插件",
+      },
+    ],
   },
   {
     title: "Webpack",
