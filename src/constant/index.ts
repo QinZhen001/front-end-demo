@@ -21,11 +21,6 @@ const ANIMATION_CHILDREN: IContentItem[] = [
     href: "/animation/multiple-type",
     description: "多行文字打字机效果",
   },
-  {
-    title: "gradient-border",
-    href: "/animation/gradient-border",
-    description: "渐变边框文字",
-  },
 ]
 
 const CANVAS_CHILDREN: IContentItem[] = [
@@ -47,6 +42,11 @@ const CANVAS_CHILDREN: IContentItem[] = [
 ]
 
 const OTHER_CHILDREN: IContentItem[] = [
+  {
+    title: "gradient-border",
+    href: "/animation/gradient-border",
+    description: "渐变边框文字",
+  },
   {
     title: "notification",
     href: "/animation/notification",
