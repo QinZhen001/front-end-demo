@@ -1,7 +1,9 @@
-import React from "react"
+"use client"
+
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton"
 import { PrevButton, NextButton, usePrevNextButtons } from "./EmblaCarouselArrowButtons"
 import useEmblaCarousel from "embla-carousel-react"
+import "../css/embla.css"
 
 type PropType = {
   slides: number[]
@@ -14,7 +16,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   })
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
     usePrevNextButtons(emblaApi)
 

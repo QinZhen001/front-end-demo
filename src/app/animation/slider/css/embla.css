@@ -1,9 +1,13 @@
 .embla {
-  max-width: 48rem;
+  max-width: 100%;
   margin: auto;
   --slide-height: 19rem;
   --slide-spacing: 1rem;
   --slide-size: 70%;
+  --detail-medium-contrast: rgb(101, 101, 101);
+  --detail-high-contrast: rgb(101, 101, 101);
+  --text-high-contrast-rgb-value: 230, 230, 230;
+  --text-body: rgb(25, 25, 25);
 }
 .embla__viewport {
   overflow: hidden;
@@ -11,6 +15,9 @@
 .embla__container {
   display: flex;
   touch-action: pan-y pinch-zoom;
+ /* 由于对slider的每一项都设置了 padding-left:slide-spacing  */
+ /* 导致一开始显示时幻灯片第一项并不是水平垂直的，而是有一个向右的偏移量*/
+ /* 所以这里用 margin-left: -slide-spacing 向左调整便宜，使得第一项水平居中 */
   margin-left: calc(var(--slide-spacing) * -1);
 }
 .embla__slide {
@@ -44,8 +51,6 @@
   align-items: center;
 }
 .embla__button {
-  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-  -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
   touch-action: manipulation;
@@ -80,8 +85,6 @@
   margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
 }
 .embla__dot {
-  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-  -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
   touch-action: manipulation;

@@ -1,3 +1,4 @@
+// https://www.embla-carousel.com/get-started/react/
 import EmblaCarousel from "./components/EmblaCarousel"
 
 const SLIDE_COUNT = 5
