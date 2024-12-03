@@ -1,7 +1,7 @@
 // 最好把这几个children直接写进这里 （不要import）（import会导致加载对应的index.js 懒加载失效）
 import { children as vueChildren } from "../pages/vue"
 import { children as otherChildren } from "../pages/others"
-import { children as RtcChildren } from "../pages/web-media"
+import { children as RtcChildren } from "../../../src/app/rtc/web-media"
 import { children as ReactChildren } from "../pages/react"
 import { children as AnimateChildren } from "../pages/animation"
 import { children as CanvasChildren } from "../../../src/app/canvas/canvas"
@@ -17,7 +17,7 @@ const WebpackPage = lazy(() => import("../pages/webpack"))
 const NodePage = lazy(() => import("../pages/node"))
 const VitePage = lazy(() => import("../../../src/app/vite/plugin/page"))
 const MainPage = lazy(() => import("../pages/main"))
-const WebMediaPage = lazy(() => import("../pages/web-media"))
+const WebMediaPage = lazy(() => import("../../../src/app/rtc/web-media"))
 const OtherPage = lazy(() => import("../pages/others"))
 const AnimationPage = lazy(() => import("../pages/animation"))
 const CanvasPage = lazy(() => import("../../../src/app/canvas/canvas"))
