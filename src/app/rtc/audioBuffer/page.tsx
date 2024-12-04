@@ -1,9 +1,14 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast"
+
 const audioContext = new AudioContext()
 let audioBuffer: AudioBuffer
 
 const AudioBuffer = () => {
+  const { toast } = useToast()
+
   const onClickClose = () => {
     audioContext.close()
   }
@@ -28,6 +33,10 @@ const AudioBuffer = () => {
     }
 
     console.log("createBuffer success", audioBuffer)
+
+    toast({
+      description: "createBuffer success!",
+    })
   }
 
   const onClickAudioBufferPlay = () => {
@@ -49,15 +58,15 @@ const AudioBuffer = () => {
   return (
     <div>
       <div className="p-2">
-        <button onClick={onClickCreateBuffer}>createBuffer (从原始数据构建)</button>
+        <Button onClick={onClickCreateBuffer}>createBuffer (从原始数据构建)</Button>
       </div>
       <div className="p-2">
-        <button onClick={onClickAudioBufferPlay}>
+        <Button onClick={onClickAudioBufferPlay}>
           播放 AudioBuffer (通过AudioBufferSourceNode播放)
-        </button>
+        </Button>
       </div>
       <div className="p-2">
-        <button onClick={onClickClose}>close audioContext</button>
+        <Button onClick={onClickClose}>close audioContext</Button>
       </div>
     </div>
   )

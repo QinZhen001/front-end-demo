@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button"
+
 // import processorURL from "../lib/pcm-processor.js?url"
 import { IMicrophoneAudioTrack } from "agora-rtc-sdk-ng"
 
@@ -29,7 +31,7 @@ const PlanAudioWorkletNode = (props: PlanAudioWorkletNodeProps) => {
 
   return (
     <div>
-      <button onClick={dealAudioPcmData}>dealAudioPcmData</button>
+      <Button onClick={dealAudioPcmData}>dealAudioPcmData</Button>
     </div>
   )
 }

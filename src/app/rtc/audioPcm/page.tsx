@@ -7,24 +7,18 @@ import AgoraRTC, {
   IRemoteAudioTrack,
   UID,
 } from "agora-rtc-sdk-ng"
+import { Button } from "@/components/ui/button"
 import PlanAudioWorkletNode from "./components/planAudioWorkletNode"
 import PlanInsertableStream from "./components/planInsertableStream"
 
 const AudioPcm = () => {
   const [audioTrack, setAudioTrack] = useState<IMicrophoneAudioTrack>()
+  const [playing, setPlaying] = useState(false)
   const [plan, setPlan] = useState(1)
 
   const createAudioTrack = async () => {
     const track = await AgoraRTC.createMicrophoneAudioTrack()
     setAudioTrack(track)
-  }
-
-  const audioPlay = () => {
-    audioTrack?.play()
-  }
-
-  const audioStop = () => {
-    audioTrack?.stop()
   }
 
   const changeScheme = () => {
@@ -35,15 +29,24 @@ const AudioPcm = () => {
     return plan === 1 ? "InsertableStream" : "AudioWorkletNode"
   }, [plan])
 
+  const toggleAudioPlay = () => {
+    if (playing) {
+      audioTrack?.stop()
+    } else {
+      audioTrack?.play()
+    }
+    setPlaying(!playing)
+  }
+
   return (
     <div>
-      <section className="p-2">
-        <button onClick={createAudioTrack}>createAudioTrack</button>
-        <button onClick={audioPlay}>audioPlay</button>
-        <button onClick={audioStop}>audioStop</button>
+      <section className="p-2 space-x-2">
+        <Button onClick={createAudioTrack}>createAudioTrack</Button>
+        <Button onClick={toggleAudioPlay}>{!playing ? "audioPlay" : "audioStop"}</Button>
       </section>
-      <section className="p-2">
-        <button onClick={changeScheme}>scheme: {schemeText}</button>
+      <section className="p-2 divide-solid">
+        <div className="text-md mb-2">提取 mic track 中 pcm裸数据</div>
+        <Button onClick={changeScheme}>scheme: {schemeText}</Button>
       </section>
       <section className="p-2">
         {plan == 1 ? (

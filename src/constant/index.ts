@@ -210,8 +210,8 @@ const RTC_CHILDREN: IContentItem[] = [
     description: "MediaRecorder相关",
   },
   {
-    title: "canvas-capture-stream",
-    href: "/rtc/canvas-capture-stream",
+    title: "canvasCaptureStream",
+    href: "/rtc/canvasCaptureStream",
     description: "canvasCaptureStream相关",
   },
   {
