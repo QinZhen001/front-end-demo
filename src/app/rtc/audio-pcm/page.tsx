@@ -1,3 +1,5 @@
+"use client"
+
 import { useMemo, useState } from "react"
 import AgoraRTC, {
   IAgoraRTCClient,
@@ -7,8 +9,6 @@ import AgoraRTC, {
 } from "agora-rtc-sdk-ng"
 import PlanAudioWorkletNode from "./components/planAudioWorkletNode"
 import PlanInsertableStream from "./components/planInsertableStream"
-
-import "./index.css"
 
 const AudioPcm = () => {
   const [audioTrack, setAudioTrack] = useState<IMicrophoneAudioTrack>()
@@ -37,15 +37,15 @@ const AudioPcm = () => {
 
   return (
     <div>
-      <section className="section">
+      <section className="p-2">
         <button onClick={createAudioTrack}>createAudioTrack</button>
         <button onClick={audioPlay}>audioPlay</button>
         <button onClick={audioStop}>audioStop</button>
       </section>
-      <section className="section">
+      <section className="p-2">
         <button onClick={changeScheme}>scheme: {schemeText}</button>
       </section>
-      <section className="section">
+      <section className="p-2">
         {plan == 1 ? (
           <PlanInsertableStream audioTrack={audioTrack}></PlanInsertableStream>
         ) : (

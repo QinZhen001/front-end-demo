@@ -50,7 +50,7 @@ const OTHER_CHILDREN: IContentItem[] = [
   {
     title: "notification",
     href: "/animation/notification",
-    description: "notification 系统通知",
+    description: "系统通知",
   },
   {
     title: "chinese-input",
@@ -60,7 +60,7 @@ const OTHER_CHILDREN: IContentItem[] = [
   {
     title: "editor@people",
     href: "/animation/at-editor",
-    description: "editor @人功能",
+    description: "@人功能",
   },
   {
     title: "retry",
@@ -80,17 +80,17 @@ const OTHER_CHILDREN: IContentItem[] = [
   {
     title: "codemirror",
     href: "/other/codemirror",
-    description: "代码高亮 CodeMirror",
+    description: "代码高亮",
   },
   {
     title: "sandbox",
     href: "/other/sandbox",
-    description: "SandBox 沙箱",
+    description: "沙箱",
   },
   {
     title: "abort-controller",
     href: "/other/abort-controller",
-    description: "AbortController 中断请求",
+    description: "中断请求",
   },
   {
     title: "js-bridge",
@@ -105,7 +105,7 @@ const OTHER_CHILDREN: IContentItem[] = [
   {
     title: "long-task",
     href: "/other/long-task",
-    description: "LongTask 监控长任务",
+    description: "监控长任务",
   },
   {
     title: "infinity-debugger",
@@ -203,6 +203,44 @@ const NODE_CHILDREN: IContentItem[] = [
   },
 ]
 
+const RTC_CHILDREN: IContentItem[] = [
+  {
+    title: "mediaRecorder",
+    href: "/rtc/mediaRecorder",
+    description: "MediaRecorder相关",
+  },
+  {
+    title: "canvas-capture-stream",
+    href: "/rtc/canvas-capture-stream",
+    description: "canvasCaptureStream相关",
+  },
+  {
+    title: "dataChannel",
+    href: "/rtc/dataChannel",
+    description: "WebRTC DataChannel",
+  },
+  {
+    title: "analyserNode",
+    href: "/rtc/analyserNode",
+    description: "音频可视化分析",
+  },
+  {
+    title: "audioPcm",
+    href: "/rtc/audioPcm",
+    description: "获取麦克风pcm数据",
+  },
+  {
+    title: "audioBuffer",
+    href: "/rtc/audioBuffer",
+    description: "AudioBuffer相关",
+  },
+  {
+    title: "gainNode",
+    href: "/rtc/gainNode",
+    description: "GainNode相关",
+  },
+]
+
 const NAV_LIST: IContentItem[] = [
   {
     title: "Vue",
@@ -232,6 +270,7 @@ const NAV_LIST: IContentItem[] = [
   {
     title: "Rtc",
     href: "/rtc",
+    children: RTC_CHILDREN,
   },
   {
     title: "Animation",

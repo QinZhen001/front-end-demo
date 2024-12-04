@@ -1,6 +1,4 @@
-import { useEffect } from "react"
-
-import "./index.css"
+"use client"
 
 const audioContext = new AudioContext()
 let audioBuffer: AudioBuffer
@@ -50,15 +48,15 @@ const AudioBuffer = () => {
 
   return (
     <div>
-      <div className="item">
+      <div className="p-2">
         <button onClick={onClickCreateBuffer}>createBuffer (从原始数据构建)</button>
       </div>
-      <div className="item">
+      <div className="p-2">
         <button onClick={onClickAudioBufferPlay}>
           播放 AudioBuffer (通过AudioBufferSourceNode播放)
         </button>
       </div>
-      <div className="item">
+      <div className="p-2">
         <button onClick={onClickClose}>close audioContext</button>
       </div>
     </div>

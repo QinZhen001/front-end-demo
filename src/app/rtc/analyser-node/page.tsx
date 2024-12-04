@@ -1,3 +1,5 @@
+"use client"
+
 // https://mp.weixin.qq.com/s/rEX18DMuvzUx8GhJ5c3AEA
 // 可视化音频文件
 // 获取音频文件数据；
