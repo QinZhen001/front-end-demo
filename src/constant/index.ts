@@ -119,42 +119,105 @@ const OTHER_CHILDREN: IContentItem[] = [
   },
 ]
 
+const REACT_CHILDREN: IContentItem[] = [
+  {
+    title: "redux",
+    href: "/react/redux",
+    description: "redux 简单实现",
+  },
+  {
+    title: "scheduler",
+    href: "/react/scheduler",
+    description: "react 调度",
+  },
+  {
+    title: "useTransition",
+    href: "/react/useTransition",
+    description: "useTransition",
+  },
+  {
+    title: "useDeferredValue",
+    href: "/react/useDeferredValue",
+    description: "useDeferredValue",
+  },
+  {
+    title: "suspense",
+    href: "/react/suspense",
+    description: "suspense",
+  },
+  {
+    title: "swr",
+    href: "/react/swr",
+    description: "swr",
+  },
+  {
+    title: "ahooks",
+    href: "/react/ahooks",
+    description: "ahooks 仿写",
+  },
+  {
+    title: "dob",
+    href: "/react/dob",
+    description: "dob 仿写",
+  },
+  {
+    title: "useCountdown",
+    href: "/react/useCountdown",
+    description: "useCountdown 倒计时",
+  },
+]
+
+const VUE_CHILDREN: IContentItem[] = [
+  {
+    title: "vue2",
+    href: "/vue/vue2",
+    description: "vue2 简单实现",
+  },
+  {
+    title: "vue3",
+    href: "/vue/vue3",
+    description: "vue3 简单实现",
+  },
+  {
+    title: "vuex",
+    href: "/vue/vuex",
+    description: "vuex 简单实现",
+  },
+  {
+    title: "simple-vue-router",
+    href: "/vue/simple-vue-router",
+    description: "vue-router 简单实现",
+  },
+]
+
+const NODE_CHILDREN: IContentItem[] = [
+  {
+    title: "EventLoop",
+    href: "/node/event-loop",
+    description: "事件循环",
+  },
+  {
+    title: "js-libuv",
+    href: "/node/js-libuv",
+    description: "模拟libuv",
+  },
+]
+
 const NAV_LIST: IContentItem[] = [
   {
     title: "Vue",
     href: "/vue",
-    description: "adadds",
-    children: [
-      {
-        title: "Vue3",
-        href: "/vue/vue3",
-        description: "adfs sfdsf sdfs aadds",
-      },
-      {
-        title: "Vue4",
-        href: "/vue/vue4",
-      },
-    ],
+    children: VUE_CHILDREN,
   },
   {
     title: "React",
     href: "/react",
+    children: REACT_CHILDREN,
   },
   {
     title: "Node",
     href: "/node",
-    children: [
-      {
-        title: "EventLoop",
-        href: "/node/event-loop",
-        description: "事件循环",
-      },
-      {
-        title: "js-libuv",
-        href: "/node/js-libuv",
-        description: "模拟libuv",
-      },
-    ],
+    children: NODE_CHILDREN,
   },
   {
     title: "Canvas",
@@ -211,5 +274,4 @@ const getSortNavList = (): IContentItem[] => {
 }
 
 export const SORT_NAV_LIST = getSortNavList()
-
 export const HEADER_DESCRIPTION = "web demo collection"

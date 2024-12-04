@@ -42,7 +42,7 @@ const LeftNav = (props: ILeftNavProps) => {
 
   return (
     <AccordionRoot
-      className={cn(className)}
+      className={cn("overflow-auto", className)}
       type="single"
       onValueChange={onValueChange}
       value={firstPath}
