@@ -1,4 +1,7 @@
+"use client"
+
 import { useState } from "react"
+import { Button } from "@/components/ui/button"
 
 const audioCtx = new AudioContext()
 const gainNode = audioCtx.createGain()
@@ -40,9 +43,9 @@ const GainNode = () => {
   }
 
   return (
-    <div>
-      <button onClick={onClickGainNode}>dealGainNode （播放麦克风声音）</button>
-      <button onClick={onClickMute}>muted: {muted ? "true" : "false"}</button>
+    <div className="space-x-2">
+      <Button onClick={onClickGainNode}>dealGainNode （播放麦克风声音）</Button>
+      <Button onClick={onClickMute}>muted: {muted ? "true" : "false"}</Button>
     </div>
   )
 }

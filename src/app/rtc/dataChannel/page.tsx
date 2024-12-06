@@ -1,14 +1,22 @@
+"use client"
+
 import { useRef, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { useToast } from "@/hooks/use-toast"
+
+type State = "connected" | "disconnected"
 
 let localConnection: RTCPeerConnection | null // RTCPeerConnection for our "local" connection
 let remoteConnection: RTCPeerConnection | null // RTCPeerConnection for the "remote"
-
 let sendChannel: RTCDataChannel | null // RTCDataChannel for the local (sender)
 let receiveChannel: RTCDataChannel | null // RTCDataChannel for the remote (receiver)
 
 export const WebRtcDataChannel = () => {
-  const textRef = useRef<HTMLDivElement>(null)
   const [message, setMessage] = useState<string>("")
+  const [state, setState] = useState<State>("disconnected")
+  const [list, setlist] = useState<string[]>([])
+  const { toast } = useToast()
 
   // Connect the two peers. Normally you look for and connect to a remote
   // machine here, but we're just connecting two local objects, so we can
@@ -37,13 +45,18 @@ export const WebRtcDataChannel = () => {
     localConnection
       .createOffer()
       .then((offer) => {
-        console.log("localConnection.createOffer() success")
+        console.log("localConnection createOffer success", offer)
         return localConnection?.setLocalDescription(offer)
       })
       .then(() => remoteConnection?.setRemoteDescription(localConnection!.localDescription!))
       .then(() => remoteConnection?.createAnswer())
       .then((answer) => remoteConnection?.setLocalDescription(answer))
       .then(() => localConnection?.setRemoteDescription(remoteConnection!.localDescription!))
+      .then(() => {
+        toast({
+          title: "connect success",
+        })
+      })
       .catch(handleCreateDescriptionError)
   }
 
@@ -62,6 +75,10 @@ export const WebRtcDataChannel = () => {
     receiveChannel = null
     localConnection = null
     remoteConnection = null
+
+    toast({
+      title: "disconnect success",
+    })
   }
 
   // Handle status changes on the local end of the data
@@ -91,10 +108,7 @@ export const WebRtcDataChannel = () => {
   // These are the data messages sent by the sending channel.
   const handleReceiveMessage = (event: MessageEvent) => {
     console.log("Received Message: " + event.data)
-    const el = document.createElement("p")
-    const txtNode = document.createTextNode(event.data)
-    el.appendChild(txtNode)
-    textRef.current!.appendChild(el)
+    setlist((v) => [...v, event.data])
   }
 
   const handleReceiveChannelStatusChange = (event: Event) => {
@@ -115,28 +129,55 @@ export const WebRtcDataChannel = () => {
   // creating an answer. In this simple example, we handle
   // both the same way.
   const handleCreateDescriptionError = (error: Error) => {
-    console.log("Unable to create an offer: " + error.toString())
+    const msg = "Unable to create an offer: " + error.toString()
+    console.error(msg)
+    toast({
+      variant: "destructive",
+      title: msg,
+    })
   }
 
   const sendMessage = () => {
+    console.log("sendChannel send: " + message)
     sendChannel?.send(message)
+  }
+
+  const toggleConnect = () => {
+    if (state == "connected") {
+      disconnectPeers()
+      setState("disconnected")
+    } else {
+      connectPeers()
+      setState("connected")
+    }
   }
 
   return (
     <div>
-      <div>
-        <button onClick={connectPeers}>connectPeers</button>
-        <button onClick={disconnectPeers}>disconnectPeers</button>
+      <div className="space-x-2">
+        <Button onClick={toggleConnect}>
+          {state == "connected" ? "disconnectPeers" : "connectPeers"}
+        </Button>
       </div>
-      <section style={{ padding: "5px" }}>
-        <div>
-          <input value={message} onChange={(e) => setMessage(e.target.value)}></input>
-        </div>
-        <button onClick={sendMessage}>sendMessage</button>
+      <section className="mt-2 space-x-2">
+        <Input
+          label="meaage:"
+          value={message}
+          onChange={(e) => {
+            setMessage(e.target.value)
+          }}
+        ></Input>
+        <Button onClick={sendMessage}>sendMessage</Button>
       </section>
-      <section style={{ padding: "5px" }}>
-        <div>Received Message: </div>
-        <div ref={textRef}></div>
+      <section className="mt-2">
+        <div className="text-lg">Received Message: </div>
+        {list.map((item) => {
+          return (
+            <div key={item} className="text-sm">
+              {item}
+            </div>
+          )
+        })}
       </section>
     </div>
   )

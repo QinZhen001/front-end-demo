@@ -17,6 +17,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/colors": "^3.0.0",
     "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-label": "^2.1.0",
     "@videojs/http-streaming": "^3.15.0",
     "agora-rtc-sdk-ng": "latest",
     "class-variance-authority": "^0.7.0",

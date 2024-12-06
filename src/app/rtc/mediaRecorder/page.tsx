@@ -1,4 +1,7 @@
+"use client"
+
 import { useRef } from "react"
+import { Button } from "@/components/ui/button"
 
 type RecordType = "screen" | "camera"
 
@@ -10,8 +13,8 @@ export const MediaRecorderComponent = () => {
   const playerRef = useRef<HTMLVideoElement>(null)
   const recordPlayerRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  let mediaRecorder: MediaRecorder = null as any
-  const blobs: BlobPart[] = []
+  let blobs: BlobPart[] = []
+  let mediaRecorder: MediaRecorder
 
   const record = async (type: RecordType) => {
     const getMediaMethod = type === "screen" ? "getDisplayMedia" : "getUserMedia"
@@ -76,36 +79,34 @@ export const MediaRecorderComponent = () => {
       canvasRef.current.width = width
       canvasRef.current.height = height
       context.drawImage(playerRef.current!, 0, 0, width, height)
-      // var data = canvasRef.current.toDataURL('image/png');
     }
   }
 
   return (
     <div>
-      <div>
-        <video autoPlay id="player" ref={playerRef}></video>
-        <video id="recordPlayer" ref={recordPlayerRef}></video>
-      </div>
-      <section>
-        <button id="startScreen" onClick={startScreen}>
+      <video autoPlay id="player" ref={playerRef}></video>
+      <video id="recordPlayer" ref={recordPlayerRef}></video>
+      <section className="space-x-2 mt-2 mb-2">
+        <Button id="startScreen" onClick={startScreen}>
           开启录屏
-        </button>
-        <button id="startCamera" onClick={startCamera}>
+        </Button>
+        <Button id="startCamera" onClick={startCamera}>
           开启摄像头
-        </button>
-        <button onClick={takePicture}>截图</button>
-        <button id="stop" onClick={stop}>
-          结束
-        </button>
-        <button id="reply" onClick={reply}>
-          回放
-        </button>
-
-        <button id="download" onClick={download}>
-          下载
-        </button>
+        </Button>
       </section>
-      <div>
+      <section className="space-x-2">
+        <Button onClick={takePicture}>截图</Button>
+        <Button id="stop" onClick={stop}>
+          结束
+        </Button>
+        <Button id="reply" onClick={reply}>
+          回放
+        </Button>
+        <Button id="download" onClick={download}>
+          下载
+        </Button>
+      </section>
+      <div className="mt-2">
         <canvas id="canvas" ref={canvasRef} />
       </div>
     </div>
