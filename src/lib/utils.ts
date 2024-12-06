@@ -97,5 +97,3 @@ export const generateRandomString = (length: number = 5) => {
   }
   return result
 }
-
-
