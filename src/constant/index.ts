@@ -239,6 +239,11 @@ const RTC_CHILDREN: IContentItem[] = [
     href: "/rtc/gainNode",
     description: "GainNode相关",
   },
+  {
+    title: "checkWebRtc",
+    href: "/rtc/checkWebRtc",
+    description: "测试浏览器支持WebRTC",
+  },
 ]
 
 const NAV_LIST: IContentItem[] = [
