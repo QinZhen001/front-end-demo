@@ -126,11 +126,6 @@ const REACT_CHILDREN: IContentItem[] = [
     description: "redux 简单实现",
   },
   {
-    title: "scheduler",
-    href: "/react/scheduler",
-    description: "react 调度",
-  },
-  {
     title: "useTransition",
     href: "/react/useTransition",
     description: "useTransition",
@@ -146,19 +141,9 @@ const REACT_CHILDREN: IContentItem[] = [
     description: "suspense",
   },
   {
-    title: "swr",
-    href: "/react/swr",
-    description: "swr",
-  },
-  {
     title: "ahooks",
     href: "/react/ahooks",
     description: "ahooks 仿写",
-  },
-  {
-    title: "dob",
-    href: "/react/dob",
-    description: "dob 仿写",
   },
   {
     title: "useCountdown",
@@ -184,8 +169,8 @@ const VUE_CHILDREN: IContentItem[] = [
     description: "vuex 简单实现",
   },
   {
-    title: "simple-vue-router",
-    href: "/vue/simple-vue-router",
+    title: "simpleVueRouter",
+    href: "/vue/simpleVueRouter",
     description: "vue-router 简单实现",
   },
 ]

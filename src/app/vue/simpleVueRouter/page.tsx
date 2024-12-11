@@ -1,4 +1,6 @@
 // @ts-nocheck
+"use client"
+
 import Vue from "./assets/vue.min.js"
 import { useEffect } from "react"
 import VueRouter from "./code/index.js"
@@ -44,12 +46,15 @@ const SimpleVueRouter = () => {
     <div>
       <div id="app">
         <div>simple-vue-router</div>
-        <div>
-          <router-link to="/vue/simple-vue-router/foo">Go to Foo</router-link>
-          <span>&nbsp;&nbsp;&nbsp;</span>
-          <router-link to="/vue/simple-vue-router/bar">Go to Bar</router-link>
+        <div className="space-x-2">
+          <span className="text-blue-500 border-r pr-2 border-slate-300">
+            <router-link to="/vue/simple-vue-router/foo">Go to Foo</router-link>
+          </span>
+          <span className="text-blue-500">
+            <router-link to="/vue/simple-vue-router/bar">Go to Bar</router-link>
+          </span>
         </div>
-        <div>router-view</div>
+        <div className="mt-2 mb-2 border-t border-slate-300">router-view</div>
         <router-view></router-view>
       </div>
     </div>

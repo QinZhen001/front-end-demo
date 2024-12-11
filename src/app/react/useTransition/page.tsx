@@ -1,12 +1,15 @@
+"use client"
+
 // React 18 useTransition
 import { useState, useTransition } from "react"
+import { Input } from "@/components/ui/input"
 
 export const UseTransition = () => {
   const [input, setInput] = useState("")
   const [list, setList] = useState<any[]>([])
   const [isPending, startTransition] = useTransition()
 
-  const LIST_SIZE = 20000
+  const LIST_SIZE = 500
 
   function handleChange(e: any) {
     // 高优先级 (先保证这个ui交互流畅)
@@ -23,8 +26,14 @@ export const UseTransition = () => {
 
   return (
     <div>
-      <input type="text" value={input} onChange={handleChange}></input>
-      {isPending ? "Loading..." : list.map((item, index) => <div key={index}>{item}</div>)}
+      <Input type="text" value={input} onChange={handleChange}></Input>
+      <div className="mt-2">
+        {isPending ? (
+          <div>Loading...</div>
+        ) : (
+          list.map((item, index) => <div key={index}>{item}</div>)
+        )}
+      </div>
     </div>
   )
 }

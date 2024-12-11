@@ -1,6 +1,10 @@
 // @ts-nocheck
+
+"use client"
+
 import store from "./store"
 import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/button"
 
 // @ts-ignore
 window.store = store
@@ -21,12 +25,12 @@ export const SimpleVuex = () => {
   }
 
   return (
-    <div style={{ padding: "10px" }}>
-      <div>store.state: {store.state.num}</div>
-      <div>store.getters: {store.getters.getNum}</div>
-      <div>
-        <button onClick={syncIncre}>sync incre</button>
-        <button onClick={asyncIncre}>async incre</button>
+    <div>
+      <div className="text-lg">store.state: {store.state.num}</div>
+      <div className="text-lg">store.getters: {store.getters.getNum}</div>
+      <div className="space-x-2">
+        <Button onClick={syncIncre}>sync incre</Button>
+        <Button onClick={asyncIncre}>async incre</Button>
       </div>
     </div>
   )

@@ -1,5 +1,7 @@
 // @ts-nocheck
 
+"use client"
+
 import { useEffect } from "react"
 import ZVue from "./code/index"
 

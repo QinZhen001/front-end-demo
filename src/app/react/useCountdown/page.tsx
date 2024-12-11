@@ -1,4 +1,7 @@
+"use client"
+
 import { useCountdown } from "./src"
+import { Button } from "@/components/ui/button"
 
 const UseCountdownPage = () => {
   const { start, count } = useCountdown(10, {
@@ -13,8 +16,8 @@ const UseCountdownPage = () => {
   return (
     <div>
       <div>You can see something the console.</div>
-      <div>
-        <button onClick={start}>start count: {count}</button>
+      <div className="mt-2">
+        <Button onClick={start}>start count: {count}</Button>
       </div>
     </div>
   )

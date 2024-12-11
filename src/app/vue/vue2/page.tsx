@@ -1,4 +1,7 @@
 // @ts-nocheck
+
+"use client"
+
 import KVue from "./code/src/kvue"
 import { useEffect } from "react"
 

@@ -6,6 +6,7 @@ export const noop = (...args: any[]) => {}
 
 export const useLatest = <T>(value: T) => {
   const ref = useRef<any>()
+  
   ref.current = value
 
   return ref

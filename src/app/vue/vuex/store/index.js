@@ -1,6 +1,6 @@
 // https://github.com/Sunny-lucking/howToBuildMyVuex/blob/master/src/store/index.js
 
-import Vue from "../../simple-vue-router/assets/vue.min.js"
+import Vue from "../../simpleVueRouter/assets/vue.min.js"
 import Vuex from "../simple-vuex/myVuex.js"
 
 Vue.use(Vuex)
