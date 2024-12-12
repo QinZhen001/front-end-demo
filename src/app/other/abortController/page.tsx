@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 
 // https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController
@@ -16,7 +18,7 @@ function myCoolPromise({ signal }: any) {
     // 异步的操作
     setTimeout(() => {
       Math.random() > 0.5 ? resolve("ok") : reject(new Error("not good"))
-    }, 1000)
+    }, 5000)
 
     // 添加 abort 事件监听，一旦 signal 状态改变就将 Promise 的状态改变为 rejected
     signal?.addEventListener("abort", () => reject(signal?.reason))
@@ -24,6 +26,7 @@ function myCoolPromise({ signal }: any) {
 }
 
 const AbortControllerComponent = () => {
+
   const onClickFetch = () => {
     fetch(resourceUrl, { signal })
       .then((response) => response.json())
@@ -36,8 +39,8 @@ const AbortControllerComponent = () => {
 
     // 中止请求
     setTimeout(() => {
-      ac.abort()
-    }, 10)
+      ac.abort("")
+    }, 100)
   }
 
   const onClickMyPromise = async () => {
@@ -47,7 +50,7 @@ const AbortControllerComponent = () => {
     )
     setTimeout(() => {
       ac.abort()
-    }, 20)
+    }, 200)
   }
 
   return (

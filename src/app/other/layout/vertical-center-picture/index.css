@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+p {
+  text-align: center;
+}
+li {
+  margin: 20px auto;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border: 1px solid #beceeb;
+  font-size: 0;
+}
+.first-method .alpha-img {
+  height: 100%;
+  width: 1px;
+  vertical-align: middle;
+}
+.first-method .show-img {
+  vertical-align: middle;
+}
+.second-method {
+  display: table-cell;
+  vertical-align: middle;
+}
+.third-method {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

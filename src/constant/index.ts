@@ -88,8 +88,8 @@ const OTHER_CHILDREN: IContentItem[] = [
     description: "沙箱",
   },
   {
-    title: "abort-controller",
-    href: "/other/abort-controller",
+    title: "abortController",
+    href: "/other/abortController",
     description: "中断请求",
   },
   {

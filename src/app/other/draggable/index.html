@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>实现一个可以拖拽的DIV</title>
+    <style>
+      #xxx {
+        position: absolute;
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background: red;
+      }
+
+      .wrapper {
+        margin-top: 200px;
+        position: relative;
+        padding: 20px;
+        width: 500px;
+        height: 500px;
+        background: rebeccapurple;
+      }
+
+      #item {
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>实现一个可以拖拽的DIV</p>
+    <div id="xxx"></div>
+
+    <!-- <div class="wrapper">
+    在一定的区域拖拽
+    <div id="item"></div>
+  </div> -->
+  </body>
+  <script src="./index.js"></script>
+</html>
