@@ -12,7 +12,6 @@ const GradientBorder = () => {
         <div className="gradient">Normal Text</div>
         <div className="gradient dilate">Normal Text</div>
         <div className="gradient erode">Normal Text</div>
-
         <svg width="0" height="0">
           <filter id="dilate">
             <feMorphology

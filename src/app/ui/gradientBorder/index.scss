@@ -1,4 +1,8 @@
 .gradient-border {
+  position: relative;
+  overflow: hidden;
+  width: 800px;
+
   .section1 {
     .gradient {
       font-size: 64px;

@@ -1,5 +1,7 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
 import { retry } from "./src/index"
-import "./index.css"
 
 const fn1 = () => {
   return "fn1"
@@ -76,13 +78,13 @@ export const AsyncAwaitRetry = () => {
   }
 
   return (
-    <div className="retry">
-      <button onClick={retryNormal}>retryNormal</button>
-      <button onClick={retryError}>retryError</button>
-      <button onClick={retrySecond}>retrySecond</button>
-      <button onClick={retryCallBack}>retryCallBack</button>
-      <button onClick={retryCallBackWithArgs}>retryCallBackWithArgs</button>
-      <button onClick={retryCallBackWithErr}>retryCallBackWithErr</button>
+    <div className="space-x-2 space-y-2">
+      <Button onClick={retryNormal}>retryNormal</Button>
+      <Button onClick={retryError}>retryError</Button>
+      <Button onClick={retrySecond}>retrySecond</Button>
+      <Button onClick={retryCallBack}>retryCallBack</Button>
+      <Button onClick={retryCallBackWithArgs}>retryCallBackWithArgs</Button>
+      <Button onClick={retryCallBackWithErr}>retryCallBackWithErr</Button>
     </div>
   )
 }

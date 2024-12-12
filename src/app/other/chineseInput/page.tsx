@@ -1,15 +1,17 @@
 "use client"
 
 import { CompositionEvent, ChangeEvent } from "react"
-// https://developer.mozilla.org/zh-CN/docs/Web/API/Element/compositionstart_event
 
 const ChineseInput = () => {
   const onCompositionStart = (e: CompositionEvent<HTMLInputElement>) => {
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/Element/compositionstart_event
     console.log("onCompositionStart", e.data)
   }
 
   const onCompositionupdate = (e: CompositionEvent<HTMLInputElement>) => {
-    // 输入中文时，会触发该事件，也会触发onChange事件
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/Element/compositionupdate_event
+    // compositionupdate 事件触发于字符被输入到一段文字的时候（这些可见字符的输入可能需要一连串的键盘操作、语音识别或者点击输入法的备选词）
+    // 可用于中文输入法
     console.log("onCompositionupdate", e.data)
   }
 

@@ -7,17 +7,23 @@ import { Button } from "@/components/ui/button"
 // DOMException 接口代表调用方法或访问 Web API 属性时发生的异常事件（被称为异常，exception）。
 // 这基本上是在 Web API 中如何描述错误情况的
 
-let ac = new AbortController()
-const { signal } = ac
+// https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController/abort
+// abort(reason) reason: 可选
+// 操作中止的原因，可以是各种 JavaScript 值。如果没有指定，则将原因设置为“AbortError”
+
+let control = new AbortController()
+const signal = control.signal
 const resourceUrl = "https://jsonplaceholder.typicode.com/todos/1"
 
 function myCoolPromise({ signal }: any) {
   return new Promise((resolve, reject) => {
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/AbortSignal/throwIfAborted
+    // 如果 signal 已经被中止，则 throwIfAborted() 方法抛出中止的 reason；否则它什么也不做。
     signal?.throwIfAborted()
 
     // 异步的操作
     setTimeout(() => {
-      Math.random() > 0.5 ? resolve("ok") : reject(new Error("not good"))
+      resolve("ok")
     }, 5000)
 
     // 添加 abort 事件监听，一旦 signal 状态改变就将 Promise 的状态改变为 rejected
@@ -26,30 +32,29 @@ function myCoolPromise({ signal }: any) {
 }
 
 const AbortControllerComponent = () => {
-
-  const onClickFetch = () => {
-    fetch(resourceUrl, { signal })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      .catch((err) => {
-        console.error(err)
-        const { code, name, message } = err
-        console.log(code, name, message)
-      })
-
-    // 中止请求
-    setTimeout(() => {
-      ac.abort("")
-    }, 100)
+  const onClickFetch = async () => {
+    try {
+      setTimeout(() => {
+        // 中止请求
+        control.abort()
+      }, 500)
+      const res = await fetch(resourceUrl, { signal })
+    } catch (error: any) {
+      if (error.name == "AbortError") {
+        console.error("触发了 abort", error)
+      } else {
+        console.error(error)
+      }
+    }
   }
 
   const onClickMyPromise = async () => {
     myCoolPromise({ signal }).then(
       (res) => console.log(res),
-      (err) => console.error(err),
+      (err) => console.error("Promise reject", err),
     )
     setTimeout(() => {
-      ac.abort()
+      control.abort()
     }, 200)
   }
 

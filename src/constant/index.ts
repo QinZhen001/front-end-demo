@@ -43,24 +43,14 @@ const CANVAS_CHILDREN: IContentItem[] = [
 
 const OTHER_CHILDREN: IContentItem[] = [
   {
-    title: "gradient-border",
-    href: "/animation/gradient-border",
-    description: "渐变边框文字",
-  },
-  {
     title: "notification",
-    href: "/animation/notification",
+    href: "/other/notification",
     description: "系统通知",
   },
   {
-    title: "chinese-input",
-    href: "/animation/chinese-input",
+    title: "chineseInput",
+    href: "/other/chineseInput",
     description: "监听中文输入法事件",
-  },
-  {
-    title: "editor@people",
-    href: "/animation/at-editor",
-    description: "@人功能",
   },
   {
     title: "retry",
@@ -231,6 +221,19 @@ const RTC_CHILDREN: IContentItem[] = [
   },
 ]
 
+const UI_CHILDREN: IContentItem[] = [
+  {
+    title: "gradientBorder",
+    href: "/ui/gradientBorder",
+    description: "渐变边框文字",
+  },
+  {
+    title: "editor@people",
+    href: "/ui/atEditor",
+    description: "@人功能",
+  },
+]
+
 const NAV_LIST: IContentItem[] = [
   {
     title: "Vue",
@@ -281,6 +284,11 @@ const NAV_LIST: IContentItem[] = [
   {
     title: "Webpack",
     href: "/webpack",
+  },
+  {
+    title: "UI",
+    href: "/ui",
+    children: UI_CHILDREN,
   },
 ]
 
