@@ -1,8 +1,11 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
 import { useEffect, useState, useLayoutEffect } from "react"
 import { useLastEvent } from "./hooks"
 
-const MockTrackerSend = (data: any) => {
-  console.log("[mock send]: ", data)
+const mockTrackerSend = (data: any) => {
+  console.log("[mock report]: ", data)
 }
 
 const LongTask = () => {
@@ -20,7 +23,7 @@ const LongTask = () => {
             const lastEvent = getLast()
             requestIdleCallback(() => {
               // 浏览器空闲时上报
-              MockTrackerSend({
+              mockTrackerSend({
                 type: "longTask",
                 eventType: lastEvent?.type,
                 startTime: entry.startTime, // 开始时间
@@ -52,10 +55,10 @@ const LongTask = () => {
   }
 
   return (
-    <div>
-      <button onClick={test1}>test1</button>
-      <button onClick={test2}>test2</button>
-      <button onClick={addLongTask}>add long task</button>
+    <div className="space-x-2">
+      <Button onClick={test1}>test1</Button>
+      <Button onClick={test2}>test2</Button>
+      <Button onClick={addLongTask}>add long task</Button>
     </div>
   )
 }

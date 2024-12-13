@@ -31,8 +31,8 @@ export class RteErrorCenter extends AbstractErrorCenter {
   static shared = new RteErrorCenter()
 
   private _handleError(code: AGRteErrorCode, error?: Error) {
-    // TODO:Logger
-    // Logger.error(`[RteErrorCenter] error ${code}: ${error?.message}`);
+    // 可以接入自定义 Logger （带日志上传）
+    console.error(`[RteErrorCenter] error ${code}: ${error?.message}`)
   }
 
   handleThrowableError(code: AGRteErrorCode, error?: Error) {

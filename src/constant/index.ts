@@ -83,18 +83,28 @@ const OTHER_CHILDREN: IContentItem[] = [
     description: "中断请求",
   },
   {
-    title: "js-bridge",
-    href: "/other/js-bridge",
+    title: "JSBridge",
+    href: "/other/JSBridge",
     description: "JSBridge",
   },
   {
-    title: "share-worker",
-    href: "/other/share-worker",
+    title: "inherit",
+    href: "/other/inherit",
+    description: "几种继承方式",
+  },
+  {
+    title: "errorPack",
+    href: "/other/errorPack",
+    description: "error封装",
+  },
+  {
+    title: "shareWorker",
+    href: "/other/shareWorker",
     description: "ShareWorker",
   },
   {
-    title: "long-task",
-    href: "/other/long-task",
+    title: "longTask",
+    href: "/other/longTask",
     description: "监控长任务",
   },
   {
