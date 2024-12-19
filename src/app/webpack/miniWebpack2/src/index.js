@@ -77,6 +77,7 @@ class Compilation {
   buildModule(name, modulePath) {
     let sourceCode = fs.readFileSync(modulePath, "utf8")
     let moduleId = "./" + path.posix.relative(baseDir, modulePath)
+    // eslint-disable-next-line @next/next/no-assign-module-variable
     let module = {
       id: moduleId,
       names: [name], //names设计成数组是因为代表的是此模块属于哪个代码块，可能属于多个代码块

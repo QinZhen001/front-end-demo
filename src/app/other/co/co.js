@@ -63,7 +63,7 @@ function objectToPromise(obj) {
   }
 }
 
-function co(gen) {
+export function co(gen) {
   const ctx = this
   return new Promise((resolve, reject) => {
     if (typeof gen == "function") {
@@ -85,8 +85,9 @@ function co(gen) {
     }
 
     function onRejected(err) {
-      let ret
+      // TODO: need to test
       try {
+        console.error(err)
       } catch (e) {
         return reject(e)
       }
@@ -113,5 +114,3 @@ function co(gen) {
     onFulfilled()
   })
 }
-
-window.co = co

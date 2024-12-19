@@ -48,6 +48,16 @@ const OTHER_CHILDREN: IContentItem[] = [
     description: "系统通知",
   },
   {
+    title: "co",
+    href: "/other/co",
+    description: "自动执行Generator",
+  },
+  {
+    title: "compose",
+    href: "/other/compose",
+    description: "实现compose",
+  },
+  {
     title: "chineseInput",
     href: "/other/chineseInput",
     description: "监听中文输入法事件",
@@ -244,6 +254,19 @@ const UI_CHILDREN: IContentItem[] = [
   },
 ]
 
+const WEBPACK_CHILDREN: IContentItem[] = [
+  {
+    title: "miniWebpack1",
+    href: "/webpack/miniWebpack1",
+    description: "手写webpack",
+  },
+  {
+    title: "miniWebpack2",
+    href: "/webpack/miniWebpack2",
+    description: "手写webpack",
+  },
+]
+
 const NAV_LIST: IContentItem[] = [
   {
     title: "Vue",
@@ -294,6 +317,7 @@ const NAV_LIST: IContentItem[] = [
   {
     title: "Webpack",
     href: "/webpack",
+    children: WEBPACK_CHILDREN,
   },
   {
     title: "UI",
