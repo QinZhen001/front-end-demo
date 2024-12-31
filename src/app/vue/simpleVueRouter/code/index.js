@@ -46,6 +46,7 @@ class VueRouter {
   }
 
   initListener() {
+    if (typeof window === "undefined") return
     const initPath = (this.isHashMode ? location.hash.slice(1) : location.pathname) || "/"
     //监听的对象名称，hash模式监听hashchange，history监听popstate
     const listName = this.isHashMode ? "hashchange" : "popstate"

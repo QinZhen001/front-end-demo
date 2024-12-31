@@ -21,7 +21,7 @@ function ProfileTimeline() {
   )
 }
 
-export const TestSuspense = () => {
+const TestSuspense = () => {
   return (
     <>
       <Suspense fallback={<h1>Loading profile...</h1>}>

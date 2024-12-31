@@ -43,7 +43,7 @@ const funCallBackWithErr = (arg1: any, cb: Function) => {
 
 // --------------------------------------------------
 
-export const AsyncAwaitRetry = () => {
+const AsyncAwaitRetryPage = () => {
   const retryNormal = async () => {
     const res = await retry(fn1) // 一次执行就成功了
     console.log("retryNormal", res)
@@ -89,4 +89,4 @@ export const AsyncAwaitRetry = () => {
   )
 }
 
-export default AsyncAwaitRetry
+export default AsyncAwaitRetryPage

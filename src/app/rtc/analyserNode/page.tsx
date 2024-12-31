@@ -11,11 +11,10 @@ import { useEffect, useRef } from "react"
 let frequencyData: Uint8Array
 let bufferLength = 0
 let analyser: AnalyserNode
-const context = new AudioContext()
-// 它包含了一些写在内存中的音频数据，通常储存在一个 ArrayBuffer 对象中
-const dataSourceNode = context.createBufferSource()
+let context: AudioContext
+let dataSourceNode: AudioBufferSourceNode
 
-export const AudioApi = () => {
+const AnalyserNodePage = () => {
   const ref = useRef<HTMLInputElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -42,6 +41,10 @@ export const AudioApi = () => {
   useEffect(() => {
     console.log("ref", ref)
     if (ref.current) {
+      context = new AudioContext()
+      // 它包含了一些写在内存中的音频数据，通常储存在一个 ArrayBuffer 对象中
+      dataSourceNode = context.createBufferSource()
+
       ref.current.onchange = function (event: Event) {
         // @ts-ignore
         const file = event.target?.files[0]
@@ -76,4 +79,4 @@ export const AudioApi = () => {
   )
 }
 
-export default AudioApi
+export default AnalyserNodePage

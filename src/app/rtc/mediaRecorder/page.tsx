@@ -9,7 +9,7 @@ const width = 300
 const height = 150
 const frameRate = 20
 
-export const MediaRecorderComponent = () => {
+const MediaRecorderPage = () => {
   const playerRef = useRef<HTMLVideoElement>(null)
   const recordPlayerRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -113,4 +113,4 @@ export const MediaRecorderComponent = () => {
   )
 }
 
-export default MediaRecorderComponent
+export default MediaRecorderPage

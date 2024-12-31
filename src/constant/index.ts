@@ -83,11 +83,6 @@ const OTHER_CHILDREN: IContentItem[] = [
     description: "代码高亮",
   },
   {
-    title: "sandbox",
-    href: "/other/sandbox",
-    description: "沙箱",
-  },
-  {
     title: "abortController",
     href: "/other/abortController",
     description: "中断请求",
@@ -126,11 +121,6 @@ const OTHER_CHILDREN: IContentItem[] = [
     title: "immer",
     href: "/other/immer",
     description: "immer.js",
-  },
-  {
-    title: "rxJs",
-    href: "/other/rxJs",
-    description: "rxjs 仿写",
   },
 ]
 

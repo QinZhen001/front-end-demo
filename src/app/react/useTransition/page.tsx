@@ -4,7 +4,7 @@
 import { useState, useTransition } from "react"
 import { Input } from "@/components/ui/input"
 
-export const UseTransition = () => {
+const UseTransitionPage = () => {
   const [input, setInput] = useState("")
   const [list, setList] = useState<any[]>([])
   const [isPending, startTransition] = useTransition()
@@ -38,4 +38,4 @@ export const UseTransition = () => {
   )
 }
 
-export default UseTransition
+export default UseTransitionPage

@@ -6,3 +6,4 @@ assets
 out
 lib
 plugin
+**/vue-analysis/**

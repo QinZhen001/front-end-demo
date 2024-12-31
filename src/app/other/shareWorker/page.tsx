@@ -5,12 +5,12 @@
 // github: https://github.com/coolaj86/html5-shared-web-worker-examples
 // MDN: https://developer.mozilla.org/zh-CN/docs/Web/API/SharedWorker
 import { useState, useEffect } from "react"
-const worker = new SharedWorker("/worker.js")
 
-const ShareWorker = () => {
+const ShareWorkerPage = () => {
   const [content, setContent] = useState<any[]>([])
 
   const initWorker = () => {
+    const worker = new SharedWorker("/worker.js")
     worker.port.addEventListener(
       "message",
       function (e) {
@@ -44,4 +44,4 @@ const ShareWorker = () => {
   )
 }
 
-export default ShareWorker
+export default ShareWorkerPage

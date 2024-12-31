@@ -63,7 +63,7 @@ const AccordionTrigger = React.forwardRef<
   >
     {children}
     <ChevronDownIcon
-      className="ease-[cubic-bezier(0.87,_0,_0.13,_1)] text-violet10 transition-transform duration-300 group-data-[state=open]:rotate-180"
+      className="text-violet10 transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-180"
       aria-hidden
     />
   </AccordionPrimitive.Trigger>

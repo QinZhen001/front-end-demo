@@ -12,7 +12,7 @@ let remoteConnection: RTCPeerConnection | null // RTCPeerConnection for the "rem
 let sendChannel: RTCDataChannel | null // RTCDataChannel for the local (sender)
 let receiveChannel: RTCDataChannel | null // RTCDataChannel for the remote (receiver)
 
-export const WebRtcDataChannel = () => {
+const WebRtcDataChannelPage = () => {
   const [message, setMessage] = useState<string>("")
   const [state, setState] = useState<State>("disconnected")
   const [list, setlist] = useState<string[]>([])
@@ -183,4 +183,4 @@ export const WebRtcDataChannel = () => {
   )
 }
 
-export default WebRtcDataChannel
+export default WebRtcDataChannelPage

@@ -7,9 +7,11 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 
 // @ts-ignore
-window.store = store
+if (typeof window !== "undefined") {
+  window.store = store
+}
 
-export const SimpleVuex = () => {
+const SimpleVuexPage = () => {
   const [updater, setUpdater] = useState(0)
 
   const syncIncre = () => {
@@ -36,4 +38,4 @@ export const SimpleVuex = () => {
   )
 }
 
-export default SimpleVuex
+export default SimpleVuexPage

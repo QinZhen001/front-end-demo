@@ -1,6 +1,6 @@
 // TODO: CodeMirror
 
-export const CodeMirror = () => {
+const CodeMirrorPage = () => {
   return (
     <div className="editor">
       {/* <textarea ref="fromEl" v-text="from" /> */}
@@ -10,4 +10,4 @@ export const CodeMirror = () => {
   )
 }
 
-export default CodeMirror
+export default CodeMirrorPage

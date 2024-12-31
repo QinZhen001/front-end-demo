@@ -3,12 +3,12 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 
-const audioCtx = new AudioContext()
-const gainNode = audioCtx.createGain()
 let audioSourceNode
 
 const GainNode = () => {
   const [muted, setMuted] = useState(false)
+  const audioCtx = new AudioContext()
+  const gainNode = audioCtx.createGain()
 
   const onClickGainNode = async () => {
     if (!navigator.mediaDevices.getUserMedia) {

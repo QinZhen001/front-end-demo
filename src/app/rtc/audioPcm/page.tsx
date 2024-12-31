@@ -1,12 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import AgoraRTC, {
-  IAgoraRTCClient,
-  IMicrophoneAudioTrack,
-  IRemoteAudioTrack,
-  UID,
-} from "agora-rtc-sdk-ng"
+import AgoraRTC, { IMicrophoneAudioTrack } from "agora-rtc-sdk-ng"
 import { Button } from "@/components/ui/button"
 import AudioWorkletNode from "./components/AudioWorkletNode"
 import MediaRecorder from "./components/MediaRecorder"

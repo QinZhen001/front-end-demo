@@ -8,7 +8,7 @@ import "./index.css"
 let source: Observable
 let subscription: Subscriber
 
-export const RxJS = () => {
+const RxJSPage = () => {
   const [val, setVal] = useState(0)
 
   const onCreateObservable = () => {
@@ -71,4 +71,4 @@ export const RxJS = () => {
   )
 }
 
-export default RxJS
+export default RxJSPage

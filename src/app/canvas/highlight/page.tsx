@@ -18,12 +18,7 @@ let canvasLeft = 0
 let canvasTop = 0
 let curColor = ""
 let map = new Map()
-
 let operates: IOperate[] = [] // 绘图操作历史
-// @ts-expect-error
-window.operates = operates
-// @ts-expect-error
-window.map = map
 
 /**
  * 将给定的 RGB 颜色值转换为十六进制颜色值
