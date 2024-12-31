@@ -86,7 +86,7 @@ export const MediaRecorderComponent = () => {
     <div>
       <video autoPlay id="player" ref={playerRef}></video>
       <video id="recordPlayer" ref={recordPlayerRef}></video>
-      <section className="space-x-2 mt-2 mb-2">
+      <section className="mb-2 mt-2 space-x-2">
         <Button id="startScreen" onClick={startScreen}>
           开启录屏
         </Button>

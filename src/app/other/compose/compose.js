@@ -1,5 +1,5 @@
 // 同步compose
-function compose1(...fns) {
+export function compose1(...fns) {
   return function (result) {
     let list = fns.slice()
     while (list.length > 0) {
@@ -10,7 +10,7 @@ function compose1(...fns) {
   }
 }
 
-const compose2 =
+export const compose2 =
   (...fns) =>
   (result) => {
     var list = fns.slice()
@@ -23,7 +23,7 @@ const compose2 =
   }
 
 // 异步compose
-function compose3(...args) {
+export function compose3(...args) {
   const init = args.pop()
   return function (...arg) {
     return args.reverse().reduce(

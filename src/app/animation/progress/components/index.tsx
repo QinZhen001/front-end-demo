@@ -20,14 +20,13 @@ const Progress = ({ progress = 0 }) => {
   }, [progress])
 
   return (
-    <div className="relative h-8 w-80 rounded-lg bg-[#cdeee3] overflow-hidden" ref={wrapperRef}>
-      <div className="relative w-0 h-full rounded-lg bg-[#3da985]" ref={innerRef}></div>
+    <div className="relative h-8 w-80 overflow-hidden rounded-lg bg-[#cdeee3]" ref={wrapperRef}>
+      <div className="relative h-full w-0 rounded-lg bg-[#3da985]" ref={innerRef}></div>
       <span
         style={{
           backgroundImage: `linear-gradient(to right, #cdeee3 0, #cdeee3 ${progress}%, #3da985 0%)`,
         }}
-        className="absolute top-0 left-0 right-0 bottom-0 text-transparent bg-clip-text
-         z-10 text-center leading-8 transition-all duration-500"
+        className="absolute bottom-0 left-0 right-0 top-0 z-10 bg-clip-text text-center leading-8 text-transparent transition-all duration-500"
       >
         正在安装 {progress}
       </span>

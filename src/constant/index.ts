@@ -127,6 +127,11 @@ const OTHER_CHILDREN: IContentItem[] = [
     href: "/other/immer",
     description: "immer.js",
   },
+  {
+    title: "rxJs",
+    href: "/other/rxJs",
+    description: "rxjs 仿写",
+  },
 ]
 
 const REACT_CHILDREN: IContentItem[] = [
@@ -252,6 +257,11 @@ const UI_CHILDREN: IContentItem[] = [
     href: "/ui/atEditor",
     description: "@人功能",
   },
+  {
+    title: "threeColumnLayout",
+    href: "/ui/threeColumnLayout",
+    description: "三列布局",
+  },
 ]
 
 const WEBPACK_CHILDREN: IContentItem[] = [
@@ -313,6 +323,14 @@ const NAV_LIST: IContentItem[] = [
         description: "简单插件",
       },
     ],
+  },
+  {
+    title: "babel",
+    href: "/babel",
+  },
+  {
+    title: "template",
+    href: "/template",
   },
   {
     title: "Webpack",

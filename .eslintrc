@@ -2,7 +2,9 @@
   "env": {
     "browser": true
   },
-  "extends": ["next"],
+  "extends": [
+    "next"
+  ],
   "rules": {
     // "new-cap": "off"
   }

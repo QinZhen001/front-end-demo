@@ -1,3 +1,5 @@
+"use client"
+
 // https://mp.weixin.qq.com/s/ECI3tniwucE2Tpv4eWw7iA
 import { useState } from "react"
 import { Observable, Subscriber, Observer, map } from "./src"

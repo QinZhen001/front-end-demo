@@ -24,7 +24,7 @@ const PcmSelect = (props: PcmSelectProps) => {
 
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="max-w-64 ">
+      <SelectTrigger className="max-w-64">
         <SelectValue placeholder="选择处理方案" />
       </SelectTrigger>
       <SelectContent className="max-w-64">

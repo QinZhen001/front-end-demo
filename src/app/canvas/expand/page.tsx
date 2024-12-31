@@ -79,7 +79,7 @@ const Expand = () => {
         width="200"
         height="200"
         ref={canvasRef}
-        className="w-[200px] h-[200px] mt-2"
+        className="mt-2 h-[200px] w-[200px]"
       ></canvas>
     </>
   )

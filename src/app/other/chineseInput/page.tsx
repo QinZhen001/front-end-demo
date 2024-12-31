@@ -26,7 +26,7 @@ const ChineseInput = () => {
   return (
     <div>
       <input
-        className="border border-gray-300 rounded"
+        className="border-gray-300 rounded border"
         type="text"
         onCompositionStart={onCompositionStart}
         onCompositionUpdate={onCompositionupdate}

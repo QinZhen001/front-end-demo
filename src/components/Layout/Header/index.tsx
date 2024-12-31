@@ -33,13 +33,13 @@ const Header = (props: IHeaderProps) => {
   }, [pathname])
 
   return (
-    <div className={cn(className, " bg-neutral-200 flex items-center justify-between box-border")}>
+    <div className={cn(className, "box-border flex items-center justify-between bg-neutral-200")}>
       <SeparatorContent
         data={pathData}
         description={target?.description}
-        className="flex-initial box-border ml-2"
+        className="ml-2 box-border flex-initial"
       ></SeparatorContent>
-      <span className="flex-auto text-right mr-2">{HEADER_DESCRIPTION}</span>
+      <span className="mr-2 flex-auto text-right">{HEADER_DESCRIPTION}</span>
     </div>
   )
 }

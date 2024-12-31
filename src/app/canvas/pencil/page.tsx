@@ -114,16 +114,16 @@ const CanvasPencil = () => {
   return (
     <div>
       <Button onClick={outputImg}>导出图片</Button>
-      <section className="flex mt-2">
-        <div className="w-[300px] h-[600px] relative">
+      <section className="mt-2 flex">
+        <div className="relative h-[600px] w-[300px]">
           <canvas
-            className="absolute left-0 right-0 top-0 bottom-0 -z-10 invisible"
+            className="invisible absolute bottom-0 left-0 right-0 top-0 -z-10"
             width={300}
             height={600}
             ref={offCanvasRef}
           ></canvas>
           <canvas
-            className="absolute left-0 right-0 top-0 bottom-0 z-10 visible"
+            className="visible absolute bottom-0 left-0 right-0 top-0 z-10"
             width={300}
             height={600}
             ref={canvasRef}

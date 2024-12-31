@@ -45,7 +45,7 @@ const AudioPcm = () => {
         <Button onClick={createAudioTrack}>createAudioTrack</Button>
         <Button onClick={toggleAudioPlay}>{!playing ? "audioPlay" : "audioStop"}</Button>
       </section>
-      <section className="mt-2 mb-2">
+      <section className="mb-2 mt-2">
         <div className="text-md mb-2">提取 mic track 中 pcm裸数据</div>
         <PcmSelect value={plan} onChange={(v) => setPlan(v)}></PcmSelect>
       </section>

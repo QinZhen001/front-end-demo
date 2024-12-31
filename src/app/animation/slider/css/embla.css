@@ -15,9 +15,9 @@
 .embla__container {
   display: flex;
   touch-action: pan-y pinch-zoom;
- /* 由于对slider的每一项都设置了 padding-left:slide-spacing  */
- /* 导致一开始显示时幻灯片第一项并不是水平垂直的，而是有一个向右的偏移量*/
- /* 所以这里用 margin-left: -slide-spacing 向左调整便宜，使得第一项水平居中 */
+  /* 由于对slider的每一项都设置了 padding-left:slide-spacing  */
+  /* 导致一开始显示时幻灯片第一项并不是水平垂直的，而是有一个向右的偏移量*/
+  /* 所以这里用 margin-left: -slide-spacing 向左调整便宜，使得第一项水平居中 */
   margin-left: calc(var(--slide-spacing) * -1);
 }
 .embla__slide {
@@ -108,7 +108,7 @@
   border-radius: 50%;
   display: flex;
   align-items: center;
-  content: '';
+  content: "";
 }
 .embla__dot--selected:after {
   box-shadow: inset 0 0 0 0.2rem var(--text-body);

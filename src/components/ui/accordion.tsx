@@ -8,7 +8,7 @@ const AccordionRoot = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionPrimitive.Root
-    className={cn("overflow-hidden w-full", className)}
+    className={cn("w-full overflow-hidden", className)}
     {...props}
     ref={forwardedRef}
   >
@@ -24,7 +24,7 @@ const AccordionItem = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionPrimitive.Item
     className={cn(
-      "w-full overflow-hidden first:mt-0 focus-within:relative focus-within:z-10 focus-within:shadow-md border-b border-slate-200",
+      "w-full overflow-hidden border-b border-slate-200 first:mt-0 focus-within:relative focus-within:z-10 focus-within:shadow-md",
       className,
     )}
     {...props}
@@ -41,7 +41,7 @@ const AccordionContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, ...props }, forwardedRef) => (
   <AccordionPrimitive.Content
-    className={cn("overflow-hidden cursor-pointer", className)}
+    className={cn("cursor-pointer overflow-hidden", className)}
     {...props}
     ref={forwardedRef}
   />
@@ -55,7 +55,7 @@ const AccordionTrigger = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionPrimitive.Trigger
     className={cn(
-      "flex w-full h-[45px] flex-1 items-center justify-between bg-white px-5 leading-none text-violet11 shadow-[0_1px_0] shadow-mauve6 outline-none",
+      "flex h-[45px] w-full flex-1 items-center justify-between bg-white px-5 leading-none text-violet11 shadow-[0_1px_0] shadow-mauve6 outline-none",
       className,
     )}
     {...props}
@@ -63,7 +63,7 @@ const AccordionTrigger = React.forwardRef<
   >
     {children}
     <ChevronDownIcon
-      className=" text-violet10 transition-transform duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180"
+      className="ease-[cubic-bezier(0.87,_0,_0.13,_1)] text-violet10 transition-transform duration-300 group-data-[state=open]:rotate-180"
       aria-hidden
     />
   </AccordionPrimitive.Trigger>
