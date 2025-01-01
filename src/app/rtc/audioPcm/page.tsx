@@ -1,11 +1,13 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import AgoraRTC, { IMicrophoneAudioTrack } from "agora-rtc-sdk-ng"
+import type { IMicrophoneAudioTrack, IAgoraRTC } from "agora-rtc-sdk-ng"
 import { Button } from "@/components/ui/button"
 import AudioWorkletNode from "./components/AudioWorkletNode"
 import MediaRecorder from "./components/MediaRecorder"
 import PcmSelect, { PcmSelectValue } from "./components/PcmSelect"
+
+let AgoraRTC: IAgoraRTC
 
 const AudioPcm = () => {
   const [audioTrack, setAudioTrack] = useState<IMicrophoneAudioTrack>()
@@ -20,9 +22,14 @@ const AudioPcm = () => {
   }, [audioTrack])
 
   const createAudioTrack = async () => {
+    await initSdk()
     // 可以不通过 agora sdk 直接通过 navigator.mediaDevices.getUserMedia
     const track = await AgoraRTC.createMicrophoneAudioTrack()
     setAudioTrack(track)
+  }
+
+  const initSdk = async () => {
+    AgoraRTC = (await import("agora-rtc-sdk-ng")).default
   }
 
   const toggleAudioPlay = () => {

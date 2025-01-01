@@ -8,7 +8,7 @@ interface AudioWorkletNodeComProps {
   audioTrack?: IMicrophoneAudioTrack
 }
 
-const audioContext = new AudioContext()
+let audioContext: AudioContext
 
 const AudioWorkletNodeCom = (props: AudioWorkletNodeComProps) => {
   const { audioTrack } = props
@@ -17,7 +17,7 @@ const AudioWorkletNodeCom = (props: AudioWorkletNodeComProps) => {
     if (!audioTrack) {
       throw new Error("audioTrack is null")
     }
-
+    audioContext = new AudioContext()
     await audioContext.audioWorklet.addModule("/pcm-processor.js")
     const audioWorkletNode = new AudioWorkletNode(audioContext, "pcm-processor")
 

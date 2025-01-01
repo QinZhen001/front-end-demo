@@ -4,16 +4,18 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 
 let audioSourceNode
+let audioCtx: AudioContext
+let gainNode: GainNode
 
 const GainNode = () => {
   const [muted, setMuted] = useState(false)
-  const audioCtx = new AudioContext()
-  const gainNode = audioCtx.createGain()
 
   const onClickGainNode = async () => {
     if (!navigator.mediaDevices.getUserMedia) {
       throw new Error("getUserMedia is not supported")
     }
+    audioCtx = new AudioContext()
+    gainNode = audioCtx.createGain()
     try {
       const audioStream = await navigator.mediaDevices.getUserMedia({
         audio: true,
