@@ -1,0 +1,1 @@
+:root{--pointerColor:#000}.multiple-type .example p{display:inline;background:linear-gradient(90deg,transparent,transparent calc(100% - 2px),var(--pointerColor) calc(100% - 2px),var(--pointerColor));animation:colorChange .6s linear infinite;padding-right:4px;white-space:pre-wrap}@keyframes colorChange{0%,50%{--pointerColor:#000}50%,to{--pointerColor:transparent}}
