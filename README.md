@@ -1,5 +1,14 @@
 ![last commit](https://badgen.net/github/last-commit/QinZhen001/front-end-demo)
 
+# TODO：
+
+- 文件管理查看系统（由于存在部分nodejs代码不支持跑在浏览器中）
+- d3.js demo
+- pixi.js demo
+- gasp demo
+- other demo
+- shader
+
 # front-end-demo
 
 记录下前端学习的一些东西
@@ -19,3 +28,8 @@ nrm use npm
 - [x] 改成 vite 构建
 - [x] 加入github action
 - [x] 内容整理
+
+### 2024.11.18
+
+- [x] 改成 next 构建
+- [x] 页面内容整理

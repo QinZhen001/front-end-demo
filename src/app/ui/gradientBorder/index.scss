@@ -1,0 +1,79 @@
+.gradient-border {
+  position: relative;
+  overflow: hidden;
+  width: 800px;
+
+  .section1 {
+    .gradient {
+      font-size: 64px;
+    }
+
+    .dilate {
+      filter: url(#dilate);
+    }
+
+    .erode {
+      filter: url(#erode);
+    }
+  }
+
+  .section2 {
+    font-size: 64px;
+    --stroke-width: 12px;
+    --background-gradient: linear-gradient(red 0%, green 100%);
+    --text-gradient: linear-gradient(white 0%, cyan 100%);
+
+    .text {
+      position: relative;
+    }
+
+    .text::before,
+    .text::after {
+      content: attr(data-text);
+      display: block;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .text::before {
+      position: absolute;
+      inset: 0;
+      background-image: var(--background-gradient);
+      -webkit-text-stroke: var(--stroke-width);
+    }
+
+    .text::after {
+      position: relative;
+      z-index: 1;
+      background-image: var(--text-gradient);
+    }
+  }
+
+  .section3 {
+    div {
+      position: relative;
+      width: 100vw;
+      height: 150px;
+      font-size: 120px;
+      font-weight: bold;
+      text-align: left;
+
+      &::before,
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        inset: 0;
+      }
+
+      &::before {
+        color: transparent;
+        background: linear-gradient(0deg, #da00ff, #2a79b7, #7e3eff);
+        background-clip: text;
+      }
+
+      &::after {
+        filter: url(#outline);
+      }
+    }
+  }
+}

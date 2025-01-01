@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #fff;
+    --foreground: var(--gray-text-dark);
+  }
+
+  .dark {
+    --background: var(--rte-dark-bg);
+    --foreground: #fff;
+  }
+}

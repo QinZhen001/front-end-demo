@@ -1,0 +1,263 @@
+/* 基础色阶 */
+:root {
+  --blue-0: #f6fafd;
+  --blue-10: #e5f2ff;
+  --blue-20: #cfe8ff;
+  --blue-30: #9ed1ff;
+  --blue-40: #6bb8ff;
+  --blue-50: #349eff;
+  --blue-60: #0085ff;
+  --blue-70: #006bcd;
+  --blue-80: #0055a4;
+  --blue-90: #00417c;
+  --blue-100: #002d56;
+
+  --red-0: #fffbfa;
+  --red-10: #fef3f2;
+  --red-20: #fee4e2;
+  --red-30: #fecdca;
+  --red-40: #fda29b;
+  --red-50: #f97066;
+  --red-60: #f04438;
+  --red-70: #d92d20;
+  --red-80: #b42318;
+  --red-90: #912018;
+  --red-100: #7a271a;
+
+  --yellow-0: #fffcf5;
+  --yellow-10: #fffaeb;
+  --yellow-20: #fef0c7;
+  --yellow-30: #fedf89;
+  --yellow-40: #fec84b;
+  --yellow-50: #fdb022;
+  --yellow-60: #f79009;
+  --yellow-70: #dc6803;
+  --yellow-80: #b54708;
+  --yellow-90: #93370d;
+  --yellow-100: #7a2e0e;
+
+  --green-0: #f6fef9;
+  --green-10: #ecfdf3;
+  --green-20: #d1fadf;
+  --green-30: #a6f4c5;
+  --green-40: #6ce9a6;
+  --green-50: #32d583;
+  --green-60: #12b76a;
+  --green-70: #039855;
+  --green-80: #027a48;
+  --green-90: #05603a;
+  --green-100: #054f31;
+
+  --gray-0: #fcfcfd;
+  --gray-10: #f2f4f7;
+  --gray-20: #f9fafb;
+  --gray-30: #eaecf0;
+  --gray-40: #d0d5dd;
+  --gray-50: #98a2b3;
+  --gray-60: #667085;
+  --gray-70: #475467;
+  --gray-80: #344054;
+  --gray-90: #1d2939;
+  --gray-100: #101828;
+
+  --blue-dark-0: #f5f8ff;
+  --blue-dark-10: #eff4ff;
+  --blue-dark-20: #d1e0ff;
+  --blue-dark-30: #b2ccff;
+  --blue-dark-40: #84adff;
+  --blue-dark-50: #528bff;
+  --blue-dark-60: #2970ff;
+  --blue-dark-70: #155eef;
+  --blue-dark-80: #004eeb;
+  --blue-dark-90: #0040c1;
+  --blue-dark-100: #00359e;
+
+  --purple-0: #fafaff;
+  --purple-10: #f4f3ff;
+  --purple-20: #ebe9fe;
+  --purple-30: #d9d6fe;
+  --purple-40: #bdb4fe;
+  --purple-50: #9b8afb;
+  --purple-60: #7a5af8;
+  --purple-70: #6938ef;
+  --purple-80: #5925dc;
+  --purple-90: #4a1fb8;
+  --purple-100: #3e1c96;
+}
+
+/* 基于基础色阶定义功能色 */
+:root {
+  --primary-bg-lighter: var(--blue-0);
+  --primary-bg: var(--blue-10);
+  --primary-bg-hover: var(--blue-20);
+  --primary-border: var(--blue-30);
+  --primary-disable: var(--blue-30);
+  --primary-border-hover: var(--blue-40);
+  --primary-hover: var(--blue-50);
+  --primary-text-hover: var(--blue-50);
+  --primary: var(--blue-60);
+  --primary-text: var(--blue-60);
+  --primary-active: var(--blue-70);
+  --primary-text-active: var(--blue-70);
+  --primary-text-dark: var(--blue-80);
+  --primary-text-dark-active: var(--blue-90);
+  --primary-bg-dark: var(--blue-100);
+
+  --error-bg-lighter: var(--red-0);
+  --error-bg: var(--red-10);
+  --error-bg-hover: var(--red-20);
+  --error-border: var(--red-30);
+  --error-disable: var(--red-30);
+  --error-border-hover: var(--red-40);
+  --error-hover: var(--red-50);
+  --error-text-hover: var(--red-50);
+  --error: var(--red-60);
+  --error-text: var(--red-60);
+  --error-active: var(--red-70);
+  --error-text-active: var(--red-70);
+  --error-text-dark: var(--red-80);
+  --error-text-dark-active: var(--red-90);
+  --error-bg-dark: var(--red-100);
+
+  --warning-bg-lighter: var(--yellow-0);
+  --warning-bg: var(--yellow-10);
+  --warning-bg-hover: var(--yellow-20);
+  --warning-border: var(--yellow-30);
+  --warning-disable: var(--yellow-30);
+  --warning-border-hover: var(--yellow-40);
+  --warning-hover: var(--yellow-50);
+  --warning-text-hover: var(--yellow-50);
+  --warning: var(--yellow-60);
+  --warning-text: var(--yellow-60);
+  --warning-active: var(--yellow-70);
+  --warning-text-active: var(--yellow-70);
+  --warning-text-dark: var(--yellow-80);
+  --warning-text-dark-active: var(--yellow-90);
+  --warning-bg-dark: var(--yellow-100);
+
+  --success-bg-lighter: var(--green-0);
+  --success-bg: var(--green-10);
+  --success-bg-hover: var(--green-20);
+  --success-border: var(--green-30);
+  --success-disable: var(--green-30);
+  --success-border-hover: var(--green-40);
+  --success-hover: var(--green-50);
+  --success-text-hover: var(--green-50);
+  --success: var(--green-60);
+  --success-text: var(--green-60);
+  --success-active: var(--green-70);
+  --success-text-active: var(--green-70);
+  --success-text-dark: var(--green-80);
+  --success-text-dark-active: var(--green-90);
+  --success-bg-dark: var(--green-100);
+
+  --gray-bg-lighter: var(--gray-0);
+  --gray-bg: var(--gray-10);
+  --gray-bg-hover: var(--gray-20);
+  --gray-border: var(--gray-30);
+  --gray-disable: var(--gray-30);
+  --gray-border-hover: var(--gray-40);
+  --gray-hover: var(--gray-50);
+  --gray-text-hover: var(--gray-50);
+  --gray: var(--gray-60);
+  --gray-text: var(--gray-60);
+  --gray-active: var(--gray-70);
+  --gray-text-active: var(--gray-70);
+  --gray-text-dark: var(--gray-80);
+  --gray-text-dark-active: var(--gray-90);
+  --gray-bg-dark: var(--gray-100);
+
+  --blue-dark-bg-lighter: var(--blue-dark-0);
+  --blue-dark-bg: var(--blue-dark-10);
+  --blue-dark-bg-hover: var(--blue-dark-20);
+  --blue-dark-border: var(--blue-dark-30);
+  --blue-dark-disable: var(--blue-dark-30);
+  --blue-dark-border-hover: var(--blue-dark-40);
+  --blue-dark-hover: var(--blue-dark-50);
+  --blue-dark-text-hover: var(--blue-dark-50);
+  --blue-dark: var(--blue-dark-60);
+  --blue-dark-text: var(--blue-dark-60);
+  --blue-dark-active: var(--blue-dark-70);
+  --blue-dark-text-active: var(--blue-dark-70);
+  --blue-dark-text-dark: var(--blue-dark-80);
+  --blue-dark-text-dark-active: var(--blue-dark-90);
+  --blue-dark-bg-dark: var(--blue-dark-100);
+
+  --purple-bg-lighter: var(--purple-0);
+  --purple-bg: var(--purple-10);
+  --purple-bg-hover: var(--purple-20);
+  --purple-border: var(--purple-30);
+  --purple-disable: var(--purple-30);
+  --purple-border-hover: var(--purple-40);
+  --purple-hover: var(--purple-50);
+  --purple-text-hover: var(--purple-50);
+  --purple: var(--purple-60);
+  --purple-text: var(--purple-60);
+  --purple-active: var(--purple-70);
+  --purple-text-active: var(--purple-70);
+  --purple-text-dark: var(--purple-80);
+  --purple-text-dark-active: var(--purple-90);
+  --purple-bg-dark: var(--purple-100);
+}
+
+/* 需要用到的 css 颜色变量 */
+:root {
+  --popper-arrow-bg: #fff;
+  --popper-arrow-border: var(--gray-border);
+}
+
+/* 文字相关定义 */
+:root {
+  --font-family-zh: PingFang SC, Helvetica, Microsoft YaHei, Arial, sans-serif;
+  --font-family-en: Helvetica Neue, Montserrat, Arial;
+  --font-family-number: Inter, Montserrat-Bold;
+  --font-family-code: Menlo, Consolas, DejaVu Sans Mono, Source Code Pro;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --font-size-6xl: 36px;
+  --font-size-5xl: 32px;
+  --font-size-4xl: 28px;
+  --font-size-3xl: 24px;
+  --font-size-2xl: 20px;
+  --font-size-xl: 18px;
+  --font-size-lg: 16px;
+  --font-size-base: 14px;
+  --font-size-sm: 12px;
+  --font-size-h1: var(--font-size-5xl);
+  --font-size-h2: var(--font-size-3xl);
+  --font-size-h3: var(--font-size-2xl);
+  --font-size-h4: var(--font-size-xl);
+  --font-size-h5: var(--font-size-lg);
+  --font-size-h6: var(--font-size-base);
+  --font-size-code: var(--font-size-base);
+
+  --line-height-6xl: 44px;
+  --line-height-5xl: 42px;
+  --line-height-4xl: 40px;
+  --line-height-3xl: 36px;
+  --line-height-2xl: 32px;
+  --line-height-xl: 28px;
+  --line-height-lg: 24px;
+  --line-height-base: 22px;
+  --line-height-sm: 18px;
+  --line-height-h1: var(--line-height-5xl);
+  --line-height-h2: var(--line-height-3xl);
+  --line-height-h3: var(--line-height-2xl);
+  --line-height-h4: var(--line-height-xl);
+  --line-height-h5: var(--line-height-lg);
+  --line-height-h6: var(--line-height-base);
+  --line-height-code: var(--line-height-base);
+}
+
+/* 边框相关定义 */
+:root {
+  --border-radius-2xl: 20px;
+  --border-radius-xl: 16px;
+  --border-radius-lg: 12px;
+  --border-radius-base: 6px;
+  --border-radius-sm: 4px;
+}

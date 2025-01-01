@@ -1,8 +1,6 @@
-export type PageRoute = {
-  path?: string
-  element: React.ReactNode
+export interface IContentItem {
   title: string
-  hidden?: boolean
-  index?: boolean
-  children?: PageRoute[]
+  href: string
+  description?: string
+  children?: IContentItem[]
 }
