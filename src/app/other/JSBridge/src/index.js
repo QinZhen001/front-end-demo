@@ -1,4 +1,9 @@
-const ua = navigator.userAgent
+"use client"
+
+let ua = ""
+if (typeof navigator !== "undefined") {
+  ua = navigator.userAgent
+}
 const IOS = "ios"
 const ANDROID = "android"
 
