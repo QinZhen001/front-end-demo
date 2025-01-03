@@ -12,7 +12,7 @@ const Section2 = () => {
   const container = useRef<HTMLDivElement>(null)
 
   useGSAP(
-    () => {
+    (context, contextSafe) => {
       // gsap.from 定义动画的起始状态
       // gsap.to 定义动画的结束状态
       gsap.from(".circle", {
@@ -25,6 +25,18 @@ const Section2 = () => {
           each: 0.5, // 如果有多个 .circle 元素进行动画，它们之间会相隔 0.5 秒开始动画，创建出错落的效果。
         },
       })
+      console.log("context", context)
+      console.log("contextSafe", contextSafe)
+      if (contextSafe) {
+        const click = contextSafe(() => {
+          // 元素点击事件
+        })
+        // xxx.addEventListener("click", click)
+      }
+
+      return () => {
+        // xxx.removeEventListener("click", click)
+      }
     },
     {
       dependencies: [],

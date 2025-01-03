@@ -11,6 +11,7 @@ const GsapPage = () => {
 
   return (
     <div>
+      <div>GreenSock Animation Platform (GSAP)</div>
       <SectionSelect value={value} onChange={setValue}></SectionSelect>
       {value === SectionSelectValue.section1 && <Section1></Section1>}
       {value === SectionSelectValue.section2 && <Section2></Section2>}
