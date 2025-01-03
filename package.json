@@ -33,7 +33,9 @@
     "embla-carousel-react": "^8.3.0",
     "tailwind-merge": "^2.5.4",
     "video.js": "^8.19.1",
-    "d3": "^7.9.0"
+    "d3": "^7.9.0",
+    "gsap": "^3.12.5",
+    "@gsap/react": "^2.1.1"
   },
   "devDependencies": {
     "@types/codemirror": "^5.60.15",

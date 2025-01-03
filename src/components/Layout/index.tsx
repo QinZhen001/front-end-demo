@@ -13,9 +13,7 @@ const Layout = (props: LayoutProps) => {
       <LeftNav className="w-52 flex-none"></LeftNav>
       <div className="flex-auto">
         <Header className="h-[2rem]"></Header>
-        <div className="relative h-[calc(100vh-2rem)] w-full overflow-hidden overflow-y-auto bg-slate-50 p-2">
-          {children}
-        </div>
+        <div className="relative h-[calc(100vh-2rem)] w-full bg-slate-50 p-2">{children}</div>
       </div>
     </div>
   )

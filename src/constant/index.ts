@@ -21,6 +21,11 @@ const ANIMATION_CHILDREN: IContentItem[] = [
     href: "/animation/multiple-type",
     description: "多行文字打字机效果",
   },
+  {
+    title: "gsap",
+    href: "/animation/gsap",
+    description: "create jaw dropping scroll effects",
+  },
 ]
 
 const CANVAS_CHILDREN: IContentItem[] = [
