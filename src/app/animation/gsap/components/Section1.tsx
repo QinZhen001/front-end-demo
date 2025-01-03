@@ -76,7 +76,7 @@ const Section1 = () => {
         </div>
       </div>
       <div className="h-[50vh] bg-slate-500" id="id-3"></div>
-      <Script
+      {/* <Script
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/GSDevTools3.min.js" // 替换为你自己的脚本 URL
         strategy="lazyOnload" // 选择加载策略
         onLoad={() => {
@@ -85,7 +85,7 @@ const Section1 = () => {
           gsap.registerPlugin(GSDevTools)
           GSDevTools.create()
         }}
-      />
+      /> */}
     </div>
   )
 }
