@@ -19,6 +19,7 @@
     "@radix-ui/colors": "^3.0.0",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-popover": "^1.1.4",
     "@videojs/http-streaming": "^3.15.0",
     "agora-rtc-sdk-ng": "latest",
     "class-variance-authority": "^0.7.0",
@@ -28,11 +29,11 @@
     "next": "^15.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "reflect-metadata": "0.2.1",
     "scheduler": "0.20.2",
     "embla-carousel-react": "^8.3.0",
     "tailwind-merge": "^2.5.4",
-    "video.js": "^8.19.1"
+    "video.js": "^8.19.1",
+    "d3": "^7.9.0"
   },
   "devDependencies": {
     "@types/codemirror": "^5.60.15",
@@ -41,6 +42,7 @@
     "@types/react-dom": "^18.3.1",
     "@types/react-router-dom": "^5.3.3",
     "@types/video.js": "^7.3.58",
+    "@types/d3": "^7.4.3",
     "autoprefixer": "^10.4.20",
     "codemirror": "^5.65.18",
     "codemirror-theme-vars": "^0.1.2",

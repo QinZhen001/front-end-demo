@@ -252,6 +252,11 @@ const UI_CHILDREN: IContentItem[] = [
     href: "/ui/threeColumnLayout",
     description: "三列布局",
   },
+  {
+    title: "d3js",
+    href: "/ui/d3js",
+    description: "data visualization 数据可视化",
+  },
 ]
 
 const WEBPACK_CHILDREN: IContentItem[] = [
