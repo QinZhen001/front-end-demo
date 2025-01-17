@@ -262,6 +262,11 @@ const UI_CHILDREN: IContentItem[] = [
     href: "/ui/d3js",
     description: "data visualization 数据可视化",
   },
+  {
+    title: "pixijs",
+    href: "/ui/pixijs",
+    description: "pixijs demo",
+  },
 ]
 
 const WEBPACK_CHILDREN: IContentItem[] = [
